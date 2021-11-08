@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://materials/Test.tres" type="Material" id=1]
 [ext_resource path="res://scenes/assets/fps_counter/FPS_Counter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=4]
+[ext_resource path="res://entities/move_target/target.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -229,3 +230,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31, 0 )
 omni_range = 4096.0
 
 [node name="FPS_Counter" parent="." instance=ExtResource( 2 )]
+
+[node name="Targets" type="Spatial" parent="."]
+
+[node name="Target" parent="Targets" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08658, 3.17856, 0.102895 )

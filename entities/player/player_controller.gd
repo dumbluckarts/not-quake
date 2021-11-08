@@ -30,6 +30,9 @@ export(int) var jump_height = 10
 export(int) var fly_speed = 10
 export(int) var fly_accel = 4
 var flying := false
+# Weapons
+var current_weapon_name = "PISTOL"
+var weapons = {"PISTOL":null}
 
 ##################################################
 
@@ -37,6 +40,16 @@ var flying := false
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	cam.fov = FOV
+	
+	weapons["PISTOL"] = $Head/GunFirePoints/PistolPoint
+	var gun_aim_point_pos = $Head/GunAimPoint.global_transform.origin
+	
+	for weapon in weapons:
+		var weapon_node = weapons[weapon]
+		if weapon_node != null:
+			weapon_node.player_node = self
+			weapon_node.look_at(gun_aim_point_pos, Vector3(0, 1, 0))
+			weapon_node.rotate_object_local(Vector3(0, 1, 0), deg2rad(180))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame
@@ -58,6 +71,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_axis = event.relative
 		camera_rotation()
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 
 func walk(delta: float) -> void:
@@ -167,3 +182,6 @@ func camera_rotation() -> void:
 		var temp_rot: Vector3 = head.rotation_degrees
 		temp_rot.x = clamp(temp_rot.x, -90, 90)
 		head.rotation_degrees = temp_rot
+
+func shoot():
+	weapons[current_weapon_name].shoot()

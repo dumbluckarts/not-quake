@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/player/player_controller.gd" type="Script" id=1]
+[ext_resource path="res://entities/player/Weapon_Pistol.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.983932
@@ -36,3 +37,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 keep_aspect = 0
 fov = 80.0
 far = 250.0
+
+[node name="GunFirePoints" type="Spatial" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="PistolPoint" type="Spatial" parent="Head/GunFirePoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.44086 )
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="Head/GunFirePoints/PistolPoint"]
+cast_to = Vector3( 0, 0, 100 )
+
+[node name="GunAimPoint" type="Spatial" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.29792 )
