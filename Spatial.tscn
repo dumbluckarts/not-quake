@@ -1,0 +1,231 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://materials/Test.tres" type="Material" id=1]
+[ext_resource path="res://scenes/assets/fps_counter/FPS_Counter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=4]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+material_override = ExtResource( 1 )
+cast_shadow = 0
+snap = 0.0001
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
+width = 24.0
+depth = 70.0
+
+[node name="CSGBox25" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 5.6, -69.9 )
+width = 24.0
+depth = 70.0
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -17 )
+width = 24.0
+height = 12.0
+
+[node name="CSGBox6" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 18, -16 )
+width = 24.0
+height = 34.0
+
+[node name="CSGBox8" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 22, 18, -5 )
+width = 24.0
+height = 34.0
+
+[node name="CSGBox14" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 22, 18, 29 )
+width = 24.0
+height = 34.0
+
+[node name="CSGBox15" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -2, 18, 19 )
+width = 20.0
+height = 34.0
+
+[node name="CSGBox16" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 12.4, 18, 23.7 )
+width = 14.0
+height = 34.0
+
+[node name="CSGBox13" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1.49012e-07, 0, 1, 0, 1, 0, -1, 0, 1.49012e-07, 33, 13, 13 )
+width = 34.0
+height = 14.0
+depth = 1.95
+
+[node name="CSGBox7" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.965926, -3.09086e-08, -0.258819, -0.258819, -5.35353e-08, 0.965926, -4.37114e-08, 1, 4.37114e-08, 21, 3, 10 )
+width = 24.0
+height = 40.0
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -17 )
+operation = 2
+width = 6.0
+height = 8.0
+
+[node name="CSGBox17" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33, 11, 4 )
+operation = 2
+width = 6.0
+height = 8.0
+
+[node name="CSGBox20" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33, 17, 23 )
+operation = 2
+width = 6.0
+height = 8.0
+
+[node name="CSGBox4" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -2, 5, -15 )
+width = 4.0
+height = 8.0
+depth = 1.0
+
+[node name="CSGBox5" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, 2, 5, -18 )
+width = 4.0
+height = 8.0
+depth = 1.0
+
+[node name="CSGBox18" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 30.701, 11, 2.51795 )
+width = 4.0
+height = 8.0
+depth = 1.0
+
+[node name="CSGBox19" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 35.299, 11, 6.48205 )
+width = 4.0
+height = 8.0
+depth = 1.0
+
+[node name="CSGBox9" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -17 )
+width = 24.0
+depth = 4.0
+
+[node name="CSGBox10" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 21, -14 )
+width = 6.0
+height = 1.0
+depth = 6.0
+
+[node name="CSGBox12" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 23.8, -14 )
+width = 6.0
+height = 0.5
+depth = 6.0
+
+[node name="CSGBox11" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 24, -14 )
+operation = 2
+width = 12.0
+height = 6.0
+depth = 4.0
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 22.5, -11.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder5" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 22.5, -12.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder6" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 22.5, -13.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder7" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 22.5, -14.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder8" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 22.5, -15.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder9" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 22.5, -16.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder10" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 22.5, -16.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder11" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 22.5, -16.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder12" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 22.5, -16.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 22.5, -11.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 22.5, -11.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 22.5, -11.5 )
+radius = 0.1
+height = 2.0
+
+[node name="CSGBox21" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 2, 23 )
+width = 26.0
+height = 8.0
+depth = 10.0
+
+[node name="CSGBox22" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 8, 23 )
+width = 4.0
+height = 4.0
+depth = 4.0
+
+[node name="CSGBox23" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 23, 7.1, -0.8 )
+width = 6.0
+height = 8.0
+depth = 6.0
+
+[node name="CSGBox24" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 6, 3 )
+height = 4.0
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55001, 0 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31, 0 )
+omni_range = 4096.0
+
+[node name="FPS_Counter" parent="." instance=ExtResource( 2 )]
