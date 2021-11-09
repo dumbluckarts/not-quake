@@ -1,10 +1,6 @@
 extends Label
 
-##################################################
-
 export var enabled := true
-
-##################################################
 
 func _process(_delta: float) -> void:
 	if enabled:
