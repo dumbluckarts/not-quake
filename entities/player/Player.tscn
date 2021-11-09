@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/player/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/Weapon_Pistol.gd" type="Script" id=2]
+[ext_resource path="res://assets/crosshair.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.983932
@@ -50,3 +51,34 @@ cast_to = Vector3( 0, 0, 100 )
 
 [node name="GunAimPoint" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.29792 )
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" type="Control" parent="HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -21.0
+margin_right = 21.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.125
+margin_top = -4.5
+margin_right = 3.875
+margin_bottom = 4.5
+texture = ExtResource( 3 )

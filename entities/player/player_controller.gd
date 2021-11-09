@@ -1,7 +1,5 @@
 extends KinematicBody
 
-###################-VARIABLES-####################
-
 # Camera
 export(float) var mouse_sensitivity = 12.0
 export(NodePath) var head_path
@@ -34,9 +32,7 @@ var flying := false
 var current_weapon_name = "PISTOL"
 var weapons = {"PISTOL":null}
 
-##################################################
 
-# Called when the node enters the scene tree
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	cam.fov = FOV
@@ -52,13 +48,13 @@ func _ready() -> void:
 			weapon_node.rotate_object_local(Vector3(0, 1, 0), deg2rad(180))
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame
+
 func _process(_delta: float) -> void:
 	move_axis.x = Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward")
 	move_axis.y = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
 
-# Called every physics tick. 'delta' is constant
+
 func _physics_process(delta: float) -> void:
 	if flying:
 		fly(delta)
@@ -66,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		walk(delta)
 
 
-# Called when there is an input event
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_axis = event.relative

@@ -16,7 +16,7 @@ func shoot():
 	print(ray)
 	if ray.is_colliding():
 		var body = ray.get_collider()
-		print("here")
+		
 		if body == player_node:
 			# dont kill yo self!
 			pass
