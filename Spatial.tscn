@@ -24,8 +24,8 @@ snap = 0.0001
 use_collision = true
 
 [node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-width = 24.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7477, 0, -5 )
+width = 73.5917
 depth = 70.0
 
 [node name="CSGBox25" type="CSGBox" parent="CSGCombiner"]
@@ -34,8 +34,8 @@ width = 24.0
 depth = 70.0
 
 [node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -17 )
-width = 24.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103018, 7, -17 )
+width = 34.5478
 height = 12.0
 
 [node name="CSGBox6" type="CSGBox" parent="CSGCombiner"]
