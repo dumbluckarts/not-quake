@@ -13,7 +13,7 @@ func _ready():
 func shoot():
 	var ray = $RayCast
 	ray.force_raycast_update()
-	print(ray)
+	
 	if ray.is_colliding():
 		var body = ray.get_collider()
 		
