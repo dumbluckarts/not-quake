@@ -18,6 +18,10 @@ config/name="Not-doom- 2"
 run/main_scene="res://Spatial.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+output_latency=8
+
 [display]
 
 window/size/width=1920

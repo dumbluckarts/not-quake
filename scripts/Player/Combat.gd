@@ -3,6 +3,7 @@ extends Node
 signal hit_damagable
 
 export(PackedScene) var BULLET
+export(PackedScene) var PARTICLES
 export(NodePath) var POSITION
 export(NodePath) var RAYCAST
 export(NodePath) var SOUND
@@ -47,3 +48,7 @@ func animate(_anim):
 	sound.play()
 	$"../Mouse/Camera".rotation_degrees.x += rand_range(1, 2)
 	$"../Mouse/Camera".rotation_degrees.y += rand_range(-0.2, 0.2)
+	
+	var particles = PARTICLES.instance()
+	$"../Mouse/Camera/Gun/Position3D_Tip".add_child(particles)
+	particles.emitting = true
