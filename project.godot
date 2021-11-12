@@ -20,12 +20,12 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=819
-window/size/height=460
+window/size/width=1920
+window/size/height=1080
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 

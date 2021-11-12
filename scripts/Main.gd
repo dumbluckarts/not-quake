@@ -4,6 +4,7 @@ export var fast_close := true # Enables closing with 'Esc'
 var mouse_mode: String = "CAPTURED" # Change mouse mode by clicking 'Shift + F1'
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if fast_close:
 		print("** Fast Close enabled in the 'Main.gd' script **")
 		print("** 'Esc' to close 'Shift + F1' to release mouse **")

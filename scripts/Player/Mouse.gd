@@ -5,9 +5,6 @@ export var MOUSE_Y_LIMIT = Vector2.ZERO
 
 var relative = Vector2()
 
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 func process(spatial: Spatial, delta: Vector2):
 	relative = delta
 	
