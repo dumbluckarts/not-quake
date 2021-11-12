@@ -1,21 +1,12 @@
 extends Label
 
-##################################################
-
 export var enabled := true
 
-##################################################
-
 func _physics_process(_delta: float) -> void:
-	if enabled:
-		var v: Vector3 = $"../..".velocity
-		var s = v.length()/(_delta*60)
-		if v == null:
-			text = "x: 0 y: 0 z: 0 speed: 0"
-			return
-		
-		#text = "x: " + str(stepify(v.x, 0.01)) + " y: " + str(stepify(v.y, 0.01)) + " z: " + str(stepify(v.z, 0.01)) + " speed: " + str(stepify(s,0.01))
-		text = str(stepify(s,0.01))
-	
-	else:
-		text = ""
+	var p = $"../../Player"
+	var v = p.get_node("Movement").get_v()
+	var x = stepify(p.global_transform.origin.x, 0.1)
+	var y = stepify(p.global_transform.origin.y, 0.1)
+	var z = stepify(p.global_transform.origin.z, 0.1)
+	var s = stepify(v.length()/(_delta*60), 0.1)
+	text = "x: %s y: %s z: %s s: %s" % [str(x), str(y), str(z), str(s)]

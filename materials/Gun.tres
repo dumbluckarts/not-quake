@@ -1,0 +1,9 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+metallic = 0.7
+metallic_specular = 0.31
+roughness = 0.43
+clearcoat_enabled = true
+clearcoat = 0.87
+clearcoat_gloss = 0.69
