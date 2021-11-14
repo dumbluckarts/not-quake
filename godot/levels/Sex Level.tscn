@@ -416,3 +416,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
 operation = 2
 radius = 14.0
 height = 6.0
+
+[node name="CSGBox3" type="CSGBox" parent="MainArea/CSGCombiner"]
+transform = Transform( 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 20, 11, 30 )
+width = 24.0
+depth = 8.0

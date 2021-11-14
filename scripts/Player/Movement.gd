@@ -25,8 +25,9 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	var speed = Vector3.ZERO
 	var forward = basis.z
 	var right = basis.x
+	var normal = $RayCast_Normal.get_collision_normal()
 	var relative = (forward * input.y + right * input.x)
-	var move_speed = MOVE_SPEED * (1.0 if $RayCast.is_colliding() else 0.8)
+	var move_speed = MOVE_SPEED * (1.0 if $RayCast_Normal.is_colliding() else 0.8)
 	
 	relative.y = 0
 	relative = relative.normalized()
@@ -36,19 +37,20 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	speed.x = relative.x * move_speed
 	speed.z = relative.z * move_speed
 	speed.y = -GRAV_SPEED
-
+	
 	velocity.x += speed.x # vertical
 	velocity.z += speed.z # horizontal
 	 
-	velocity.y = 0 if $RayCast.is_colliding() else velocity.y + speed.y
+	velocity.y = 0 if body.is_on_floor() or $RayCast.is_colliding() else velocity.y + speed.y
+	velocity.y = 0 if $RayCast_Celing.is_colliding() and velocity.y > 0 else velocity.y
 	
 	if is_impulse():
 		velocity += impulse
 	
-	if Input.is_action_pressed("move_jump") and $RayCast.is_colliding():
+	if Input.is_action_just_pressed("move_jump") and $RayCast_Normal.is_colliding():
 		velocity.y = JUMP_SPEED
 	
 	velocity.x = lerp(velocity.x, 0, 0.2)
 	velocity.z = lerp(velocity.z, 0, 0.2)
 	
-	body.move_and_slide(velocity * delta, Vector3.ZERO)
+	body.move_and_slide(velocity * delta, Vector3.UP, true)
