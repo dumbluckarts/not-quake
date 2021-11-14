@@ -54,6 +54,7 @@ func animate(_anim):
 	#particles.emitting = true
 
 func recoil_spread():
+	var min_y = $"../Mouse".MOUSE_Y_LIMIT.x
 	var max_y = $"../Mouse".MOUSE_Y_LIMIT.y
 	
 	var new_y = $"../Mouse/Camera".rotation_degrees
