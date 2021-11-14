@@ -1,7 +1,7 @@
 extends Spatial
 
 var timer = Timer.new()
-var TARGET = preload("res://scenes/Target.tscn")
+var TARGET = preload("res://godot/scenes/assets/Target.tscn")
 
 func _ready():
 	timer.autostart = true

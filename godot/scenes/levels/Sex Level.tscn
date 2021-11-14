@@ -1,0 +1,226 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://godot/materials/Leather.tres" type="Material" id=1]
+[ext_resource path="res://godot/materials/Metal.tres" type="Material" id=2]
+
+[node name="Sex Level" type="Spatial"]
+
+[node name="PipeRoom" type="Spatial" parent="."]
+
+[node name="CSGCombiner_Floors" type="CSGCombiner" parent="PipeRoom"]
+material_override = ExtResource( 2 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="PipeRoom/CSGCombiner_Floors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+width = 50.0
+height = 14.0
+depth = 50.0
+
+[node name="CSGBox2" type="CSGBox" parent="PipeRoom/CSGCombiner_Floors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+operation = 2
+width = 48.0
+height = 10.0
+depth = 48.0
+
+[node name="CSGBox4" type="CSGBox" parent="PipeRoom/CSGCombiner_Floors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6, -24 )
+operation = 2
+width = 6.0
+height = 6.0
+
+[node name="CSGCylinder" type="CSGCylinder" parent="PipeRoom/CSGCombiner_Floors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -5, 19 )
+operation = 2
+radius = 4.0
+height = 20.0
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="PipeRoom/CSGCombiner_Floors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -6, -18 )
+operation = 2
+radius = 4.0
+height = 20.0
+
+[node name="CSGCombiner_Cover" type="CSGCombiner" parent="PipeRoom"]
+material_override = ExtResource( 2 )
+use_collision = true
+
+[node name="CSGCylinder" type="CSGCylinder" parent="PipeRoom/CSGCombiner_Cover"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+radius = 13.0
+height = 10.0
+
+[node name="CSGBox_Cyl_Sub" type="CSGBox" parent="PipeRoom/CSGCombiner_Cover"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
+operation = 2
+width = 28.0
+height = 4.0
+depth = 8.0
+
+[node name="CSGBox" type="CSGBox" parent="PipeRoom/CSGCombiner_Cover"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 5, 0 )
+width = 4.0
+height = 4.0
+depth = 4.0
+
+[node name="CSGBox2" type="CSGBox" parent="PipeRoom/CSGCombiner_Cover"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 5, 0 )
+width = 4.0
+height = 4.0
+depth = 4.0
+
+[node name="CSGBox3" type="CSGBox" parent="PipeRoom/CSGCombiner_Cover"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 5, 1 )
+width = 4.0
+height = 4.0
+depth = 4.0
+
+[node name="CSGBox4" type="CSGBox" parent="PipeRoom/CSGCombiner_Cover"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -18 )
+height = 10.0
+depth = 12.0
+
+[node name="CSGBox5" type="CSGBox" parent="PipeRoom/CSGCombiner_Cover"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 9, 2 )
+width = 0.002
+height = 4.0
+depth = 4.0
+
+[node name="OmniLight" type="OmniLight" parent="PipeRoom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
+omni_range = 15.0
+
+[node name="OmniLight2" type="OmniLight" parent="PipeRoom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 20 )
+light_color = Color( 1, 0.631373, 0.631373, 1 )
+omni_range = 61.0
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="Spatial"]
+material_override = ExtResource( 1 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -21, 0 )
+width = 14.0
+height = 14.0
+depth = 50.0
+
+[node name="CSGBox6" type="CSGBox" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -21, -4 )
+width = 14.0
+height = 14.0
+depth = 14.0
+
+[node name="CSGBox2" type="CSGBox" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -21, 0 )
+operation = 2
+width = 10.0
+height = 10.0
+depth = 48.0
+
+[node name="CSGBox3" type="CSGBox" parent="Spatial/CSGCombiner"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, -21, -18 )
+width = 14.0
+height = 14.0
+depth = 50.0
+
+[node name="CSGBox4" type="CSGBox" parent="Spatial/CSGCombiner"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, -21, -18 )
+operation = 2
+width = 10.0
+height = 10.0
+depth = 46.0
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -6, 19 )
+radius = 5.0
+height = 16.0
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -6, 19 )
+operation = 2
+radius = 4.0
+height = 20.0
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -6, -18 )
+radius = 5.0
+height = 16.0
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -6, -18 )
+operation = 2
+radius = 4.0
+height = 20.0
+
+[node name="CSGBox5" type="CSGBox" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -21, -11 )
+operation = 2
+width = 10.0
+height = 10.0
+depth = 4.0
+
+[node name="CSGBox7" type="CSGBox" parent="Spatial/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -21, -7 )
+operation = 2
+width = 10.0
+height = 10.0
+depth = 16.0
+
+[node name="CSGCombiner2" type="CSGCombiner" parent="Spatial"]
+material_override = ExtResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Spatial/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -23, -20 )
+width = 6.0
+height = 6.0
+depth = 6.0
+
+[node name="CSGBox2" type="CSGBox" parent="Spatial/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -18, -20 )
+width = 4.0
+height = 4.0
+depth = 4.0
+
+[node name="CSGBox4" type="CSGBox" parent="Spatial/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -24, -7 )
+width = 4.0
+height = 4.0
+depth = 4.0
+
+[node name="CSGBox3" type="CSGBox" parent="Spatial/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -24, -22 )
+height = 4.0
+
+[node name="OmniLight" type="OmniLight" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -21, 6 )
+light_color = Color( 1, 0, 0, 1 )
+light_negative = true
+omni_range = 10.0
+
+[node name="OmniLight2" type="OmniLight" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -21, -8 )
+light_color = Color( 1, 0, 0, 1 )
+light_negative = true
+omni_range = 10.0
+
+[node name="OmniLight3" type="OmniLight" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -21, -18 )
+light_color = Color( 1, 0, 0, 1 )
+light_negative = true
+omni_range = 10.0
+
+[node name="OmniLight4" type="OmniLight" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -21, -18 )
+light_color = Color( 1, 0, 0, 1 )
+light_negative = true
+omni_range = 10.0
+
+[node name="OmniLight5" type="OmniLight" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -21, -5 )
+light_color = Color( 1, 0, 0, 1 )
+light_negative = true
+omni_range = 10.0

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/TexturesCom_Leather_Tufted_1K_normal.png-ad4efad91a8c5d718d653c445392e0ca.s3tc.stex"
-path.etc2="res://.import/TexturesCom_Leather_Tufted_1K_normal.png-ad4efad91a8c5d718d653c445392e0ca.etc2.stex"
+path.s3tc="res://.import/Export_normal.png-ca7fc7a9d8e6768f91721a7d9ebf57fb.s3tc.stex"
+path.etc2="res://.import/Export_normal.png-ca7fc7a9d8e6768f91721a7d9ebf57fb.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/leather/TexturesCom_Leather_Tufted_1K_normal.png"
-dest_files=[ "res://.import/TexturesCom_Leather_Tufted_1K_normal.png-ad4efad91a8c5d718d653c445392e0ca.s3tc.stex", "res://.import/TexturesCom_Leather_Tufted_1K_normal.png-ad4efad91a8c5d718d653c445392e0ca.etc2.stex" ]
+source_file="res://assets/textures/skulls_textures/Export_normal.png"
+dest_files=[ "res://.import/Export_normal.png-ca7fc7a9d8e6768f91721a7d9ebf57fb.s3tc.stex", "res://.import/Export_normal.png-ca7fc7a9d8e6768f91721a7d9ebf57fb.etc2.stex" ]
 
 [params]
 

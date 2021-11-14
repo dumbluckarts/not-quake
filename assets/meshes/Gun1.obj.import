@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Gun1.obj-33dc6b7b3f06685a78f974b775ac173f.mesh"
+
+[deps]
+
+files=[ "res://.import/Gun1.obj-33dc6b7b3f06685a78f974b775ac173f.mesh" ]
+
+source_file="res://assets/meshes/Gun1.obj"
+dest_files=[ "res://.import/Gun1.obj-33dc6b7b3f06685a78f974b775ac173f.mesh", "res://.import/Gun1.obj-33dc6b7b3f06685a78f974b775ac173f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
