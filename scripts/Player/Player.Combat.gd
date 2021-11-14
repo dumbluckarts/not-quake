@@ -46,9 +46,26 @@ func animate(_anim):
 	bullet.speed = 300 + rand_range(-50, 50)
 	sound.pitch_scale = rand_range(0.9, 1.1)
 	sound.play()
-	$"../Mouse/Camera".rotation_degrees.x += rand_range(1, 2)
-	$"../Mouse/Camera".rotation_degrees.y += rand_range(-0.2, 0.2)
+	
+	recoil_spread()
 	
 	#var particles = PARTICLES.instance()
 	#$"../Mouse/Camera/Gun/Position3D_Tip".add_child(particles)
 	#particles.emitting = true
+
+func recoil_spread():
+	var min_y = $"../Mouse".MOUSE_Y_LIMIT.x
+	var max_y = $"../Mouse".MOUSE_Y_LIMIT.y
+	
+	var new_y = $"../Mouse/Camera".rotation_degrees
+	new_y.y += rand_range(-0.2,0.2)
+	
+	var rand = rand_range(1,2)
+	
+	if ((new_y.x + rand) > max_y): 
+		new_y.x = new_y.x
+	else:
+		new_y.x += rand
+	
+	$"../Mouse/Camera".rotation_degrees.x = new_y.x
+	$"../Mouse/Camera".rotation_degrees.y = new_y.y
