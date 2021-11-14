@@ -21,6 +21,7 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	var speed = Vector3.ZERO
 	var forward = basis.z
 	var right = basis.x
+	
 	var relative = (forward * input.y + right * input.x)
 	var move_speed = MOVE_SPEED * (1.0 if $RayCast.is_colliding() else 0.8)
 	
