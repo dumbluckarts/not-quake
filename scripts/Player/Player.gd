@@ -4,7 +4,6 @@ export(PackedScene) var BULLET
 
 onready var orig = $Mouse/Camera/Gun.rotation_degrees.y
 
-
 func _process(_delta):
 	if $Movement.is_jumping():
 		$Audio/AnimationPlayer.play("jump")

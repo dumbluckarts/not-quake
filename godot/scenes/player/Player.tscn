@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player/Mouse.gd" type="Script" id=2]
@@ -10,12 +10,9 @@
 [ext_resource path="res://audio/fx/chop.wav" type="AudioStream" id=8]
 [ext_resource path="res://godot/scenes/player/Player.Particles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://godot/scenes/player/Player.Bullet.tscn" type="PackedScene" id=10]
-[ext_resource path="res://godot/materials/Leather.tres" type="Material" id=11]
-[ext_resource path="res://godot/materials/Gun.tres" type="Material" id=12]
-[ext_resource path="res://assets/meshes/Gun1_noScope.obj" type="ArrayMesh" id=13]
-[ext_resource path="res://assets/meshes/Arms.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://godot/scenes/game objects/Rifle.tscn" type="PackedScene" id=11]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "default"
 length = 3.0
 loop = true
@@ -44,7 +41,7 @@ tracks/1/keys = {
 "values": [ Vector3( -0.872, 81.438, -0.399 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "fall"
 length = 2.0
 tracks/0/type = "value"
@@ -60,7 +57,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0.441, -0.667, -0.663 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "jump"
 length = 0.5
 tracks/0/type = "value"
@@ -76,7 +73,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0.441, -0.785, -0.663 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "walk"
 length = 0.293
 loop = true
@@ -105,13 +102,7 @@ tracks/1/keys = {
 "values": [ Vector3( -0.872, 81.438, -0.399 ) ]
 }
 
-[sub_resource type="CylinderMesh" id=7]
-top_radius = 0.7
-bottom_radius = 0.7
-height = 15.0
-radial_segments = 6
-
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -139,7 +130,7 @@ tracks/1/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Mouse/Camera/Gun:rotation_degrees")
@@ -166,9 +157,9 @@ tracks/1/keys = {
 "values": [ Vector3( 0.441, -0.74, -0.636 ), Vector3( 0.441, -0.74, -0.663 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=8]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AudioStreamPlayer3D_Steps:playing")
 tracks/0/interp = 1
@@ -182,7 +173,7 @@ tracks/0/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=10]
 length = 5.0
 step = 0.05
 tracks/0/type = "value"
@@ -198,7 +189,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -214,13 +205,15 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="CapsuleShape" id=15]
+[sub_resource type="CapsuleShape" id=12]
 height = 2.0
 
-[sub_resource type="CapsuleMesh" id=16]
+[sub_resource type="CapsuleMesh" id=13]
 mid_height = 2.0
 
-[node name="Player" type="KinematicBody" groups=["physicable"]]
+[node name="Player" type="KinematicBody" groups=[
+"physicable",
+]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7, 19 )
 script = ExtResource( 3 )
 BULLET = ExtResource( 10 )
@@ -236,10 +229,10 @@ enabled = true
 cast_to = Vector3( 0, -0.01, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Movement"]
-anims/default = SubResource( 3 )
-anims/fall = SubResource( 4 )
-anims/jump = SubResource( 5 )
-anims/walk = SubResource( 6 )
+anims/default = SubResource( 1 )
+anims/fall = SubResource( 2 )
+anims/jump = SubResource( 3 )
+anims/walk = SubResource( 4 )
 
 [node name="Mouse" type="Spatial" parent="."]
 script = ExtResource( 2 )
@@ -251,27 +244,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 current = true
 fov = 90.0
 
-[node name="Gun" type="MeshInstance" parent="Mouse/Camera"]
-transform = Transform( 0.0111347, -0.00169612, 0.0981884, 0.00158756, 0.0999564, 0.00120948, -0.057918, 0.00241377, 0.0189099, 0.441, -0.74, -0.663 )
-mesh = ExtResource( 13 )
-material/0 = null
-
-[node name="Position3D" type="Position3D" parent="Mouse/Camera/Gun"]
-transform = Transform( 1, 5.58794e-09, 5.96046e-08, -1.39698e-09, 1, 0, 0, -1.86265e-09, 1, 13.1653, 5.0652, -0.0888145 )
-
-[node name="Silencer lol" type="MeshInstance" parent="Mouse/Camera/Gun/Position3D"]
-transform = Transform( -2.6077e-08, -1, 0, 1, -4.19095e-08, -9.77889e-09, 2.32831e-09, -2.98023e-08, 1, 4.477, 0, 0 )
-mesh = SubResource( 7 )
-material/0 = ExtResource( 12 )
-
-[node name="Position3D_Tip" type="Position3D" parent="Mouse/Camera/Gun"]
-transform = Transform( 0.997521, 5.58794e-09, 5.96046e-08, -1.86265e-09, 1, 3.25963e-09, 1.49012e-08, -1.16415e-09, 1.00708, 27.092, 4.158, -0.101 )
-
-[node name="Arms" type="MeshInstance" parent="Mouse/Camera/Gun"]
-transform = Transform( -3.39157e-07, 0, 10.302, 0, 7.96, 0, -7.759, 0, -4.50315e-07, -20.507, -9.229, 0 )
-material_override = ExtResource( 11 )
-mesh = ExtResource( 14 )
-material/0 = null
+[node name="Gun" parent="Mouse/Camera" instance=ExtResource( 11 )]
 
 [node name="RayCast" type="RayCast" parent="Mouse/Camera"]
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
@@ -288,8 +261,8 @@ SOUND = NodePath("../Audio/AudioStreamPlayer3D_Gun")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Combat"]
 playback_speed = 3.5
-anims/default = SubResource( 9 )
-anims/shoot = SubResource( 10 )
+anims/default = SubResource( 6 )
+anims/shoot = SubResource( 7 )
 
 [node name="RayCast" type="RayCast" parent="Combat"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
@@ -320,17 +293,17 @@ bus = "FX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Audio"]
 autoplay = "walk"
-anims/default = SubResource( 11 )
-anims/fall = SubResource( 12 )
-anims/jump = SubResource( 13 )
-anims/walk = SubResource( 14 )
+anims/default = SubResource( 8 )
+anims/fall = SubResource( 9 )
+anims/jump = SubResource( 10 )
+anims/walk = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 visible = false
-mesh = SubResource( 16 )
+mesh = SubResource( 13 )
 material/0 = null

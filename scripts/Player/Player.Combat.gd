@@ -48,13 +48,8 @@ func animate(_anim):
 	sound.play()
 	
 	recoil_spread()
-	
-	#var particles = PARTICLES.instance()
-	#$"../Mouse/Camera/Gun/Position3D_Tip".add_child(particles)
-	#particles.emitting = true
 
 func recoil_spread():
-	var min_y = $"../Mouse".MOUSE_Y_LIMIT.x
 	var max_y = $"../Mouse".MOUSE_Y_LIMIT.y
 	
 	var new_y = $"../Mouse/Camera".rotation_degrees
