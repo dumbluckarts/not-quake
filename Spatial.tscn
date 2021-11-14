@@ -563,6 +563,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 16, -58 )
 
 [node name="Position3D27" type="Position3D" parent="CSGCombiner/Spawns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 16, -58 )
-
 [connection signal="draw" from="CanvasLayer/Crosshair" to="CanvasLayer" method="_on_Crosshair_draw"]
 [connection signal="hit_damagable" from="Player/Combat" to="CanvasLayer" method="_on_Combat_hit_damagable"]
