@@ -6,11 +6,15 @@ export var JUMP_SPEED = 5000
 
 var velocity = Vector3.ZERO
 var moving = false
+var impulse = 0 # flag for if body is undergoing an impulse (ie by a jump pad)
 
 func get_v(): return velocity
 func is_moving(): return moving
 func is_jumping(): return velocity.y > 0
 func is_falling(): return velocity.y < 0
+func is_impulse(): return impulse
+
+func set_impulse(amount: Vector3): impulse = amount
 
 func process(body: KinematicBody, delta: float, basis: Basis):
 	var input = Vector2(
@@ -24,15 +28,22 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	var relative = (forward * input.y + right * input.x)
 	var move_speed = MOVE_SPEED * (1.0 if $RayCast.is_colliding() else 0.8)
 	
+	relative.y = 0
+	relative = relative.normalized()
+	
 	moving = input != Vector2.ZERO
 	
 	speed.x = relative.x * move_speed
 	speed.z = relative.z * move_speed
 	speed.y = -GRAV_SPEED
 
-	velocity.x += speed.x # vertial
+	velocity.x += speed.x # vertical
 	velocity.z += speed.z # horizontal
+	 
 	velocity.y = 0 if $RayCast.is_colliding() else velocity.y + speed.y
+	
+	if is_impulse():
+		velocity += impulse
 	
 	if Input.is_action_pressed("move_jump") and $RayCast.is_colliding():
 		velocity.y = JUMP_SPEED

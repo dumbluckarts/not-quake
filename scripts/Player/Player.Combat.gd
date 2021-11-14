@@ -49,6 +49,6 @@ func animate(_anim):
 	$"../Mouse/Camera".rotation_degrees.x += rand_range(1, 2)
 	$"../Mouse/Camera".rotation_degrees.y += rand_range(-0.2, 0.2)
 	
-	var particles = PARTICLES.instance()
-	$"../Mouse/Camera/Gun/Position3D_Tip".add_child(particles)
-	particles.emitting = true
+	#var particles = PARTICLES.instance()
+	#$"../Mouse/Camera/Gun/Position3D_Tip".add_child(particles)
+	#particles.emitting = true

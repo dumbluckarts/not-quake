@@ -15,7 +15,6 @@
 [ext_resource path="res://assets/meshes/Gun1_noScope.obj" type="ArrayMesh" id=13]
 [ext_resource path="res://assets/meshes/Arms.obj" type="ArrayMesh" id=14]
 
-
 [sub_resource type="Animation" id=3]
 resource_name = "default"
 length = 3.0
@@ -221,7 +220,7 @@ height = 2.0
 [sub_resource type="CapsuleMesh" id=16]
 mid_height = 2.0
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=["physicable"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7, 19 )
 script = ExtResource( 3 )
 BULLET = ExtResource( 10 )
@@ -245,7 +244,7 @@ anims/walk = SubResource( 6 )
 [node name="Mouse" type="Spatial" parent="."]
 script = ExtResource( 2 )
 MOUSE_SENSITIVITY = 0.05
-MOUSE_Y_LIMIT = Vector2( -60, 80 )
+MOUSE_Y_LIMIT = Vector2( -89, 90 )
 
 [node name="Camera" type="Camera" parent="Mouse"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
