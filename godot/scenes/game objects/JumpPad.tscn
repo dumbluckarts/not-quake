@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://godot/materials/Test.tres" type="Material" id=1]
+[ext_resource path="res://scripts/game objects/JumpPad.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.5, 0.3, 0.5 )
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1, 0.5, 1 )
+
+[node name="JumpPad" type="Spatial"]
+
+[node name="Area" type="Area" parent="."]
+script = ExtResource( 2 )
+impulse = Vector3( 0, 4000, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="Area" method="_on_Area_body_exited"]

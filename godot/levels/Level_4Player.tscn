@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/textures/skulls/Export_roughness.png" type="Texture" id=5]
 [ext_resource path="res://godot/materials/Metal.tres" type="Material" id=6]
 
-
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 3 )
 roughness = 0.87
