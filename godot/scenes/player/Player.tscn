@@ -102,7 +102,7 @@ tracks/1/keys = {
 "values": [ Vector3( -0.872, 81.438, -0.399 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -130,7 +130,7 @@ tracks/1/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Mouse/Camera/Gun:rotation_degrees")
@@ -157,9 +157,9 @@ tracks/1/keys = {
 "values": [ Vector3( 0.441, -0.74, -0.636 ), Vector3( 0.441, -0.74, -0.663 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AudioStreamPlayer3D_Steps:playing")
 tracks/0/interp = 1
@@ -173,7 +173,7 @@ tracks/0/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 length = 5.0
 step = 0.05
 tracks/0/type = "value"
@@ -189,7 +189,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -205,20 +205,22 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="CapsuleShape" id=12]
+[sub_resource type="CapsuleShape" id=11]
 height = 2.0
 
-[sub_resource type="CapsuleMesh" id=13]
+[sub_resource type="CapsuleMesh" id=12]
 mid_height = 2.0
 
-[node name="Player" type="KinematicBody" groups=["physicable"]]
+[node name="Player" type="KinematicBody" groups=[
+"physicable",
+]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7, 19 )
 script = ExtResource( 3 )
 BULLET = ExtResource( 10 )
 
 [node name="Movement" type="Spatial" parent="."]
 script = ExtResource( 1 )
-MOVE_SPEED = 37
+MOVE_SPEED = 50
 GRAV_SPEED = 75
 JUMP_SPEED = 35
 GROUND_FRICTION = 0.35
@@ -272,8 +274,8 @@ SOUND = NodePath("../Audio/AudioStreamPlayer3D_Gun")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Combat"]
 playback_speed = 3.5
-anims/default = SubResource( 6 )
-anims/shoot = SubResource( 7 )
+anims/default = SubResource( 5 )
+anims/shoot = SubResource( 6 )
 
 [node name="RayCast" type="RayCast" parent="Combat"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
@@ -304,17 +306,17 @@ bus = "FX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Audio"]
 autoplay = "walk"
-anims/default = SubResource( 8 )
-anims/fall = SubResource( 9 )
-anims/jump = SubResource( 10 )
-anims/walk = SubResource( 11 )
+anims/default = SubResource( 7 )
+anims/fall = SubResource( 8 )
+anims/jump = SubResource( 9 )
+anims/walk = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 visible = false
-mesh = SubResource( 13 )
+mesh = SubResource( 12 )
 material/0 = null
