@@ -218,9 +218,10 @@ BULLET = ExtResource( 10 )
 
 [node name="Movement" type="Spatial" parent="."]
 script = ExtResource( 1 )
-MOVE_SPEED = 35
-GRAV_SPEED = 200
-JUMP_SPEED = 50
+MOVE_SPEED = 37
+GRAV_SPEED = 75
+JUMP_SPEED = 35
+GROUND_FRICTION = 0.35
 MAX_INCLINE = 85
 
 [node name="RayCast" type="RayCast" parent="Movement"]

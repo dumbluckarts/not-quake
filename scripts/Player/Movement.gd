@@ -3,6 +3,8 @@ extends Spatial
 export var MOVE_SPEED = 900 #40
 export var GRAV_SPEED = 60 #300
 export var JUMP_SPEED = 3500 #100
+export var AIR_FRICTION = 0.75
+export var GROUND_FRICTION = 0.1
 export var MAX_INCLINE = 60
 
 var velocity = Vector3.ZERO
@@ -24,13 +26,13 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	).normalized()
-	print(is_falling())
+	
 	var speed = Vector3.ZERO
 	var forward = basis.z
 	var right = basis.x
 	var normal = $RayCast_Normal.get_collision_normal()
 	var relative = (forward * input.y + right * input.x)
-	var move_speed = MOVE_SPEED * (1.0 if $RayCast_Normal.is_colliding() else 0.8)
+	var move_speed = MOVE_SPEED * (1.0 if $RayCast_Normal.is_colliding() else AIR_FRICTION)
 	
 	relative.y = 0
 	relative = relative.normalized()
@@ -49,9 +51,7 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	
 	if is_impulse():
 		velocity = impulse
-	if not jumping and $RayCast_Normal.is_colliding():
-		falling = false
-	elif velocity.y > 0:
+	if (not jumping and $RayCast_Normal.is_colliding()) or velocity.y > 0:
 		falling = false
 	else:
 		falling = true
@@ -63,8 +63,8 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 		jumping = true
 		velocity.y = JUMP_SPEED
 	
-	velocity.x = lerp(velocity.x, 0, 0.2)
-	velocity.z = lerp(velocity.z, 0, 0.2)
+	velocity.x = lerp(velocity.x, 0, GROUND_FRICTION)
+	velocity.z = lerp(velocity.z, 0, GROUND_FRICTION)
 	
 	var snap = Vector3.DOWN if not is_jumping() else Vector3.ZERO
 	velocity = body.move_and_slide_with_snap(velocity, snap, Vector3.UP, true, 4 , deg2rad(MAX_INCLINE))
