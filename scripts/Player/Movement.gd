@@ -8,12 +8,13 @@ export var MAX_INCLINE = 60
 var velocity = Vector3.ZERO
 var moving = false
 var jumping = false
+var falling = false
 var impulse = 0 # flag for if body is undergoing an impulse (ie by a jump pad)
 
 func get_v(): return velocity
 func is_moving(): return moving
 func is_jumping(): return jumping
-func is_falling(): return velocity.y < 0
+func is_falling(): return falling
 func is_impulse(): return impulse
 
 func set_impulse(amount: Vector3): impulse = amount
@@ -23,7 +24,7 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	).normalized()
-	
+	print(is_falling())
 	var speed = Vector3.ZERO
 	var forward = basis.z
 	var right = basis.x
@@ -48,6 +49,12 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	
 	if is_impulse():
 		velocity = impulse
+	if not jumping and $RayCast_Normal.is_colliding():
+		falling = false
+	elif velocity.y > 0:
+		falling = false
+	else:
+		falling = true
 	
 	if jumping and $RayCast_Normal.is_colliding():
 		jumping = false
