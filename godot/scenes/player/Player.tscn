@@ -211,17 +211,17 @@ height = 2.0
 [sub_resource type="CapsuleMesh" id=13]
 mid_height = 2.0
 
-[node name="Player" type="KinematicBody" groups=[
-"physicable",
-]]
+[node name="Player" type="KinematicBody" groups=["physicable"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7, 19 )
 script = ExtResource( 3 )
 BULLET = ExtResource( 10 )
 
 [node name="Movement" type="Spatial" parent="."]
 script = ExtResource( 1 )
-MOVE_SPEED = 900
-JUMP_SPEED = 3500
+MOVE_SPEED = 35
+GRAV_SPEED = 200
+JUMP_SPEED = 50
+MAX_INCLINE = 85
 
 [node name="RayCast" type="RayCast" parent="Movement"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
@@ -254,6 +254,7 @@ current = true
 fov = 90.0
 
 [node name="Gun" parent="Mouse/Camera" instance=ExtResource( 11 )]
+transform = Transform( 0.0111347, -0.00169612, 0.0981884, 0.00158756, 0.0999564, 0.00120948, -0.057918, 0.00241377, 0.0189098, 0.441, -0.74, -0.663 )
 
 [node name="RayCast" type="RayCast" parent="Mouse/Camera"]
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )

@@ -53,6 +53,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 32, 36 )
 
 [node name="LaunchPad" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-impulse = Vector3( 0, 7000, 0 )
+impulse = Vector3( 0, 200, 0 )
 
 [connection signal="draw" from="CanvasLayer/Crosshair" to="CanvasLayer" method="_on_Crosshair_draw"]
