@@ -11,7 +11,7 @@ var velocity = Vector3.ZERO
 var moving = false
 var jumping = false
 var falling = false
-var impulse = 0 # flag for if body is undergoing an impulse (ie by a jump pad)
+var impulse = Vector3.ZERO # flag for if body is undergoing an impulse (ie by a jump pad)
 
 func get_v(): return velocity
 func is_moving(): return moving
