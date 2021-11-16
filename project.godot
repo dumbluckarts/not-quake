@@ -24,12 +24,12 @@ output_latency=8
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=640
+window/size/height=360
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [importer_defaults]
 
@@ -37,14 +37,14 @@ texture={
 "compress/bptc_ldr": 0,
 "compress/hdr_mode": 0,
 "compress/lossy_quality": 0.7,
-"compress/mode": 0,
+"compress/mode": 2,
 "compress/normal_map": 0,
-"detect_3d": true,
+"detect_3d": false,
 "flags/anisotropic": false,
 "flags/filter": false,
-"flags/mipmaps": false,
-"flags/repeat": 0,
-"flags/srgb": 2,
+"flags/mipmaps": true,
+"flags/repeat": true,
+"flags/srgb": 1,
 "process/HDR_as_SRGB": false,
 "process/fix_alpha_border": true,
 "process/invert_color": false,
