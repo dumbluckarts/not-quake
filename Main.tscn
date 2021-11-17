@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://godot/scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/meshes/test.obj" type="ArrayMesh" id=2]
@@ -24,6 +24,12 @@
 [ext_resource path="res://godot/materials/Gun.tres" type="Material" id=22]
 [ext_resource path="res://godot/materials/GreenBrick.tres" type="Material" id=23]
 [ext_resource path="res://assets/meshes/props/shroom_1.obj" type="ArrayMesh" id=24]
+[ext_resource path="res://assets/meshes/props/valve.obj" type="ArrayMesh" id=25]
+[ext_resource path="res://assets/textures/Metal008_1K-JPG/Metal008_1K_Color.jpg" type="Texture" id=26]
+[ext_resource path="res://assets/meshes/props/pipeWrap.obj" type="ArrayMesh" id=27]
+[ext_resource path="res://godot/levels/Pipe Organized.tscn" type="PackedScene" id=28]
+[ext_resource path="res://ENVIRONMENT.tres" type="Environment" id=29]
+[ext_resource path="res://godot/materials/Water.tres" type="Material" id=30]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 15 )
@@ -94,137 +100,48 @@ size = Vector2( 75, 75 )
 [sub_resource type="ConcavePolygonShape" id=12]
 data = PoolVector3Array( 37.5, 0, 37.5, -37.5, 0, 37.5, 37.5, 0, -37.5, -37.5, 0, 37.5, -37.5, 0, -37.5, 37.5, 0, -37.5 )
 
-[sub_resource type="Shader" id=13]
-code = "shader_type spatial;
-render_mode blend_mix, specular_phong;
-
-uniform float speed : hint_range(-1,1) = 0.0;
-
-//colors
-uniform sampler2D noise1; //add Godot noise here
-uniform sampler2D noise2; //add Godot noise here
-uniform sampler2D normalmap : hint_normal; //add Godot noise here, enable as_normalmap
-uniform vec4 color : hint_color;
-uniform vec4 edge_color : hint_color;
-
-//foam
-uniform float edge_scale = 0.25;
-uniform float near = 0.1;
-uniform float far = 100f;
-
-//waves
-uniform vec2 wave_strengh = vec2(0.5, 0.25);
-uniform vec2 wave_frequency = vec2(12.0, 12.0);
-uniform vec2 time_factor = vec2(1.0, 2.0);
-
-
-
-float rim(float depth){
-	depth = 2f * depth - 1f;
-	return near * far / (far + depth * (near - far));
-}
-
-
-float waves(vec2 pos, float time){
-	return (wave_strengh.y * sin(pos.y * wave_frequency.y + time * time_factor.y)) + (wave_strengh.x * sin(pos.x * wave_frequency.x + time * time_factor.x));
-}
-
-
-void vertex(){
-	VERTEX.y += waves(VERTEX.xy, TIME);
-}
-
-
-void fragment(){
-	float time = TIME * speed;
-	vec3 n1 = texture(noise1, UV + time).rgb;
-	vec3 n2 = texture(noise2, UV - time * 0.2).rgb;
-	
-	vec2 uv_movement = UV * 4f;
-	uv_movement += TIME * speed * 4f;
-	
-	float sum = (n1.r + n2.r) - 1f;
-	
-	
-	float z_depth = rim(texture(DEPTH_TEXTURE, SCREEN_UV).x);
-	float z_pos = rim(FRAGCOORD.z);
-	float diff = z_depth - z_pos;
-	
-	vec2 displacement = vec2(sum * 0.05);
-	diff += displacement.x * 50f;
-	
-	
-	vec4 col = mix(edge_color, color, step(edge_scale, diff));
-	
-	vec4 alpha = vec4(1.0);
-	alpha = texture(SCREEN_TEXTURE, SCREEN_UV + displacement);
-	
-	
-	float fin = 0.0;
-	if (sum > 0.0 && sum < 0.4) fin = 0.1;
-	if (sum > 0.4 && sum < 0.8) fin = 0.0;
-	if (sum > 0.8) fin = 1f;
-	
-	ALBEDO = vec3(fin) + mix(alpha.rgb, col.rgb, color.a);
-	
-	NORMALMAP = texture(normalmap, uv_movement).rgb;
-	ROUGHNESS = 0.1;
-	SPECULAR = 1f;
-}"
-
-[sub_resource type="OpenSimplexNoise" id=14]
-
-[sub_resource type="NoiseTexture" id=15]
-width = 412
-height = 412
-seamless = true
-as_normalmap = true
-noise = SubResource( 14 )
-
-[sub_resource type="OpenSimplexNoise" id=16]
-
-[sub_resource type="NoiseTexture" id=17]
-seamless = true
-noise = SubResource( 16 )
-
-[sub_resource type="OpenSimplexNoise" id=18]
-
-[sub_resource type="NoiseTexture" id=19]
-width = 64
-height = 64
-seamless = true
-as_normalmap = true
-noise = SubResource( 18 )
-
-[sub_resource type="ShaderMaterial" id=20]
-shader = SubResource( 13 )
-shader_param/speed = 0.0
-shader_param/color = Color( 0.227451, 0.392157, 0.0627451, 0.827451 )
-shader_param/edge_color = Color( 0.431373, 0.65098, 0.352941, 1 )
-shader_param/edge_scale = 0.25
-shader_param/near = 0.1
-shader_param/far = 100.0
-shader_param/wave_strengh = Vector2( 0.05, 0.1 )
-shader_param/wave_frequency = Vector2( 12, 12 )
-shader_param/time_factor = Vector2( 0.1, 0.5 )
-shader_param/noise1 = SubResource( 15 )
-shader_param/noise2 = SubResource( 17 )
-shader_param/normalmap = SubResource( 19 )
-
-[sub_resource type="SphereMesh" id=21]
+[sub_resource type="SphereMesh" id=13]
 radial_segments = 8
 rings = 3
 
-[sub_resource type="SpatialMaterial" id=22]
+[sub_resource type="SpatialMaterial" id=14]
+flags_vertex_lighting = true
+albedo_texture = ExtResource( 26 )
+metallic = 0.84
+metallic_specular = 1.0
+metallic_texture = ExtResource( 17 )
+roughness = 0.45
+roughness_texture = ExtResource( 18 )
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 0.21
+normal_texture = ExtResource( 12 )
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.81
+uv1_scale = Vector3( 0.05, 0.05, 0.05 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=15]
 albedo_color = Color( 0.976471, 0.768627, 0.768627, 1 )
 
-[sub_resource type="SpatialMaterial" id=23]
-albedo_color = Color( 0.513726, 0.219608, 0.435294, 1 )
+[sub_resource type="OpenSimplexNoise" id=16]
+period = 33.5
+persistence = 0.52
+lacunarity = 0.63
+
+[sub_resource type="NoiseTexture" id=17]
+width = 10
+height = 10
+noise = SubResource( 16 )
+
+[sub_resource type="SpatialMaterial" id=18]
 emission_enabled = true
-emission = Color( 1, 0.501961, 0.862745, 1 )
-emission_energy = 0.48
-emission_operator = 0
+emission = Color( 0.960784, 0.137255, 0.733333, 1 )
+emission_energy = 1.91
+emission_operator = 1
 emission_on_uv2 = false
+emission_texture = SubResource( 17 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
@@ -365,7 +282,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -126.3, 22, 8 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -128.3, 9, 27 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 visible = false
@@ -424,7 +341,7 @@ shape = SubResource( 12 )
 [node name="MeshInstance21" type="MeshInstance" parent="Center"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 7 )
 mesh = SubResource( 11 )
-material/0 = SubResource( 20 )
+material/0 = ExtResource( 30 )
 
 [node name="MeshInstance17" type="MeshInstance" parent="Center"]
 transform = Transform( -1, -2.98023e-08, 0, 2.98023e-08, -1, 0, 0, 0, 1, 0, 18, 7 )
@@ -507,334 +424,329 @@ transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 24, 4, 44
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 23 )
 
-[node name="OmniLight" type="OmniLight" parent="Center"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 10, 0 )
-light_color = Color( 0.309804, 0.439216, 0.384314, 1 )
-omni_range = 22.0
-
 [node name="MeshInstance22" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -20, 4, -8 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance23" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -10, 4, -6 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance24" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -10, 4, -5 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance25" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -8, 4, -7 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance26" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -11, 4, -1 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance27" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -11, 4, 0 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance28" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -9, 4, -2 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance29" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -16, 4, -4 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance30" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -16, 4, -3 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance31" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -14, 4, -5 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance32" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -11, 4, -4 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance33" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -11, 4, -3 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance34" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -9, 4, -5 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance35" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -14, 4, 35 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance36" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -4, 4, 37 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance37" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -4, 4, 38 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance38" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -2, 4, 36 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance39" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -5, 4, 42 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance40" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -5, 4, 43 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance41" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -3, 4, 41 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance42" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -10, 4, 39 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance43" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -10, 4, 40 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance44" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -8, 4, 38 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance45" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -5, 4, 39 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance46" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -5, 4, 40 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance47" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -3, 4, 38 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance48" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -14, 4, 10 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance49" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -4, 4, 12 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance50" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -4, 4, 13 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance51" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -2, 4, 11 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance52" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -5, 4, 17 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance53" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -5, 4, 18 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance54" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -3, 4, 16 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance55" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -10, 4, 14 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance56" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -10, 4, 15 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance57" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -8, 4, 13 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance58" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -5, 4, 14 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance59" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -5, 4, 15 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance60" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -3, 4, 13 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance61" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -39, 4, -27 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance62" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -29, 4, -25 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance63" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -29, 4, -24 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance64" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -27, 4, -26 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance65" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -30, 4, -20 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance66" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -30, 4, -19 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance67" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -28, 4, -21 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance68" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -35, 4, -23 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance69" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -35, 4, -22 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance70" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -33, 4, -24 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance71" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -30, 4, -23 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance72" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -30, 4, -22 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance73" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -28, 4, -24 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance74" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -14, 4, -28 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance75" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -4, 4, -26 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance76" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -4, 4, -25 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance77" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -2, 4, -27 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance78" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -5, 4, -21 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance79" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -5, 4, -20 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance80" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -3, 4, -22 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance81" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -10, 4, -24 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance82" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -10, 4, -23 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance83" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -8, 4, -25 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance84" type="MeshInstance" parent="Center"]
 transform = Transform( 0.57, 0, 0, 0, 0.188, 0, 0, 0, 0.471, -5, 4, -24 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance85" type="MeshInstance" parent="Center"]
 transform = Transform( 0.895, 0, 0, 0, 0.451, 0, 0, 0, 0.612, -5, 4, -23 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance86" type="MeshInstance" parent="Center"]
 transform = Transform( 1.182, 0, 0, 0, 1.021, 0, 0, 0, 1.168, -3, 4, -25 )
-mesh = SubResource( 21 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 23 )
 
 [node name="MeshInstance18" type="MeshInstance" parent="Center"]
@@ -852,16 +764,98 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 13, -24 )
 mesh = SubResource( 9 )
 material/0 = SubResource( 10 )
 
-[node name="shroom_2" type="MeshInstance" parent="."]
-transform = Transform( 0.29531, 0, 0.403475, 0, 0.5, 0, -0.403475, 0, 0.29531, -73.1999, 3.93095, 40.2166 )
-mesh = ExtResource( 24 )
-material/0 = SubResource( 22 )
-material/1 = SubResource( 23 )
+[node name="valve" type="MeshInstance" parent="Center"]
+transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -22, 10, -22.3 )
+material_override = SubResource( 14 )
+mesh = ExtResource( 25 )
+material/0 = null
 
-[node name="OmniLight" type="OmniLight" parent="shroom_2"]
+[node name="pipeWrap" type="MeshInstance" parent="Center/valve"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62939e-06, -0.3, 1.7 )
+material_override = ExtResource( 19 )
+mesh = ExtResource( 27 )
+material/0 = null
+
+[node name="shroom_2" type="MeshInstance" parent="Center"]
+transform = Transform( 0.29531, 0, 0.403475, 0, 0.5, 0, -0.403475, 0, 0.29531, -4.1999, 3.93095, 13.2166 )
+mesh = ExtResource( 24 )
+material/0 = SubResource( 15 )
+material/1 = SubResource( 18 )
+
+[node name="OmniLight" type="OmniLight" parent="Center/shroom_2"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.167374, 4.95149, -0.740257 )
 light_color = Color( 0.941176, 0.729412, 1, 1 )
 light_energy = 3.0
 light_indirect_energy = 2.0
-omni_range = 13.1135
+omni_range = 18.0
+
+[node name="shroom_3" type="MeshInstance" parent="Center"]
+transform = Transform( 0.29531, 0, 0.403475, 0, 0.5, 0, -0.403475, 0, 0.29531, -32.1999, 3.93095, -8.7834 )
+mesh = ExtResource( 24 )
+material/0 = SubResource( 15 )
+material/1 = SubResource( 18 )
+
+[node name="OmniLight" type="OmniLight" parent="Center/shroom_3"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.167374, 4.95149, -0.740257 )
+light_color = Color( 0.941176, 0.729412, 1, 1 )
+light_energy = 3.0
+light_indirect_energy = 2.0
+omni_range = 26.0
+
+[node name="shroom_4" type="MeshInstance" parent="Center"]
+transform = Transform( 0.177186, 0, 0.242085, 0, 0.3, 0, -0.242085, 0, 0.177186, -31.1999, 3.93095, -11.7834 )
+mesh = ExtResource( 24 )
+material/0 = SubResource( 15 )
+material/1 = SubResource( 18 )
+
+[node name="shroom_5" type="MeshInstance" parent="Center"]
+transform = Transform( 0.118124, 0, 0.16139, 0, 0.2, 0, -0.16139, 0, 0.118124, -29.1999, 3.93095, -8.7834 )
+mesh = ExtResource( 24 )
+material/0 = SubResource( 15 )
+material/1 = SubResource( 18 )
+
+[node name="shroom_6" type="MeshInstance" parent="Center"]
+transform = Transform( 0.29531, 0, 0.403475, 0, 0.5, 0, -0.403475, 0, 0.29531, -32.1999, 3.93095, 39.2166 )
+mesh = ExtResource( 24 )
+material/0 = SubResource( 15 )
+material/1 = SubResource( 18 )
+
+[node name="OmniLight" type="OmniLight" parent="Center/shroom_6"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.167374, 4.95149, -0.740257 )
+light_color = Color( 0.941176, 0.729412, 1, 1 )
+light_energy = 3.0
+light_indirect_energy = 2.0
+omni_range = 18.0
+
+[node name="shroom_7" type="MeshInstance" parent="Center"]
+transform = Transform( 0.177186, 0, 0.242085, 0, 0.3, 0, -0.242085, 0, 0.177186, -31.1999, 3.93095, 36.2166 )
+mesh = ExtResource( 24 )
+material/0 = SubResource( 15 )
+material/1 = SubResource( 18 )
+
+[node name="OmniLight" type="OmniLight" parent="Center/shroom_7"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.167374, 4.95149, -0.740257 )
+light_color = Color( 0.941176, 0.729412, 1, 1 )
+light_energy = 3.0
+light_indirect_energy = 2.0
+omni_range = 18.0
+
+[node name="shroom_8" type="MeshInstance" parent="Center"]
+transform = Transform( 0.118124, 0, 0.16139, 0, 0.2, 0, -0.16139, 0, 0.118124, -29.1999, 3.93095, 39.2166 )
+mesh = ExtResource( 24 )
+material/0 = SubResource( 15 )
+material/1 = SubResource( 18 )
+
+[node name="OmniLight" type="OmniLight" parent="Center/shroom_8"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.167374, 4.95149, -0.740257 )
+light_color = Color( 0.941176, 0.729412, 1, 1 )
+light_energy = 3.0
+light_indirect_energy = 2.0
+omni_range = 18.0
+
+[node name="Map Organized" parent="." instance=ExtResource( 28 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 29 )
+
 [connection signal="draw" from="CanvasLayer/Crosshair" to="CanvasLayer" method="_on_Crosshair_draw"]

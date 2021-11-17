@@ -248,7 +248,7 @@ anims/walk = SubResource( 4 )
 
 [node name="Mouse" type="Spatial" parent="."]
 script = ExtResource( 2 )
-MOUSE_SENSITIVITY = 0.1
+MOUSE_SENSITIVITY = 0.15
 MOUSE_Y_LIMIT = Vector2( -89, 90 )
 
 [node name="Camera" type="Camera" parent="Mouse"]
