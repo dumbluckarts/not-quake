@@ -220,7 +220,7 @@ BULLET = ExtResource( 10 )
 
 [node name="Movement" type="Spatial" parent="."]
 script = ExtResource( 1 )
-MOVE_SPEED = 50
+MOVE_SPEED = 45
 GRAV_SPEED = 75
 JUMP_SPEED = 35
 GROUND_FRICTION = 0.35
