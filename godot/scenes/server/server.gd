@@ -4,20 +4,31 @@ export var SERVER_NAME: String = "Server"
 export var MAX_PLAYERS: int = 5
 export var PORT: int = 4464
 
-onready var network = get_node("/root/Network")
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	network.connect("server_created", self, "_on_ready_to_play")
-	network.connect("join_success", self, "_on_player_join")
+	Network.connect("server_created", self, "_on_ready_to_play")
+	Network.connect("join_success", self, "_on_player_join")
+	Network.connect("network_peer_connected", self, "_player_connected")
+	Network.connect("network_peer_disconnected", self, "_player_disconnected")
 	_start()
 
 func _start():
-	network.server_info.name = SERVER_NAME
-	network.server_info.max_players = MAX_PLAYERS
-	network.server_info.port = PORT
+#	Network.server_info.name = SERVER_NAME
+#	Network.server_info.max_players = MAX_PLAYERS
+#	Network.server_info.port = PORT
+#	Network.create_server()
+	var peer = NetworkedMultiplayerENet.new()
+	peer.create_server(PORT, MAX_PLAYERS)
+	get_tree().network_peer = peer
+	
+	print("Server listening on PORT: %s" %PORT)
 
-
+func _player_connected(id):
+	print("Connected %s" % id)
+	
+func _player_disconnected(id):
+	print("Connected %s" % id)
+	
 func _on_ready_to_play():
 	#get_tree().change_scene("res://Main.tscn")
 	print("Game Started")

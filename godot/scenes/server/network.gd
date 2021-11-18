@@ -10,6 +10,8 @@ var server_info = {
 	used_port = 0         # Listening port
 }
 
+var players = {}
+
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_on_player_disconnected")
@@ -19,15 +21,12 @@ func _ready():
 	
 
 func create_server():
-	# Initialize the networking system
 	var net = NetworkedMultiplayerENet.new()
 	
-	# Try to create the server
 	if (net.create_server(server_info.used_port, server_info.max_players) != OK):
 		print("Failed to create server")
 		return
 	
-	# Assign it into the tree
 	get_tree().set_network_peer(net)
 	
 	emit_signal("server_created")
@@ -40,10 +39,11 @@ func join_server(ip, port):
 		emit_signal("join_fail")
 		return
 	get_tree().set_network_peer(net)
+	emit_signal("join_success")
 
 # Everyone gets notified whenever a new client joins the server
 func _on_player_connected(id):
-	pass
+	print("Connected %s" % id)
 
 
 # Everyone gets notified whenever someone disconnects from the server
@@ -53,6 +53,7 @@ func _on_player_disconnected(id):
 
 # Peer trying to connect to server is notified on success
 func _on_connected_to_server():
+	
 	emit_signal("join_success")
 
 
