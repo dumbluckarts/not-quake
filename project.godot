@@ -58,6 +58,11 @@ config/icon="res://icon.png"
 
 output_latency=8
 
+[autoload]
+
+Gamestate="*res://godot/scenes/server/gamestate.gd"
+Network="*res://godot/scenes/server/network.gd"
+
 [display]
 
 window/size/width=640
