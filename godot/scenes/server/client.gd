@@ -4,8 +4,8 @@ export var PORT: int = 4464
 export var sIP: String = "LocalHost"
 
 func _ready():
-	get_tree().connect("join_success", self, "_on_join_success")
-	get_tree().connect("join_fail", self, "_on_join_fail")
+	Server.connect("join_success", self, "_on_join_success")
+	Server.connect("join_fail", self, "_on_join_fail")
 	join()
 
 func join():

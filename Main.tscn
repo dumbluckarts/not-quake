@@ -41,8 +41,6 @@ anti_aliasing = false
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="Server" parent="." instance=ExtResource( 2 )]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 16 )
 HITMARKER = ExtResource( 5 )
