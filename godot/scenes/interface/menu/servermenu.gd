@@ -4,6 +4,7 @@ func _ready():
 	Server.connect("server_start", self, "_on_ready_to_play")
 	Server.connect("join_success", self, "_on_ready_to_play")
 	Server.connect("join_fail", self, "_on_join_fail")
+	get_tree().connect("connection_failed", self, "_on_join_fail")
 
 func _on_btCreate_pressed():
 	if(!$PanelHost/txtServerName.text.empty()):

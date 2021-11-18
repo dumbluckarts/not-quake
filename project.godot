@@ -109,6 +109,10 @@ shoot={
  ]
 }
 
+[network]
+
+limits/tcp/connect_timeout_seconds=5
+
 [physics]
 
 common/physics_fps=144
