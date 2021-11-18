@@ -1,4 +1,5 @@
 extends Node
+class_name PlayerCombat
 
 signal hit_damagable
 

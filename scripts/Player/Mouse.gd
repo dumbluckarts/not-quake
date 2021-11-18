@@ -1,4 +1,5 @@
 extends Spatial
+class_name PlayerMouse
 
 export var MOUSE_SENSITIVITY = 0.0
 export var MOUSE_Y_LIMIT = Vector2.ZERO

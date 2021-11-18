@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name Interface
 
 export var HITMARKER: PackedScene
 

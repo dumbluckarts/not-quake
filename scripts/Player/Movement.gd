@@ -1,4 +1,5 @@
 extends Spatial
+class_name PlayerMovement
 
 export var MOVE_SPEED = 900 #40
 export var GRAV_SPEED = 60 #300
