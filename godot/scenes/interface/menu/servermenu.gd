@@ -23,6 +23,15 @@ func _on_join_fail():
 
 
 func _on_btJoin_pressed():
-	var port = int($PanelJoin/txtPort.text)
-	var ip = $PanelJoin/txtIP.text
-	Server.join(ip, port)
+#	var port = int($PanelJoin/txtPort.text)
+#	var ip = $PanelJoin/txtIP.text
+#	Server.join(ip, port)
+	var peer = NetworkedMultiplayerENet.new()
+	
+	if (peer.create_client("168.235.71.12", 4464) != OK):
+		print("Failed to create client")
+		emit_signal("join_fail")
+		
+		return
+	
+	get_tree().network_peer = peer

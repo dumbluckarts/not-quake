@@ -22,6 +22,7 @@ func _ready():
 
 func _start():
 	var peer = NetworkedMultiplayerENet.new()
+	peer.set_bind_ip("127.0.0.1")
 	peer.create_server(server_info.port, server_info.max_players)
 	get_tree().network_peer = peer
 	
@@ -35,7 +36,7 @@ func _stop():
 func join(ip, port):
 	var peer = NetworkedMultiplayerENet.new()
 	
-	if (peer.create_client(ip, port) != OK):
+	if (peer.create_client("168.235.71.12", 4464) != OK):
 		print("Failed to create client")
 		emit_signal("join_fail")
 		
