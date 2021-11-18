@@ -23,5 +23,4 @@ func _on_join_fail():
 func _on_btJoin_pressed():
 	var port = int($PanelJoin/txtPort.text)
 	var ip = $PanelJoin/txtIP.text
-	print(port)
 	Server.join(ip, port)

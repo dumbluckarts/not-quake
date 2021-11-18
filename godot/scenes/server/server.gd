@@ -22,16 +22,15 @@ func _ready():
 
 func _start():
 	var peer = NetworkedMultiplayerENet.new()
-	peer.create_server(PORT, MAX_PLAYERS)
+	peer.create_server(server_info.port, server_info.max_players)
 	get_tree().network_peer = peer
 	
 	emit_signal("server_start")
 	
-	print("Server listening on PORT: %s" %PORT)
+	print("Server listening on PORT: %s" % server_info.port)
 
 func _stop():
 	emit_signal("server_stop")
-	get_tree().network_peer = null
 
 func join(ip, port):
 	var peer = NetworkedMultiplayerENet.new()
@@ -51,4 +50,4 @@ func _player_connected(id):
 func _player_disconnected(id):
 	emit_signal("join_fail")
 	print("Disconnected %s" % id)
-	get_tree().network_peer = null
+	
