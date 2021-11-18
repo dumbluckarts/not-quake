@@ -8,8 +8,44 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "CanvasLayer",
+"class": "Interface",
+"language": "GDScript",
+"path": "res://scripts/interface/CanvasLayer.gd"
+}, {
+"base": "Spatial",
+"class": "Map",
+"language": "GDScript",
+"path": "res://scripts/Map.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/Player/Player.gd"
+}, {
+"base": "Node",
+"class": "PlayerCombat",
+"language": "GDScript",
+"path": "res://scripts/Player/Player.Combat.gd"
+}, {
+"base": "Spatial",
+"class": "PlayerMouse",
+"language": "GDScript",
+"path": "res://scripts/Player/Mouse.gd"
+}, {
+"base": "Spatial",
+"class": "PlayerMovement",
+"language": "GDScript",
+"path": "res://scripts/Player/Movement.gd"
+} ]
 _global_script_class_icons={
+"Interface": "",
+"Map": "",
+"Player": "",
+"PlayerCombat": "",
+"PlayerMouse": "",
+"PlayerMovement": ""
 }
 
 [application]

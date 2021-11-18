@@ -1,4 +1,5 @@
 extends KinematicBody
+class_name Player
 
 export(PackedScene) var BULLET
 
