@@ -13,13 +13,14 @@ var server_info = {
 var players = {}
 
 func _ready():
-	get_tree().connect("network_peer_connected", self, "_on_player_connected")
-	get_tree().connect("network_peer_disconnected", self, "_on_player_disconnected")
-	get_tree().connect("connected_to_server", self, "_on_connected_to_server")
-	get_tree().connect("connection_failed", self, "_on_connection_failed")
-	get_tree().connect("server_disconnected", self, "_on_disconnected_from_server")
+	pass
+	#get_tree().connect("network_peer_connected", self, "_on_player_connected")
+	#get_tree().connect("network_peer_disconnected", self, "_on_player_disconnected")
+	#get_tree().connect("connected_to_server", self, "_on_connected_to_server")
+	#get_tree().connect("connection_failed", self, "_on_connection_failed")
+	#get_tree().connect("server_disconnected", self, "_on_disconnected_from_server")
 	
-
+"""
 func create_server():
 	var net = NetworkedMultiplayerENet.new()
 	
@@ -43,7 +44,8 @@ func join_server(ip, port):
 
 # Everyone gets notified whenever a new client joins the server
 func _on_player_connected(id):
-	print("Connected %s" % id)
+	#print("Connected %s" % id)
+	pass
 
 
 # Everyone gets notified whenever someone disconnects from the server
@@ -66,3 +68,4 @@ func _on_connection_failed():
 # Peer is notified when disconnected from server
 func _on_disconnected_from_server():
 	pass
+"""
