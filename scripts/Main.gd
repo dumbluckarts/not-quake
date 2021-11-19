@@ -33,17 +33,25 @@ func _on_ready_client(data):
 
 func _on_update_client(data: Dictionary):
 	for key in data.keys():
+		if $Enemies.has_node(key): continue
 		var pls = data[key]
 		var enemy = $Enemies.get_node(key)
 		
 		if 'data' in pls: 
 			var pos = Vector3.ZERO
-			var pos_data = pls['data']['position']
+			var pos_data = pls['data']['position'] as String
+			
+			pos_data.substr(1)
+			pos_data.substr(0, pos_data.length() - 1)
+		
 			var pos_split = pos_data.split(',')
+			var x = pos_split[0]
+			var y = pos_split[1]
+			var z = pos_split[2]
 			
-			print(pos_split)
+			var vec = Vector3(x, y, z)
 			
-#			enemy.global_transform.origin = pos_data
+			enemy.global_transform.origin = vec
 		
 		
 #	for child in $Enemies.get_children():
