@@ -16,7 +16,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="Send" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 808.0
@@ -28,4 +28,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Send" to="." method="_on_Button_pressed"]

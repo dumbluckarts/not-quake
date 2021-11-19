@@ -1,9 +1,14 @@
 extends Node
 
+signal connected
+signal disconnected
+signal failed
+signal message
+
 var port: int
 var address: String
+var client: WebSocketClient
 
-var _client: WebSocketClient
 var _status: int
 var _client_info: Dictionary
 
@@ -14,16 +19,16 @@ var _client_info: Dictionary
 func _init():
 	port = 4464
 	address = "localhost"
-	_client = WebSocketClient.new()
+	client = WebSocketClient.new()
 
 func _ready():
-	_client.connect("connection_established", self, "_on_connected")
-	_client.connect("connection_closed", self, "_on_connection_closed")
-	_client.connect("connection_error", self, "_on_connection_fail")
-	_client.connect("data_received", self, "_on_data")
+	client.connect("connection_established", self, "_on_connected")
+	client.connect("connection_closed", self, "_on_connection_closed")
+	client.connect("connection_error", self, "_on_connection_fail")
+	client.connect("data_received", self, "_on_data")
 	
 func _process(_delta):
-	_client.poll()
+	client.poll()
 
 #
 # EVENTS
