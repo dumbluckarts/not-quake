@@ -1,4 +1,9 @@
 extends CanvasLayer
 
+func _ready():
+	Client.start({
+		'name': 'nelly'
+	})
+
 func _on_Button_pressed():
-	Client.send($TextEdit.text)
+	print('uwu')

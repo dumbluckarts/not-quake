@@ -6,10 +6,12 @@ var handle: String
 
 var _server: WebSocketServer
 var _status: int
+var _clients: Dictionary
 
 func _init():
 	port = 4464
 	handle = "server-%s" % (randi() % 999)
+	_clients = {}
 
 func _ready():
 	_server = WebSocketServer.new()
@@ -25,11 +27,50 @@ func _process(_delta):
 	_server.poll()
 	
 func _on_connected(id, protocol):
+	_clients[id] = {}
 	print("JOIN %s %s" % [id, protocol])
 	
 func _on_disconnected(id, was_clean = false):
+	_clients.erase(id)
 	print("LEAVE %s %s" % [id, was_clean])
 	
 func _on_data(id):
 	var pkt = _server.get_peer(id).get_packet()
-	print("DATA %s:%s" % [id, pkt.get_string_from_utf8()])
+	var dat = parse_json(pkt.get_string_from_utf8())
+	
+	if not 'method' in dat: return
+	var method = dat['method']
+	if method[0] == "_": return
+	if 'data' in dat: call(method, id, dat['data'])
+	else: call(method, id)
+
+func init_client(id, data):
+	_clients[id] = data
+	_clients[id]['ready'] = false
+	_clients[id]['id'] = id
+	_server.get_peer(id).put_packet(str(OK).to_utf8())
+	print('CLIENT %s' % _clients)
+	
+func ready_client(id):
+	_clients[id]['ready'] = true
+	
+	var copy = _clients.duplicate(true)
+	copy.erase(id)
+	var message = {}
+	message['method'] = 'ready_client'
+	message['data'] = _clients[id]
+	for key in copy.keys():
+		_server.get_peer(key).put_packet(JSON.print(message).to_utf8())
+		
+	print('CLIENT %s' % _clients[id])
+	
+func update_client(id, data):
+	_clients[id]['data'] = data
+	
+	var copy = _clients.duplicate(true)
+	copy.erase(id)
+	var message = {}
+	message['method'] = 'update_client'
+	message['data'] = copy 
+	
+	_server.get_peer(id).put_packet(JSON.print(message).to_utf8())

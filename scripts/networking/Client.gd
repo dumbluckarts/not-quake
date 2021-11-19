@@ -1,11 +1,19 @@
 extends Node
 
+signal connection_established
+signal connection_closed
+signal connection_error
+signal data_received(data)
+signal update_client(data)
+signal ready_client(data)
+
 var port: int
 var address: String
 
 var _client: WebSocketClient
 var _status: int
 var _client_info: Dictionary
+var _connected: bool
 
 #
 # CONSTRUCT
@@ -30,19 +38,29 @@ func _process(_delta):
 #
 
 func _on_connection_fail(was_clean = false):
-	print("FAIL %s:%s" % [address, port])
+	emit_signal("connection_error")
+	_connected = false
 	
 func _on_connection_closed(was_clean = false):
-	print("CLOSE %s:%s" % [address, port])
+	emit_signal("connection_closed")
+	_connected = false
 	
 func _on_connected(proto = ""):
-	print("SUCCESS %s:%s" % [address, port])
+	_connected = true
 	send('init_client', _client_info)
+	emit_signal("connection_established")
 	
 func _on_data():
 	var pkt = _client.get_peer(1).get_packet()
-	print("DATA %s:" % [1, pkt.get_string_from_utf8()])
-
+	var dat = parse_json(pkt.get_string_from_utf8())
+	
+	if dat is Dictionary and 'method' in dat:
+		var method = dat['method']
+		if method == "update_client": emit_signal(method, dat['data'])
+		if method == "ready_client": emit_signal(method, dat['data'])
+	else:
+		emit_signal("data_received", [ dat ])
+	
 #
 # METHODS
 #
@@ -50,13 +68,10 @@ func _on_data():
 func start(client_info: Dictionary):
 	_status = _client.connect_to_url("ws://%s:%s" % [address, port])
 	_client_info = client_info
-	print("TRY %s:%s %s" % [address, port, _status])
 
 func send(method, data = null):
+	if not _connected: return
 	var message = {}
-	
 	message['method'] = method
-	if data: message['data'] = data
-	
+	if data != null: message['data'] = data
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
-	print("SENT %s" % JSON.print(message))
