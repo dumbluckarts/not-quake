@@ -7,7 +7,6 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	Client.connect("update_client", self, "_on_update_client")
-	Client.connect("ready_client", self, "_on_ready_client")
 	Client.send('ready_client')
 
 func _physics_process(_delta):
@@ -26,32 +25,33 @@ func _input(event: InputEvent) -> void:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				mouse_mode = "CAPTURED"
 
-func _on_ready_client(data):
-	var enemy = load("res://godot/scenes/enemies/Enemy.tscn").instance()
-	enemy.name = str(data['id'])
-	$Enemies.add_child(enemy)
-
 func _on_update_client(data: Dictionary):
 	for key in data.keys():
-		if $Enemies.has_node(key): continue
-		var pls = data[key]
-		var enemy = $Enemies.get_node(key)
-		
-		if 'data' in pls: 
-			var pos = Vector3.ZERO
-			var pos_data = pls['data']['position'] as String
+		if not $Enemies.has_node(key): 
+			var enemy = load("res://godot/scenes/enemies/Enemy.tscn").instance()
+			enemy.name = str(key)
+			$Enemies.add_child(enemy)
+		else:
+			var pls = data[key]
+			var enemy = $Enemies.get_node(key)
 			
-			pos_data.substr(1)
-			pos_data.substr(0, pos_data.length() - 1)
-		
-			var pos_split = pos_data.split(',')
-			var x = pos_split[0]
-			var y = pos_split[1]
-			var z = pos_split[2]
+			if 'data' in pls: 
+				var pos = Vector3.ZERO
+				var pos_data = pls['data']['position'] as String
+				
+				pos_data = pos_data.substr(1)
+				pos_data = pos_data.substr(0, pos_data.length() - 1)
 			
-			var vec = Vector3(x, y, z)
-			
-			enemy.global_transform.origin = vec
+				var pos_split = pos_data.split(',')
+				var x = pos_split[0]
+				var y = pos_split[1]
+				var z = pos_split[2]
+				
+				print(pos_data)
+				
+				var vec = Vector3(x, y, z)
+				
+				enemy.global_transform.origin = enemy.global_transform.origin.linear_interpolate(vec, 0.05)
 		
 		
 #	for child in $Enemies.get_children():

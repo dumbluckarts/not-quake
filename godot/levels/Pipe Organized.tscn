@@ -652,6 +652,9 @@ stream = ExtResource( 19 )
 unit_db = 8.0
 autoplay = true
 bus = "FX R"
+emission_angle_enabled = true
+emission_angle_degrees = 0.1
+attenuation_filter_cutoff_hz = 2000.0
 
 [node name="Wall and Doors" type="Spatial" parent="."]
 
