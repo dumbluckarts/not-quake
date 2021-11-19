@@ -28,7 +28,7 @@ func _on_btJoin_pressed():
 #	Server.join(ip, port)
 	var peer = NetworkedMultiplayerENet.new()
 	
-	if (peer.create_client("168.235.71.12", 4464) != OK):
+	if (peer.create_client("96.51.128.147", 80) != OK):
 		print("Failed to create client")
 		emit_signal("join_fail")
 		
