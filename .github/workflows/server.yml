@@ -33,7 +33,7 @@ jobs:
           package: true
       - name: Zip Files
         run: |
-          zip drop ${{ github.workspace }}/${{ steps.build.outputs.build }}/build
+          zip --junk-paths drop ${{ github.workspace }}/${{ steps.build.outputs.build }}/build
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
@@ -56,6 +56,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: drop.zip
-          asset_name: quake-server
+          asset_path: ./drop.zip
+          asset_name: drop.zip
           asset_content_type: application/zip
