@@ -45,7 +45,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: https://api.github.com/repos/dumbluckarts/not-quake/releases/3/assets
+          upload_url: https://api.github.com/repos/dumbluckarts/not-quake/releases/tag/refs%2Fheads%2Fmain/assets
           asset_path: drop.zip
           asset_name: quake-server
           asset_content_type: application/zip
