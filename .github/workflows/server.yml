@@ -19,6 +19,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [linux, windows, mac]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -29,13 +32,10 @@ jobs:
         with:
           name: quake-server
           preset: Linux/X11
-          subdirectory: dist
           projectDir: ./.client_server/server
           package: true
-          build: ./dist
-          artifact: ./dist
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           name: quake-server-dev
-          path: ./dist
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
