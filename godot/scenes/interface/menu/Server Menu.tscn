@@ -38,7 +38,7 @@ margin_left = 8.0
 margin_top = 56.0
 margin_right = 120.0
 margin_bottom = 80.0
-text = "localhost"
+text = "q1.dlahost.net"
 __meta__ = {
 "_edit_use_anchors_": false
 }
