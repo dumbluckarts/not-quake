@@ -30,14 +30,11 @@ jobs:
         # uses: josephbmanley/build-godot-action@11589640849ce5bd1bab945c694bb418cb06cb15
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
-          # Name of the exported binary
           name: quake-server
-          # Name of the preset in `export_presets.cfg` to use
           preset: Linux/X11
-          # Optional name of the subdirectory to put exported project in
           subdirectory: dist
-          # Location of Godot project in repository
           projectDir: ./.client_server/server
+          package: true
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
