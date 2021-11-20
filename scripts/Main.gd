@@ -10,7 +10,15 @@ func _ready():
 	Client.send('ready_client')
 
 func _physics_process(_delta):
-	Client.send("update_client", { 'position': $Player.global_transform.origin })
+	var packet = {
+		'position': {
+			'x': $Player.global_transform.origin.x,
+			'y': $Player.global_transform.origin.y,
+			'z': $Player.global_transform.origin.z,
+		}
+	}
+	
+	Client.send("update_client", packet)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -27,31 +35,21 @@ func _input(event: InputEvent) -> void:
 
 func _on_update_client(data: Dictionary):
 	for key in data.keys():
+#		Create player if they dont exist
 		if not $Enemies.has_node(key): 
 			var enemy = load("res://godot/scenes/enemies/Enemy.tscn").instance()
 			enemy.name = str(key)
 			$Enemies.add_child(enemy)
+#		Update player puppet if exists
 		else:
 			var pls = data[key]
 			var enemy = $Enemies.get_node(key)
 			
-			if 'data' in pls: 
-				var pos = Vector3.ZERO
+			if 'data' in pls:
 				var pos_data = pls['data']['position'] as String
+				var pos = Vector3(pos_data['x'], pos_data['y'], pos_data['z'])
 				
-				pos_data = pos_data.substr(1)
-				pos_data = pos_data.substr(0, pos_data.length() - 1)
-			
-				var pos_split = pos_data.split(',')
-				var x = pos_split[0]
-				var y = pos_split[1]
-				var z = pos_split[2]
-				
-				print(pos_data)
-				
-				var vec = Vector3(x, y, z)
-				
-				enemy.global_transform.origin = enemy.global_transform.origin.linear_interpolate(vec, 0.05)
+				enemy.global_transform.origin = enemy.global_transform.origin.linear_interpolate(pos, 0.05)
 		
 		
 #	for child in $Enemies.get_children():
