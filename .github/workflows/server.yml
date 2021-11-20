@@ -32,7 +32,7 @@ jobs:
         with:
           name: quake-server
           preset: Linux/X11
-          subdirectory: ./.client_server/dist
+          subdirectory: dist
           projectDir: ./.client_server/server
           package: true
       - name: Upload a Build Artifact
@@ -41,5 +41,5 @@ jobs:
           # Artifact name
           name: quake-server-dev
           # A file, directory or wildcard pattern that describes what to upload
-          path: ./.client_server/server/dist
+          path: dist
           # The desired behavior if no files are found using the provided path.
