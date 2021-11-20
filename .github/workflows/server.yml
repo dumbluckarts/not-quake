@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: quake-server-dev
-          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}/build
