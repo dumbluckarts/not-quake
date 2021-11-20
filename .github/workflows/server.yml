@@ -36,4 +36,3 @@ jobs:
         with:
           name: drop-server
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}build
-      - name: Create Release
