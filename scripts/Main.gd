@@ -46,10 +46,10 @@ func _on_update_client(data: Dictionary):
 			var enemy = $Enemies.get_node(key)
 			
 			if 'data' in pls:
-				var pos_data = pls['data']['position'] as String
+				var pos_data = pls['data']['position']
 				var pos = Vector3(pos_data['x'], pos_data['y'], pos_data['z'])
 				
-				enemy.global_transform.origin = enemy.global_transform.origin.linear_interpolate(pos, 0.05)
+				enemy.global_transform.origin = enemy.global_transform.origin.linear_interpolate(pos, 0.5)
 		
 		
 #	for child in $Enemies.get_children():
