@@ -25,6 +25,16 @@ func _ready():
 
 func _process(_delta):
 	_server.poll()
+
+func _physics_process(delta):
+	for key in _clients.keys():
+		var copy = _clients.duplicate(true)
+		copy.erase(key)
+		var message = {}
+		message['method'] = 'update_client'
+		message['data'] = copy 
+	
+		_server.get_peer(key).put_packet(JSON.print(message).to_utf8())
 	
 func _on_connected(id, protocol):
 	_clients[id] = {}
@@ -66,11 +76,3 @@ func ready_client(id):
 	
 func update_client(id, data):
 	_clients[id]['data'] = data
-	
-	var copy = _clients.duplicate(true)
-	copy.erase(id)
-	var message = {}
-	message['method'] = 'update_client'
-	message['data'] = copy 
-	
-	_server.get_peer(id).put_packet(JSON.print(message).to_utf8())
