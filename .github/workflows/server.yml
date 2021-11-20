@@ -32,7 +32,7 @@ jobs:
         with:
           name: quake-server
           preset: Linux/X11
-          subdirectory: dist
+          subdirectory: ./.client_server/dist
           projectDir: ./.client_server/server
           package: true
       - name: Upload a Build Artifact
