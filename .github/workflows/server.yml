@@ -37,4 +37,4 @@ jobs:
           # Optional name of the subdirectory to put exported project in
           subdirectory: dist
           # Location of Godot project in repository
-          projectDir: ./.client-server/server
+          projectDir: ./.client_server/server
