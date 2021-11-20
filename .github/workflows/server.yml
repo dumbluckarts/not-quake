@@ -34,7 +34,5 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: quake-server-dev
+          name: drop-server
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}/build
-      - name: Github Release
-        uses: fnkr/github-action-ghr@v1.3
