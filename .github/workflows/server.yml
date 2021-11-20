@@ -33,12 +33,12 @@ jobs:
           package: true
       - name: Zip Files
         run: |
-          zip --junk-paths drop ${{ github.workspace }}/${{ steps.build.outputs.build }}/build
+          zip --junk-paths drop ${{ github.workspace }}/${{ steps.build.outputs.build }}build
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           name: drop-server
-          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}/build
+          path: ./drop.zip
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -56,6 +56,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/${{ steps.build.outputs.build }}/build
-          asset_name: drop
+          asset_path: ./drop.zip
+          asset_name: drop.zip
           asset_content_type: application/zip
