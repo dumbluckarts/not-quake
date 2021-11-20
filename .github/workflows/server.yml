@@ -32,8 +32,10 @@ jobs:
           subdirectory: dist
           projectDir: ./.client_server/server
           package: true
+          build: ./dist
+          artifact: ./dist
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           name: quake-server-dev
-          path: ./.client_server/server
+          path: ./dist
