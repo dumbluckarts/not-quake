@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/L_Wall1.obj-f100504185453967e7dd6111d887fffe.mesh"
+
+[deps]
+
+files=[ "res://.import/L_Wall1.obj-f100504185453967e7dd6111d887fffe.mesh" ]
+
+source_file="res://assets/meshes/walls/L_Wall1.obj"
+dest_files=[ "res://.import/L_Wall1.obj-f100504185453967e7dd6111d887fffe.mesh", "res://.import/L_Wall1.obj-f100504185453967e7dd6111d887fffe.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

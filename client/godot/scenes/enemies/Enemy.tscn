@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/enemies/Enemy.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleMesh" id=3]
+mid_height = 2.0
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CapsuleShape" id=4]
+height = 2.0
+
+[sub_resource type="SphereMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+
+[sub_resource type="CylinderMesh" id=7]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[node name="Enemy" type="KinematicBody" groups=["damagable"]]
+transform = Transform( 1.4, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 3.07069, 0 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0, 0, 0.214286, 0, 0.2, 0, -0.186667, 0, 0, 0.23772, 1.00465, -0.903645 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="MeshInstance2"]
+transform = Transform( -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0, 0.2, 0.866996, 0.319829, 0.394374 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 0, 0, 0.214286, 0, 0.2, 0, -0.186667, 0, 0, -0.273123, 1.00465, -0.903645 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance3"]
+transform = Transform( -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0, 0.2, 0.866996, -0.16291, -0.222269 )
+mesh = SubResource( 7 )
+skeleton = NodePath("../../MeshInstance2")
+material/0 = SubResource( 8 )
