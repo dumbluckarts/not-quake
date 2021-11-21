@@ -44,6 +44,6 @@ jobs:
       - name: Github Release Artifact
         uses: fnkr/github-action-ghr@v1.3
         with:
-          GHR_PATH: package/artifact.zip
+          GHR_PATH: ./package/artifact.zip
           
       
