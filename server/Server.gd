@@ -81,4 +81,4 @@ func push_client(id, data):
 	var message = {}
 	message['method'] = 'push_client'
 	message['data'] = data
-	_server.get_peer(id).put_packet(JSON.print(message).to_utf8())
+	_server.get_peer(data['id']).put_packet(JSON.print(message).to_utf8())
