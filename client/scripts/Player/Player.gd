@@ -8,6 +8,11 @@ onready var orig = $Mouse/Camera/Gun.rotation_degrees.y
 onready var enabled = true
 
 func _process(_delta):
+	if Input.is_action_just_pressed("restart") and $CanvasLayer/Label.visible:
+		enabled = true
+		HEALTH = 10
+		$CanvasLayer/Panel.visible = false
+		$CanvasLayer/Label.visible = false
 	if not enabled: return
 	if $Movement.is_jumping():
 		$Audio/AnimationPlayer.play("jump")
