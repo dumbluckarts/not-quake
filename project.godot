@@ -61,6 +61,7 @@ output_latency=8
 [autoload]
 
 Client="*res://scripts/networking/Client.gd"
+Game="*res://scripts/Game.gd"
 
 [display]
 

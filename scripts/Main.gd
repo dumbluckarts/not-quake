@@ -15,6 +15,10 @@ func _physics_process(_delta):
 			'x': $Player.global_transform.origin.x,
 			'y': $Player.global_transform.origin.y,
 			'z': $Player.global_transform.origin.z,
+		},
+		'camera': {
+			'x': $Player.get_node('Mouse/Camera').rotation_degrees.x,
+			'y': $Player.get_node("Mouse/Camera").rotation_degrees.y
 		}
 	}
 	
@@ -43,14 +47,16 @@ func _on_update_client(data: Dictionary):
 #		Update player puppet if exists
 		else:
 			var pls = data[key]
-			var enemy = $Enemies.get_node(key)
+			var enemy = $Enemies.get_node(key) as Spatial
 			
 			if 'data' in pls:
 				var pos_data = pls['data']['position']
+				var rot_data = pls['data']['camera']
 				var pos = Vector3(pos_data['x'], pos_data['y'], pos_data['z'])
 				
 				enemy.global_transform.origin = enemy.global_transform.origin.linear_interpolate(pos, 0.5)
-		
+				enemy.rotation_degrees.x = rot_data['x']
+				enemy.rotation_degrees.y = rot_data['y']
 		
 #	for child in $Enemies.get_children():
 #		var id = child.get_meta('id')

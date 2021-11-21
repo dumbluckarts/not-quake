@@ -228,9 +228,7 @@ height = 2.0
 [sub_resource type="CapsuleMesh" id=14]
 mid_height = 2.0
 
-[node name="Player" type="KinematicBody" groups=[
-"physicable",
-]]
+[node name="Player" type="KinematicBody" groups=["physicable"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7, 19 )
 script = ExtResource( 3 )
 BULLET = ExtResource( 10 )
@@ -332,11 +330,11 @@ bus = "FX"
 
 [node name="AudioStreamPlayer_Hit" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 7 )
-volume_db = 15.0
 bus = "FX"
 
 [node name="AudioStreamPlayer_Hit2" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 8 )
+pitch_scale = 1.7
 bus = "FX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Audio"]

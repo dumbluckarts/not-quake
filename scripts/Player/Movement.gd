@@ -35,6 +35,9 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	var relative = (forward * input.y + right * input.x)
 	var move_speed = MOVE_SPEED * (1.0 if $RayCast_Normal.is_colliding() else AIR_FRICTION)
 	
+	if Input.is_action_pressed("move_sprint"):
+		move_speed /= 2.0
+	
 	relative.y = 0
 	relative = relative.normalized()
 	
