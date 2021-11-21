@@ -1,6 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://godot/scenes/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://godot/levels/Level_4Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=3]
 [ext_resource path="res://godot/scenes/player/Player.Hitmarker.tscn" type="PackedScene" id=5]
 [ext_resource path="res://godot/scenes/interface/FPSCounter.tscn" type="PackedScene" id=6]
@@ -8,7 +9,6 @@
 [ext_resource path="res://assets/interface/man.png" type="Texture" id=14]
 [ext_resource path="res://assets/interface/uitex.png" type="Texture" id=15]
 [ext_resource path="res://scripts/interface/CanvasLayer.gd" type="Script" id=16]
-[ext_resource path="res://godot/levels/Pipe Organized.tscn" type="PackedScene" id=28]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 15 )
@@ -175,8 +175,9 @@ __meta__ = {
 [node name="Enemies" type="Spatial" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -27.3, 8, 20 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 6, 0 )
 
-[node name="Map Organized" parent="." instance=ExtResource( 28 )]
+[node name="Level" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 
 [connection signal="draw" from="CanvasLayer/Crosshair" to="CanvasLayer" method="_on_Crosshair_draw"]

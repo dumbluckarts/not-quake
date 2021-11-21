@@ -1,277 +1,207 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/textures/skulls/Export_height.png" type="Texture" id=1]
-[ext_resource path="res://assets/textures/skulls/Export_ambientOcclusion.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/skulls/Export_baseColor.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/skulls/Export_normal.png" type="Texture" id=4]
-[ext_resource path="res://assets/textures/skulls/Export_roughness.png" type="Texture" id=5]
-[ext_resource path="res://godot/materials/Metal.tres" type="Material" id=6]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_texture = ExtResource( 3 )
-roughness = 0.87
-roughness_texture = ExtResource( 5 )
-normal_enabled = true
-normal_scale = -1.13
-normal_texture = ExtResource( 4 )
-ao_enabled = true
-ao_light_affect = 0.2
-ao_texture = ExtResource( 2 )
-ao_on_uv2 = false
-ao_texture_channel = 0
-depth_enabled = true
-depth_scale = 0.05
-depth_deep_parallax = false
-depth_flip_tangent = false
-depth_flip_binormal = false
-depth_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.3, 0.3, 0.3 )
-uv1_triplanar = true
+[ext_resource path="res://godot/materials/Test.tres" type="Material" id=1]
 
 [node name="Level" type="CSGCombiner"]
+material_override = ExtResource( 1 )
 use_collision = true
 
 [node name="Floor" type="CSGBox" parent="."]
 width = 50.0
 depth = 50.0
-material = SubResource( 1 )
 
 [node name="Cover" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, 0 )
 height = 6.0
 depth = 30.0
-material = ExtResource( 6 )
 
 [node name="Window" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
 operation = 2
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Window2" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11 )
 operation = 2
 depth = 8.0
-material = ExtResource( 6 )
 
 [node name="Block" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 0 )
 width = 4.0
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Block2" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -3 )
-material = ExtResource( 6 )
 
 [node name="Raised" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 20 )
 width = 10.0
 height = 4.0
 depth = 10.0
-material = ExtResource( 6 )
 
 [node name="Raised2" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 23 )
 width = 10.0
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Point" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 16 )
-material = ExtResource( 6 )
 
 [node name="Point2" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 24 )
-material = ExtResource( 6 )
 
 [node name="Point3" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 24 )
-material = ExtResource( 6 )
 
 [node name="Point4" type="CSGBox" parent="Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 16 )
-material = ExtResource( 6 )
 
 [node name="Cover2" type="CSGBox" parent="."]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -17, 3, 0 )
 height = 6.0
 depth = 30.0
-material = ExtResource( 6 )
 
 [node name="Window" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
 operation = 2
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Window2" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11 )
 operation = 2
 depth = 8.0
-material = ExtResource( 6 )
 
 [node name="Block" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 0 )
 width = 4.0
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Block2" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -3 )
-material = ExtResource( 6 )
 
 [node name="Raised" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 20 )
 width = 10.0
 height = 4.0
 depth = 10.0
-material = ExtResource( 6 )
 
 [node name="Raised2" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 23 )
 width = 10.0
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Point" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 16 )
-material = ExtResource( 6 )
 
 [node name="Point2" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 24 )
-material = ExtResource( 6 )
 
 [node name="Point3" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 24 )
-material = ExtResource( 6 )
 
 [node name="Point4" type="CSGBox" parent="Cover2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 16 )
-material = ExtResource( 6 )
 
 [node name="Cover4" type="CSGBox" parent="."]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 3, -16 )
 height = 6.0
 depth = 30.0
-material = ExtResource( 6 )
 
 [node name="Window" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
 operation = 2
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Window2" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11 )
 operation = 2
 depth = 8.0
-material = ExtResource( 6 )
 
 [node name="Block" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 0 )
 width = 4.0
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Block2" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -3 )
-material = ExtResource( 6 )
 
 [node name="Raised" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 20 )
 width = 10.0
 height = 4.0
 depth = 10.0
-material = ExtResource( 6 )
 
 [node name="Raised2" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 23 )
 width = 10.0
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Point" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 16 )
-material = ExtResource( 6 )
 
 [node name="Point2" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 24 )
-material = ExtResource( 6 )
 
 [node name="Point3" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 24 )
-material = ExtResource( 6 )
 
 [node name="Point4" type="CSGBox" parent="Cover4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 16 )
-material = ExtResource( 6 )
 
 [node name="Cover3" type="CSGBox" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.53674e-07, 3, 16 )
 height = 6.0
 depth = 30.0
-material = ExtResource( 6 )
 
 [node name="Window" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
 operation = 2
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Window2" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11 )
 operation = 2
 depth = 8.0
-material = ExtResource( 6 )
 
 [node name="Block" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 0 )
 width = 4.0
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Block2" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -3 )
-material = ExtResource( 6 )
 
 [node name="Raised" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 20 )
 width = 10.0
 height = 4.0
 depth = 10.0
-material = ExtResource( 6 )
 
 [node name="Raised2" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 23 )
 width = 10.0
 height = 4.0
 depth = 4.0
-material = ExtResource( 6 )
 
 [node name="Point" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 16 )
-material = ExtResource( 6 )
 
 [node name="Point2" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 24 )
-material = ExtResource( 6 )
 
 [node name="Point3" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 24 )
-material = ExtResource( 6 )
 
 [node name="Point4" type="CSGBox" parent="Cover3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 16 )
-material = ExtResource( 6 )
