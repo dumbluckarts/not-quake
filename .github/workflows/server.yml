@@ -45,5 +45,6 @@ jobs:
         uses: fnkr/github-action-ghr@v1.3
         env:
           GHR_PATH: ./package/artifact.zip
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       
