@@ -43,7 +43,7 @@ jobs:
         working-directory: ./
       - name: Github Release Artifact
         uses: fnkr/github-action-ghr@v1.3
-        if: v0.0.1
+        if: 'v0.0.1'
         with:
           GHR_PATH: package/artifact.zip
           
