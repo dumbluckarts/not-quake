@@ -76,3 +76,9 @@ func ready_client(id):
 	
 func update_client(id, data):
 	_clients[id]['data'] = data
+
+func push_client(id, data):
+	var message = {}
+	message['method'] = 'push_client'
+	message['data'] = data
+	_server.get_peer(id).put_packet(JSON.print(message).to_utf8())
