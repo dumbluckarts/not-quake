@@ -7,6 +7,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	Client.connect("update_client", self, "_on_update_client")
+	Client.connect("push_client", self, "_on_push_client")
 	Client.send('ready_client')
 
 func _physics_process(_delta):
@@ -44,7 +45,6 @@ func _on_update_client(data: Dictionary):
 			var enemy = load("res://godot/scenes/enemies/Enemy.tscn").instance()
 			enemy.name = str(key)
 			$Enemies.add_child(enemy)
-#		Update player puppet if exists
 		else:
 			var pls = data[key]
 			var enemy = $Enemies.get_node(key) as Spatial
@@ -57,9 +57,6 @@ func _on_update_client(data: Dictionary):
 				enemy.global_transform.origin = enemy.global_transform.origin.linear_interpolate(pos, 0.5)
 				enemy.rotation_degrees.x = rot_data['x']
 				enemy.rotation_degrees.y = rot_data['y']
-		
-#	for child in $Enemies.get_children():
-#		var id = child.get_meta('id')
-#		var pos = data[id]['data']['position']
-#
-#		child.global_transform.origin = pos
+
+func _on_push_client(data: Dictionary):
+	if 'damage' in data: Game.get_player().damage(int(data['damage']))

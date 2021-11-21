@@ -5,7 +5,7 @@ signal connection_closed
 signal connection_error
 signal data_received(data)
 signal update_client(data)
-signal update_from_client(data)
+signal push_client(data)
 signal ready_client(data)
 
 var port: int
@@ -15,6 +15,7 @@ var _client: WebSocketClient
 var _status: int
 var _client_info: Dictionary
 var _connected: bool
+var _connecting: bool
 
 #
 # CONSTRUCT
@@ -41,13 +42,16 @@ func _process(_delta):
 func _on_connection_fail(was_clean = false):
 	emit_signal("connection_error")
 	_connected = false
+	_connecting = false
 	
 func _on_connection_closed(was_clean = false):
 	emit_signal("connection_closed")
 	_connected = false
+	_connecting = false
 	
 func _on_connected(proto = ""):
 	_connected = true
+	_connecting = false
 	send('init_client', _client_info)
 	emit_signal("connection_established")
 	
@@ -59,7 +63,9 @@ func _on_data():
 		var method = dat['method']
 		if method == "update_client": emit_signal(method, dat['data'])
 		if method == "ready_client": emit_signal(method, dat['data'])
-		if method == "update_from_client": emit_signal(method, dat['data'])
+		if method == "push_client": 
+			print('??')
+			emit_signal(method, dat['data'])
 	else:
 		emit_signal("data_received", [ dat ])
 	
@@ -70,6 +76,7 @@ func _on_data():
 func start(client_info: Dictionary):
 	_status = _client.connect_to_url("ws://%s:%s" % [address, port])
 	_client_info = client_info
+	_connecting = true
 
 func send(method, data = null):
 	if not _connected: return
@@ -78,9 +85,10 @@ func send(method, data = null):
 	if data != null: message['data'] = data
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 
-func send_to(id, method, data = null):
+func send_to(id, data = null):
 	if not _connected: return
 	var message = {}
-	message['method'] = method
+	message['method'] = 'push_client'
 	if data != null: message['data'] = data
-	_client.get_peer(id).put_packet(JSON.print(message).to_utf8())
+	message['data']['id'] = id
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
