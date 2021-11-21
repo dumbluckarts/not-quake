@@ -5,6 +5,7 @@ signal connection_closed
 signal connection_error
 signal data_received(data)
 signal update_client(data)
+signal update_from_client(data)
 signal ready_client(data)
 
 var port: int
@@ -58,6 +59,7 @@ func _on_data():
 		var method = dat['method']
 		if method == "update_client": emit_signal(method, dat['data'])
 		if method == "ready_client": emit_signal(method, dat['data'])
+		if method == "update_from_client": emit_signal(method, dat['data'])
 	else:
 		emit_signal("data_received", [ dat ])
 	
@@ -75,3 +77,10 @@ func send(method, data = null):
 	message['method'] = method
 	if data != null: message['data'] = data
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+
+func send_to(id, method, data = null):
+	if not _connected: return
+	var message = {}
+	message['method'] = method
+	if data != null: message['data'] = data
+	_client.get_peer(id).put_packet(JSON.print(message).to_utf8())

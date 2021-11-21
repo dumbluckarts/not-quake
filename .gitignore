@@ -1,6 +1,8 @@
 
 # Godot-specific ignores
 .import/
+.dist
+.out
 export.cfg
 
 # Mono-specific ignores
