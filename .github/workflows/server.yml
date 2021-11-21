@@ -41,10 +41,10 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: ./
-      - name: Github Release Artifact
-        uses: fnkr/github-action-ghr@v1.3
-        env:
-          GHR_PATH: ./package/artifact.zip
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update release
+        uses: johnwbyrd/update-release@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: ./package
           
       
