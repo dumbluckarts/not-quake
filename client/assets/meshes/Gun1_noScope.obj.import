@@ -16,4 +16,5 @@ dest_files=[ "res://.import/Gun1_noScope.obj-a3eb0be0a51c21c1aea1cd677e0c5ff1.me
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
 offset_mesh=Vector3( 0, 0, 0 )
-optimize_mesh=true
+octahedral_compression=true
+optimize_mesh_flags=4286

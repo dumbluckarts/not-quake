@@ -9,6 +9,10 @@ export(NodePath) var POSITION
 export(NodePath) var RAYCAST
 export(NodePath) var SOUND
 
+
+export(float) var spread = 0.05
+var recoilnum = 0
+
 func _ready():
 	$AnimationPlayer.connect("animation_finished", self, "animate")
 	$AnimationPlayer.connect("animation_finished", self, "attack")
@@ -18,10 +22,13 @@ func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		attack('')
 		animate('')
+		
 	if Input.is_action_pressed("shoot"):
 		$AnimationPlayer.play("shoot")
+		
 	else:
 		$AnimationPlayer.play("default")
+		recoilnum = 0
 
 func attack(_anim):
 	var raycast = get_node(RAYCAST) as RayCast
@@ -48,16 +55,17 @@ func animate(_anim):
 	bullet.speed = 300 + rand_range(-50, 50)
 	sound.pitch_scale = rand_range(0.9, 1.1)
 	sound.play()
-	
+	recoilnum += 1
+	print( recoilnum)
 	recoil_spread()
 
 func recoil_spread():
 	var max_y = $"../Mouse".MOUSE_Y_LIMIT.y
 	
 	var new_y = $"../Mouse/Camera".rotation_degrees
-	new_y.y += rand_range(-0.2,0.2)
+	new_y.y += rand_range(-0.2*recoilnum*spread,0.2*recoilnum*spread)
 	
-	var rand = rand_range(1,2)
+	var rand = rand_range(1*recoilnum*spread,2*recoilnum*spread)
 	
 	if ((new_y.x + rand) > max_y): 
 		new_y.x = new_y.x

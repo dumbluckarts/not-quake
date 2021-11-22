@@ -16,4 +16,5 @@ dest_files=[ "res://.import/PipeThin_Joint.obj-b6b41f37b9b01fad9749dff8fa38b20b.
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
 offset_mesh=Vector3( 0, 0, 0 )
-optimize_mesh=true
+octahedral_compression=true
+optimize_mesh_flags=4286
