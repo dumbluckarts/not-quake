@@ -1,6 +1,19 @@
 extends Spatial
 
-export(PackedScene) var INVENTORY 
+var hands = {
+	"PISTOL":null,
+	"PRIMARY":null,
+	"ARMOR":null
+}
+
+var bag = {
+	'1':null,
+	'2':null,
+	'3':null,
+	'4':null,
+	'5':null,
+	'6':null
+}
 
 func _process(delta):
 	if Input.is_action_just_pressed("tab"):
