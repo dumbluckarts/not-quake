@@ -1,6 +1,8 @@
 
 # Godot-specific ignores
 .import/
+client/.import/
+server/.import/
 .dist
 dist/
 .out
