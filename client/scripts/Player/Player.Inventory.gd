@@ -1,5 +1,7 @@
 extends Spatial
 
+export(PackedScene) var INVENTORY 
+
 func _process(delta):
 	if Input.is_action_just_pressed("tab"):
 			toggle_inv()
@@ -13,3 +15,7 @@ func toggle_inv():
 	$"../CanvasLayer/Inventory".visible = visible
 	get_parent().inventory_open = visible
 	a.pressed = false
+
+# if the inventory "x" button is pressed
+func _on_Button_pressed():
+	toggle_inv()

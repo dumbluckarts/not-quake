@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player/Mouse.gd" type="Script" id=2]
@@ -11,15 +11,42 @@
 [ext_resource path="res://godot/scenes/player/Player.Particles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://godot/scenes/player/Player.Bullet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/Player/Player.Inventory.gd" type="Script" id=11]
-[ext_resource path="res://godot/scenes/player/Player.Inventory.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/interface/man.png" type="Texture" id=12]
+[ext_resource path="res://assets/interface/uitex.png" type="Texture" id=13]
 [ext_resource path="res://assets/meshes/Gun1_noScope.obj" type="ArrayMesh" id=15]
 [ext_resource path="res://assets/meshes/Arms.obj" type="ArrayMesh" id=16]
 
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 1, 0, 0, 1 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.121569, 0.121569, 0.121569, 1 )
+corner_radius_top_right = 8
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+corner_radius_top_right = 8
+anti_aliasing = false
+
+[sub_resource type="Animation" id=16]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -47,8 +74,7 @@ tracks/1/keys = {
 "values": [ Vector3( -0.872, 81.438, -0.399 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fall"
+[sub_resource type="Animation" id=17]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Mouse/Camera/Gun:translation")
@@ -63,8 +89,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0.441, -0.667, -0.663 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "jump"
+[sub_resource type="Animation" id=18]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Mouse/Camera/Gun:translation")
@@ -79,8 +104,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0.441, -0.785, -0.663 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "walk"
+[sub_resource type="Animation" id=19]
 length = 0.293
 loop = true
 tracks/0/type = "value"
@@ -108,7 +132,7 @@ tracks/1/keys = {
 "values": [ Vector3( -0.872, 81.438, -0.399 ) ]
 }
 
-[sub_resource type="CylinderMesh" id=5]
+[sub_resource type="CylinderMesh" id=20]
 top_radius = 0.7
 bottom_radius = 0.7
 height = 15.0
@@ -251,7 +275,141 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 12 )]
+[node name="Inventory" type="Panel" parent="CanvasLayer"]
+visible = false
+anchor_right = 0.467
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 53.12
+margin_bottom = -64.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.776471 )
+position = Vector2( 116, 116 )
+scale = Vector2( 0.171875, 0.179688 )
+texture = ExtResource( 12 )
+
+[node name="Panel_1" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 160.0
+margin_top = 32.0
+margin_right = 224.0
+margin_bottom = 88.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_2" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 216.0
+margin_top = 32.0
+margin_right = 280.0
+margin_bottom = 88.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_3" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 160.0
+margin_top = 88.0
+margin_right = 224.0
+margin_bottom = 143.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_4" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 216.0
+margin_top = 88.0
+margin_right = 280.0
+margin_bottom = 143.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_5" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 160.0
+margin_top = 144.0
+margin_right = 224.0
+margin_bottom = 199.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_6" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 216.0
+margin_top = 144.0
+margin_right = 280.0
+margin_bottom = 199.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_Active_Gun" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 8.0
+margin_top = 32.0
+margin_right = 72.0
+margin_bottom = 88.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_Active_Armor" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 8.0
+margin_top = 88.0
+margin_right = 72.0
+margin_bottom = 144.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_Active_Pistol" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 8.0
+margin_top = 144.0
+margin_right = 72.0
+margin_bottom = 200.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/Inventory"]
+margin_left = 256.0
+margin_top = 8.0
+margin_right = 272.0
+margin_bottom = 22.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Movement" type="Spatial" parent="."]
 script = ExtResource( 1 )
@@ -276,10 +434,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Movement"]
-anims/default = SubResource( 1 )
-anims/fall = SubResource( 2 )
-anims/jump = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/default = SubResource( 16 )
+anims/fall = SubResource( 17 )
+anims/jump = SubResource( 18 )
+anims/walk = SubResource( 19 )
 
 [node name="Mouse" type="Spatial" parent="."]
 script = ExtResource( 2 )
@@ -301,7 +459,7 @@ transform = Transform( 1, 5.58794e-09, 5.96046e-08, -1.39698e-09, 1, 0, 0, -1.86
 
 [node name="Silencer lol" type="MeshInstance" parent="Mouse/Camera/Gun/Position3D"]
 transform = Transform( -2.6077e-08, -1, 0, 1, -4.19095e-08, -9.77889e-09, 2.32831e-09, -2.98023e-08, 1, 4.477, 0, 0 )
-mesh = SubResource( 5 )
+mesh = SubResource( 20 )
 material/0 = null
 
 [node name="Position3D_Tip" type="Position3D" parent="Mouse/Camera/Gun"]
@@ -376,3 +534,5 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 visible = false
 mesh = SubResource( 14 )
 material/0 = null
+
+[connection signal="pressed" from="CanvasLayer/Inventory/Button" to="Inventory" method="_on_Button_pressed"]

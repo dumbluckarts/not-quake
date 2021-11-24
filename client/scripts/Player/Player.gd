@@ -74,7 +74,3 @@ func damage(amount: int):
 		$CanvasLayer/Panel.visible = true
 		yield(get_tree().create_timer(0.1), "timeout")
 		$CanvasLayer/Panel.visible = false
-
-# if the inventory "x" button is pressed
-func _on_Button_pressed():
-	$Inventory.toggle_inv()
