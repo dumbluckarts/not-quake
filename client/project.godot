@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://scripts/Player/Player.Combat.gd"
 }, {
 "base": "Spatial",
+"class": "PlayerInventory",
+"language": "GDScript",
+"path": "res://scripts/Player/Player.Inventory.gd"
+}, {
+"base": "Spatial",
 "class": "PlayerMouse",
 "language": "GDScript",
 "path": "res://scripts/Player/Mouse.gd"
@@ -44,6 +49,7 @@ _global_script_class_icons={
 "Map": "",
 "Player": "",
 "PlayerCombat": "",
+"PlayerInventory": "",
 "PlayerMouse": "",
 "PlayerMovement": ""
 }

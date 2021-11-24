@@ -1,4 +1,5 @@
 extends Spatial
+class_name PlayerInventory
 
 var hands = {
 	"PISTOL":null,

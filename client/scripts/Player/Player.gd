@@ -1,7 +1,6 @@
 extends KinematicBody
 class_name Player
 
-#export(PackedScene) var INVENTORY
 export(PackedScene) var BULLET
 export(int) var HEALTH
 
