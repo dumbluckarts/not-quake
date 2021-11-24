@@ -6,8 +6,7 @@ export(int) var HEALTH
 
 onready var orig = $Mouse/Camera/Gun.rotation_degrees.y
 onready var enabled = true
-var spawn_point = Vector3(19.794,5,0) # randomize spawns?
-
+var spawn_point = Vector3(19.0,5,0) # randomize spawns?
 
 func _process(_delta):
 	if Input.is_action_just_pressed("restart") and $CanvasLayer/Label.visible:
