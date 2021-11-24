@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player/Mouse.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://audio/fx/chop.wav" type="AudioStream" id=8]
 [ext_resource path="res://godot/scenes/player/Player.Particles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://godot/scenes/player/Player.Bullet.tscn" type="PackedScene" id=10]
+[ext_resource path="res://godot/scenes/player/Player.Inventory.gd" type="Script" id=11]
 [ext_resource path="res://assets/meshes/Gun1_noScope.obj" type="ArrayMesh" id=15]
 [ext_resource path="res://assets/meshes/Arms.obj" type="ArrayMesh" id=16]
 
@@ -312,6 +313,9 @@ material/0 = null
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -100 )
+
+[node name="Inventory" type="Spatial" parent="."]
+script = ExtResource( 11 )
 
 [node name="Combat" type="Spatial" parent="."]
 script = ExtResource( 4 )
