@@ -9,7 +9,7 @@ func toggle_inv():
 	a.action = "mouse_input"
 	a.pressed = true
 	Input.parse_input_event(a)
-	var visible = not $"../../CanvasLayer/Inventory".visible
-	$"../../CanvasLayer/Inventory".visible = visible
+	var visible = not $"../CanvasLayer/Inventory".visible
+	$"../CanvasLayer/Inventory".visible = visible
 	get_parent().inventory_open = visible
 	a.pressed = false
