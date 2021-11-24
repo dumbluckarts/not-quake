@@ -6,13 +6,15 @@ export(int) var HEALTH
 
 onready var orig = $Mouse/Camera/Gun.rotation_degrees.y
 onready var enabled = true
-var spawn_point = Vector3(19.0,5,0) # randomize spawns?
+var spawned = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("restart") and $CanvasLayer/Label.visible:
+	if not spawned:
+		_spawn('')
+	if Input.is_action_just_pressed("restart"):# and $CanvasLayer/Label.visible:
 		enabled = true
 		HEALTH = 10
-		global_transform.origin = spawn_point
+		_spawn('')
 		$CanvasLayer/Panel.visible = false
 		$CanvasLayer/Label.visible = false
 	if not enabled: return
@@ -38,6 +40,23 @@ func _input(event):
 	if not enabled: return
 	if event is InputEventMouseMotion:
 		$Mouse.process($Mouse/Camera, event.relative)
+
+func _spawn(location):
+	spawned = true
+	if not location == '':
+		global_transform.origin = Vector3(0,0,0)
+		return
+	
+	var map_script = $"../Map".get_child(0)
+	
+	if not map_script.has_method("get_spawn"):	return
+	
+	var sp = map_script.get_spawn()
+	
+	global_transform.origin = sp
+	var cam_y = $Mouse/Camera.global_transform.origin.y
+	var lookat = Vector3.ZERO + Vector3(0,cam_y,0) # offset so you are always looking "ahead" towards the map origin
+	$Mouse/Camera.look_at(lookat, Vector3.UP)
 
 func damage(amount: int):
 	HEALTH -= amount
