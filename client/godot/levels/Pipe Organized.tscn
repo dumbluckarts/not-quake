@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://godot/scenes/decals/Pipe Straight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://godot/materials/Stone.tres" type="Material" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://assets/textures/Metal024_1K-JPG/Metal024_1K_NormalGL.jpg" type="Texture" id=17]
 [ext_resource path="res://assets/textures/Metal024_1K-JPG/Metal024_1K_Color.jpg" type="Texture" id=18]
 [ext_resource path="res://audio/fx/waterflow.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/meshes/walls/Bend60_Wall1.obj" type="ArrayMesh" id=20]
+[ext_resource path="res://assets/meshes/walls/Bend30_Wall1.obj" type="ArrayMesh" id=21]
+[ext_resource path="res://assets/meshes/walls/X_Wall1.obj" type="ArrayMesh" id=22]
 
 [sub_resource type="ConvexPolygonShape" id=41]
 points = PoolVector3Array( -1.22525, 13.725, 6.07684, -1.1388, -0.182633, 6.09471, -0.821592, 0.189265, 11.1537, -0.799371, 13.2257, 9.98995, -0.32615, 8.75036, 10.9654, 0.4865, 8.75036, 10.9654, 2.11065, -0.182633, 11.3725, 2.11065, 2.254, 11.3725, 2.31829, 14.2361, 10.4059, 2.5164, 7.12593, 10.9654, 4.95089, 7.12593, 10.1538, 4.95458, 13.75, 3.17677, 4.96924, 14.2515, 9.52507, 5.35779, -0.182633, 3.25113, 5.76354, 5.91099, 9.74756, 6.16929, -0.182633, 9.34054, 6.29672, 14.2431, 8.6381, 6.57619, -0.182633, 3.25113, 6.98078, 5.91099, 8.93591, 7.38769, -0.182633, 8.52889, 7.79459, 7.12593, 8.12346, 8.95619, 14.2502, 5.98423, 9.01183, -0.182633, 7.3118, 9.01183, 3.06622, 7.3118, 9.01183, 7.12593, 6.90637, 9.41758, 1.44179, 6.90637, 9.82448, 7.12593, 5.68769, 9.85387, 14.2688, 4.6484, 10.2302, 1.03636, 5.68769, 10.2737, 14.2346, 2.89172, 10.293, 14.2608, 3.32003, 10.6371, -0.182633, 4.87604, 10.6371, 0.62958, 4.87604, 10.6371, 1.03636, 4.06358 )
@@ -314,8 +317,10 @@ shader_param/noise2 = SubResource( 6 )
 shader_param/normalmap = SubResource( 8 )
 
 [sub_resource type="CylinderMesh" id=25]
-height = 10.0
-radial_segments = 5
+flip_faces = true
+height = 5.545
+radial_segments = 8
+rings = 7
 
 [sub_resource type="Shader" id=23]
 code = "shader_type spatial;
@@ -398,18 +403,25 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=24]
 render_priority = 1
 shader = SubResource( 23 )
-shader_param/speed = -0.522
+shader_param/speed = 0.0
 shader_param/color = Color( 0.227451, 0.392157, 0.0627451, 1 )
 shader_param/edge_color = Color( 0.431373, 0.65098, 0.352941, 1 )
-shader_param/edge_scale = 2.697
-shader_param/near = 1.618
-shader_param/far = 80.0
-shader_param/wave_strengh = Vector2( 0.076, 100 )
-shader_param/wave_frequency = Vector2( 12, 8.87 )
-shader_param/time_factor = Vector2( 0.018, 0.5 )
+shader_param/edge_scale = 0.25
+shader_param/near = 0.1
+shader_param/far = 100.0
+shader_param/wave_strengh = Vector2( 0.5, 0.25 )
+shader_param/wave_frequency = Vector2( 12, 12 )
+shader_param/time_factor = Vector2( 1, 2 )
 shader_param/noise1 = SubResource( 4 )
 shader_param/noise2 = SubResource( 6 )
 shader_param/normalmap = SubResource( 8 )
+
+[sub_resource type="CylinderMesh" id=53]
+top_radius = 1.1
+bottom_radius = 1.1
+height = 5.545
+radial_segments = 8
+rings = 7
 
 [sub_resource type="ConvexPolygonShape" id=27]
 points = PoolVector3Array( 1, 7.47083, 5.035, 1, 9.65402, 5.035, 1, 7.47083, 0, 1, 9.65402, 0, 1, 7.47083, 18.965, 1, 7.47083, 24, 1, 9.65402, 18.965, 1, 9.65402, 24, 1.21162, 7.47083, 6.46979, 1.21162, 9.65402, 6.46979, 1.21162, 7.47083, 5.035, 1.21162, 9.65402, 5.035, 1.21162, 7.47083, 18.965, 1.21162, 9.65402, 18.965, 1.21162, 7.47083, 17.5302, 1.21162, 9.65402, 17.5302, 1, 7.47083, 12, 1, 9.65402, 12, 1, 7.47083, 6.46979, 1, 9.65402, 6.46979, 1, 10.9225, 5.035, 1, 13.7338, 5.035, 1, 10.9225, 0, 1, 13.7338, 0, 1.21162, 10.9225, 6.46979, 1.21162, 13.7338, 6.46979, 1.21162, 10.9225, 5.035, 1.21162, 13.7338, 5.035, 1, 10.9225, 12, 1, 13.7338, 12, 1, 10.9225, 6.46979, 1, 13.7338, 6.46979, 1.21162, 10.9225, 18.965, 1.21162, 13.7338, 18.965, 1.21162, 10.9225, 17.5302, 1.21162, 13.7338, 17.5302, 1, 10.9225, 18.965, 1, 10.9225, 24, 1, 13.7338, 18.965, 1, 13.7338, 24, 1.30653, 6.83743, 18.965, 1.30653, 6.83743, 24, 1, 7.47083, 18.965, 1, 7.47083, 24, 1.21162, 7.47083, 18.965, 1.21162, 7.47083, 17.5302, 1.51815, 6.83743, 18.965, 1.51815, 6.83743, 17.5302, 1, 7.47083, 12, 1, 7.47083, 6.46979, 1.30653, 6.83743, 12, 1.30653, 6.83743, 6.46979, 1.21162, 7.47083, 6.46979, 1.21162, 7.47083, 5.035, 1.51815, 6.83743, 6.46979, 1.51815, 6.83743, 5.035, 1, 7.47083, 5.035, 1, 7.47083, 0, 1.30653, 6.83743, 5.035, 1.30653, 6.83743, 0, 0, 13.7338, 24, 0, 13.7338, 18.965, 1, 13.7338, 24, 1, 13.7338, 18.965, 0, 13.7338, 17.5302, 1, 13.7338, 17.5302, 0, 13.7338, 12, 0, 13.7338, 6.46979, 1, 13.7338, 12, 1, 13.7338, 6.46979, 0, 13.7338, 5.035, 1, 13.7338, 5.035, 0, 13.7338, 0, 1, 13.7338, 0, 1, 10.9225, 17.5302, 1, 13.7338, 17.5302, 1, 7.47083, 17.5302, 1, 9.65402, 17.5302, 1, 7.47083, 17.5302, 1.30653, 6.83743, 17.5302, 1.30653, 6.83743, 5.035, 1.30653, 6.83743, 0, 1.30653, 3.41872, 5.035, 1.30653, 3.41872, 0, 1.51815, 6.83743, 6.46979, 1.51815, 6.83743, 5.035, 1.51815, 3.41872, 6.46979, 1.51815, 3.41872, 5.035, 1.30653, 6.83743, 12, 1.30653, 6.83743, 6.46979, 1.30653, 3.41872, 12, 1.30653, 3.41872, 6.46979, 1.30653, 3.41872, 17.5302, 1.30653, 6.83743, 17.5302, 1.51815, 6.83743, 18.965, 1.51815, 6.83743, 17.5302, 1.51815, 3.41872, 18.965, 1.51815, 3.41872, 17.5302, 1.30653, 3.41872, 18.965, 1.30653, 3.41872, 24, 1.30653, 6.83743, 18.965, 1.30653, 6.83743, 24, 1, 10.9225, 5.035, 1, 10.9225, 0, 1.21162, 10.9225, 5.035, 1.32874, 10.9225, 0, 1, 9.65402, 0, 1, 9.65402, 5.035, 1.32874, 9.65402, 0, 1.21162, 9.65402, 5.035, 1, 9.65402, 18.965, 1, 9.65402, 24, 1.21162, 9.65402, 18.965, 1.32874, 9.65402, 24, 1, 10.9225, 24, 1, 10.9225, 18.965, 1.32874, 10.9225, 24, 1.21162, 10.9225, 18.965, 1, 7.47083, 6.46979, 1, 9.65402, 6.46979, 1.21162, 7.47083, 6.46979, 1.21162, 9.65402, 6.46979, 1, 9.65402, 5.035, 1, 7.47083, 5.035, 1.21162, 9.65402, 5.035, 1.21162, 7.47083, 5.035, 1, 7.47083, 18.965, 1, 9.65402, 18.965, 1.21162, 7.47083, 18.965, 1.21162, 9.65402, 18.965, 1, 9.65402, 17.5302, 1, 7.47083, 17.5302, 1.21162, 9.65402, 17.5302, 1.21162, 7.47083, 17.5302, 1, 10.9225, 12, 1, 10.9225, 6.46979, 1.32874, 10.9225, 12, 1.21162, 10.9225, 6.46979, 1, 9.65402, 6.46979, 1, 9.65402, 12, 1.21162, 9.65402, 6.46979, 1.32874, 9.65402, 12, 1, 10.9225, 6.46979, 1, 13.7338, 6.46979, 1.21162, 10.9225, 6.46979, 1.21162, 13.7338, 6.46979, 1, 13.7338, 5.035, 1, 10.9225, 5.035, 1.21162, 13.7338, 5.035, 1.21162, 10.9225, 5.035, 1.21162, 13.7338, 6.46979, 1.21162, 13.7338, 5.035, 1, 10.9225, 18.965, 1, 13.7338, 18.965, 1.21162, 10.9225, 18.965, 1.21162, 13.7338, 18.965, 1, 13.7338, 17.5302, 1, 10.9225, 17.5302, 1.21162, 13.7338, 17.5302, 1.21162, 10.9225, 17.5302, 1.21162, 13.7338, 18.965, 1.21162, 13.7338, 17.5302, 1.30653, 6.83743, 18.965, 1.51815, 6.83743, 18.965, 1.30653, 6.83743, 17.5302, 1.51815, 6.83743, 17.5302, 1.30653, 6.83743, 6.46979, 1.51815, 6.83743, 6.46979, 1.30653, 6.83743, 5.035, 1.51815, 6.83743, 5.035, 1.30653, 3.41872, 24, 1.30653, 3.41872, 18.965, 1.51815, 3.41872, 24, 1.51815, 3.41872, 18.965, 1.30653, 3.41872, 12, 1.30653, 3.41872, 6.46979, 1.51815, 3.41872, 12, 1.51815, 3.41872, 6.46979, 1.30653, 3.41872, 5.035, 1.30653, 3.41872, 0, 1.51815, 3.41872, 5.035, 1.51815, 3.41872, 0, 1, 10.9225, 17.5302, 1.21162, 10.9225, 17.5302, 1, 9.65402, 17.5302, 1.21162, 9.65402, 17.5302, 1.30653, 3.41872, 17.5302, 1.51815, 3.41872, 17.5302, 1.30653, 3.41872, 6.46979, 1.51815, 3.41872, 6.46979, 1.30653, 3.41872, 5.035, 1.51815, 3.41872, 5.035, 1.30653, 3.41872, 18.965, 1.51815, 3.41872, 18.965, 1.30653, 3.41872, 17.5302, 1.51815, 3.41872, 17.5302, 1.48533, 10.9225, 0, 1.72015, 10.6877, 0, 1.48533, 10.9225, 5.035, 1.72015, 10.6877, 5.035, 1.48533, 10.9225, 6.46979, 1.72015, 10.6877, 6.46979, 1.72015, 9.88885, 5.035, 1.48533, 9.65402, 5.035, 1.72015, 9.88885, 6.46979, 1.48533, 9.65402, 6.46979, 1.48533, 9.65402, 0, 1.72015, 9.88885, 0, 1.48533, 9.65402, 24, 1.72015, 9.88885, 24, 1.48533, 9.65402, 18.965, 1.72015, 9.88885, 18.965, 1.48533, 9.65402, 17.5302, 1.72015, 9.88885, 17.5302, 1.72015, 10.6877, 18.965, 1.48533, 10.9225, 18.965, 1.72015, 10.6877, 17.5302, 1.48533, 10.9225, 17.5302, 1.48533, 10.9225, 24, 1.72015, 10.6877, 24, 1.48533, 10.9225, 12, 1.72015, 10.6877, 12, 1.72015, 9.88885, 12, 1.48533, 9.65402, 12, 2.02668, 3.18389, 18.965, 1.79186, 3.41872, 18.965, 2.02668, 3.18389, 17.5302, 1.79186, 3.41872, 17.5302, 1.79186, 3.41872, 24, 2.02668, 3.18389, 24, 2.02668, 3.18389, 12, 1.79186, 3.41872, 12, 2.02668, 3.18389, 6.46979, 1.79186, 3.41872, 6.46979, 2.02668, 3.18389, 5.035, 1.79186, 3.41872, 5.035, 2.02668, 3.18389, 0, 1.79186, 3.41872, 0, 1.72015, 10.6877, 5.035, 1.72015, 10.6877, 0, 1.72015, 9.88885, 5.035, 1.72015, 9.88885, 0, 1.72015, 9.88885, 18.965, 1.72015, 9.88885, 24, 1.72015, 10.6877, 18.965, 1.72015, 10.6877, 24, 1.72015, 10.6877, 6.46979, 1.72015, 9.88885, 6.46979, 1.72015, 10.6877, 17.5302, 1.72015, 9.88885, 17.5302, 1.72015, 10.6877, 12, 1.72015, 9.88885, 12, 2.02668, 0, 18.965, 2.02668, 0, 24, 2.02668, 3.18389, 18.965, 2.02668, 3.18389, 24, 2.02668, 3.18389, 17.5302, 2.02668, 0, 17.5302, 2.02668, 3.18389, 12, 2.02668, 3.18389, 6.46979, 2.02668, 0, 12, 2.02668, 0, 6.46979, 2.02668, 3.18389, 5.035, 2.02668, 0, 5.035, 2.02668, 3.18389, 0, 2.02668, 0, 0, 1.48533, 10.9225, 5.035, 1.48533, 10.9225, 0, 1.48533, 9.65402, 0, 1.48533, 9.65402, 5.035, 1.48533, 9.65402, 18.965, 1.48533, 9.65402, 24, 1.48533, 10.9225, 24, 1.48533, 10.9225, 18.965, 1.48533, 10.9225, 6.46979, 1.48533, 9.65402, 6.46979, 1.48533, 10.9225, 17.5302, 1.48533, 9.65402, 17.5302, 1.48533, 10.9225, 12, 1.48533, 9.65402, 12, 1.21162, 10.9225, 17.5302, 1.32874, 10.9225, 12, 1.48533, 10.9225, 17.5302, 1.48533, 10.9225, 12, 1.32874, 9.65402, 12, 1.21162, 9.65402, 17.5302, 1.48533, 9.65402, 12, 1.48533, 9.65402, 17.5302, 1.51815, 3.41872, 24, 1.51815, 3.41872, 18.965, 1.79186, 3.41872, 24, 1.79186, 3.41872, 18.965, 1.51815, 3.41872, 18.965, 1.51815, 3.41872, 17.5302, 1.79186, 3.41872, 18.965, 1.79186, 3.41872, 17.5302, 1.51815, 3.41872, 12, 1.51815, 3.41872, 6.46979, 1.79186, 3.41872, 12, 1.79186, 3.41872, 6.46979, 1.51815, 3.41872, 5.035, 1.79186, 3.41872, 5.035, 1.51815, 3.41872, 0, 1.79186, 3.41872, 0, 1.79186, 3.41872, 17.5302, 1.79186, 3.41872, 12, -1, 9.65402, 0, -1, 9.65402, 5.035, -1, 7.47083, 0, -1, 7.47083, 5.035, -1, 9.65402, 24, -1, 7.47083, 24, -1, 9.65402, 18.965, -1, 7.47083, 18.965, -1.21162, 9.65402, 5.035, -1.21162, 9.65402, 6.46979, -1.21162, 7.47083, 5.035, -1.21162, 7.47083, 6.46979, -1.21162, 9.65402, 17.5302, -1.21162, 9.65402, 18.965, -1.21162, 7.47083, 17.5302, -1.21162, 7.47083, 18.965, -1, 9.65402, 6.46979, -1, 9.65402, 12, -1, 7.47083, 6.46979, -1, 7.47083, 12, -1, 13.7338, 0, -1, 13.7338, 5.035, -1, 10.9225, 0, -1, 10.9225, 5.035, -1.21162, 13.7338, 5.035, -1.21162, 13.7338, 6.46979, -1.21162, 10.9225, 5.035, -1.21162, 10.9225, 6.46979, -1, 13.7338, 6.46979, -1, 13.7338, 12, -1, 10.9225, 6.46979, -1, 10.9225, 12, -1.21162, 13.7338, 17.5302, -1.21162, 13.7338, 18.965, -1.21162, 10.9225, 17.5302, -1.21162, 10.9225, 18.965, -1, 13.7338, 24, -1, 10.9225, 24, -1, 13.7338, 18.965, -1, 10.9225, 18.965, -1, 7.47083, 24, -1.30653, 6.83743, 24, -1, 7.47083, 18.965, -1.30653, 6.83743, 18.965, -1.51815, 6.83743, 17.5302, -1.21162, 7.47083, 17.5302, -1.51815, 6.83743, 18.965, -1.21162, 7.47083, 18.965, -1.30653, 6.83743, 6.46979, -1, 7.47083, 6.46979, -1.30653, 6.83743, 12, -1, 7.47083, 12, -1.51815, 6.83743, 5.035, -1.21162, 7.47083, 5.035, -1.51815, 6.83743, 6.46979, -1.21162, 7.47083, 6.46979, -1.30653, 6.83743, 0, -1, 7.47083, 0, -1.30653, 6.83743, 5.035, -1, 7.47083, 5.035, -1, 13.7338, 18.965, -1, 13.7338, 24, -1, 13.7338, 17.5302, -1, 13.7338, 6.46979, -1, 13.7338, 12, -1, 13.7338, 5.035, -1, 13.7338, 0, -1, 13.7338, 17.5302, -1, 10.9225, 17.5302, -1, 9.65402, 17.5302, -1, 7.47083, 17.5302, -1.30653, 6.83743, 17.5302, -1, 7.47083, 17.5302, -1.30653, 3.41872, 0, -1.30653, 6.83743, 0, -1.30653, 3.41872, 5.035, -1.30653, 6.83743, 5.035, -1.51815, 3.41872, 5.035, -1.51815, 6.83743, 5.035, -1.51815, 3.41872, 6.46979, -1.51815, 6.83743, 6.46979, -1.30653, 3.41872, 6.46979, -1.30653, 6.83743, 6.46979, -1.30653, 3.41872, 12, -1.30653, 6.83743, 12, -1.30653, 6.83743, 17.5302, -1.30653, 3.41872, 17.5302, -1.51815, 3.41872, 17.5302, -1.51815, 6.83743, 17.5302, -1.51815, 3.41872, 18.965, -1.51815, 6.83743, 18.965, -1.30653, 6.83743, 24, -1.30653, 3.41872, 24, -1.30653, 6.83743, 18.965, -1.30653, 3.41872, 18.965, -1.32874, 10.9225, 0, -1, 10.9225, 0, -1.21162, 10.9225, 5.035, -1, 10.9225, 5.035, -1.21162, 9.65402, 5.035, -1, 9.65402, 5.035, -1.32874, 9.65402, 0, -1, 9.65402, 0, -1.32874, 9.65402, 24, -1, 9.65402, 24, -1.21162, 9.65402, 18.965, -1, 9.65402, 18.965, -1.21162, 10.9225, 18.965, -1, 10.9225, 18.965, -1.32874, 10.9225, 24, -1, 10.9225, 24, -1.21162, 9.65402, 6.46979, -1, 9.65402, 6.46979, -1.21162, 7.47083, 6.46979, -1, 7.47083, 6.46979, -1.21162, 7.47083, 5.035, -1, 7.47083, 5.035, -1.21162, 9.65402, 5.035, -1, 9.65402, 5.035, -1.21162, 9.65402, 18.965, -1, 9.65402, 18.965, -1.21162, 7.47083, 18.965, -1, 7.47083, 18.965, -1.21162, 7.47083, 17.5302, -1, 7.47083, 17.5302, -1.21162, 9.65402, 17.5302, -1, 9.65402, 17.5302, -1.21162, 10.9225, 6.46979, -1, 10.9225, 6.46979, -1.32874, 10.9225, 12, -1, 10.9225, 12, -1.32874, 9.65402, 12, -1, 9.65402, 12, -1.21162, 9.65402, 6.46979, -1, 9.65402, 6.46979, -1.21162, 13.7338, 6.46979, -1, 13.7338, 6.46979, -1.21162, 10.9225, 6.46979, -1, 10.9225, 6.46979, -1.21162, 10.9225, 5.035, -1, 10.9225, 5.035, -1.21162, 13.7338, 5.035, -1, 13.7338, 5.035, -1.21162, 13.7338, 5.035, -1.21162, 13.7338, 6.46979, -1.21162, 13.7338, 18.965, -1, 13.7338, 18.965, -1.21162, 10.9225, 18.965, -1, 10.9225, 18.965, -1.21162, 10.9225, 17.5302, -1, 10.9225, 17.5302, -1.21162, 13.7338, 17.5302, -1, 13.7338, 17.5302, -1.21162, 13.7338, 17.5302, -1.21162, 13.7338, 18.965, -1.51815, 6.83743, 18.965, -1.30653, 6.83743, 18.965, -1.51815, 6.83743, 17.5302, -1.30653, 6.83743, 17.5302, -1.51815, 6.83743, 6.46979, -1.30653, 6.83743, 6.46979, -1.51815, 6.83743, 5.035, -1.30653, 6.83743, 5.035, -1.51815, 3.41872, 18.965, -1.30653, 3.41872, 18.965, -1.51815, 3.41872, 24, -1.30653, 3.41872, 24, -1.51815, 3.41872, 6.46979, -1.30653, 3.41872, 6.46979, -1.51815, 3.41872, 12, -1.30653, 3.41872, 12, -1.51815, 3.41872, 0, -1.30653, 3.41872, 0, -1.51815, 3.41872, 5.035, -1.30653, 3.41872, 5.035, -1.21162, 10.9225, 17.5302, -1, 10.9225, 17.5302, -1.21162, 9.65402, 17.5302, -1, 9.65402, 17.5302, -1.51815, 3.41872, 17.5302, -1.30653, 3.41872, 17.5302, -1.51815, 3.41872, 6.46979, -1.30653, 3.41872, 6.46979, -1.51815, 3.41872, 5.035, -1.30653, 3.41872, 5.035, -1.51815, 3.41872, 18.965, -1.30653, 3.41872, 18.965, -1.51815, 3.41872, 17.5302, -1.30653, 3.41872, 17.5302, -1.72015, 10.6877, 5.035, -1.72015, 10.6877, 0, -1.48533, 10.9225, 5.035, -1.48533, 10.9225, 0, -1.72015, 10.6877, 6.46979, -1.48533, 10.9225, 6.46979, -1.48533, 9.65402, 6.46979, -1.48533, 9.65402, 5.035, -1.72015, 9.88885, 6.46979, -1.72015, 9.88885, 5.035, -1.72015, 9.88885, 0, -1.48533, 9.65402, 0, -1.72015, 9.88885, 18.965, -1.72015, 9.88885, 24, -1.48533, 9.65402, 18.965, -1.48533, 9.65402, 24, -1.72015, 9.88885, 17.5302, -1.48533, 9.65402, 17.5302, -1.48533, 10.9225, 17.5302, -1.48533, 10.9225, 18.965, -1.72015, 10.6877, 17.5302, -1.72015, 10.6877, 18.965, -1.72015, 10.6877, 24, -1.48533, 10.9225, 24, -1.72015, 10.6877, 12, -1.48533, 10.9225, 12, -1.48533, 9.65402, 12, -1.72015, 9.88885, 12, -1.79186, 3.41872, 17.5302, -1.79186, 3.41872, 18.965, -2.02668, 3.18389, 17.5302, -2.02668, 3.18389, 18.965, -2.02668, 3.18389, 24, -1.79186, 3.41872, 24, -1.79186, 3.41872, 12, -2.02668, 3.18389, 12, -1.79186, 3.41872, 5.035, -1.79186, 3.41872, 6.46979, -2.02668, 3.18389, 5.035, -2.02668, 3.18389, 6.46979, -1.79186, 3.41872, 0, -2.02668, 3.18389, 0, -1.72015, 9.88885, 0, -1.72015, 10.6877, 0, -1.72015, 9.88885, 5.035, -1.72015, 10.6877, 5.035, -1.72015, 10.6877, 24, -1.72015, 9.88885, 24, -1.72015, 10.6877, 18.965, -1.72015, 9.88885, 18.965, -1.72015, 9.88885, 6.46979, -1.72015, 10.6877, 6.46979, -1.72015, 9.88885, 17.5302, -1.72015, 10.6877, 17.5302, -1.72015, 9.88885, 12, -1.72015, 10.6877, 12, -2.02668, 3.18389, 24, -2.02668, 0, 24, -2.02668, 3.18389, 18.965, -2.02668, 0, 18.965, -2.02668, 0, 17.5302, -2.02668, 3.18389, 17.5302, -2.02668, 0, 6.46979, -2.02668, 3.18389, 6.46979, -2.02668, 0, 12, -2.02668, 3.18389, 12, -2.02668, 0, 5.035, -2.02668, 3.18389, 5.035, -2.02668, 0, 0, -2.02668, 3.18389, 0, -1.48533, 10.9225, 0, -1.48533, 10.9225, 5.035, -1.48533, 9.65402, 5.035, -1.48533, 9.65402, 0, -1.48533, 9.65402, 24, -1.48533, 9.65402, 18.965, -1.48533, 10.9225, 18.965, -1.48533, 10.9225, 24, -1.48533, 10.9225, 6.46979, -1.48533, 9.65402, 6.46979, -1.48533, 10.9225, 17.5302, -1.48533, 9.65402, 17.5302, -1.48533, 10.9225, 12, -1.48533, 9.65402, 12, -1.48533, 10.9225, 12, -1.32874, 10.9225, 12, -1.48533, 10.9225, 17.5302, -1.21162, 10.9225, 17.5302, -1.48533, 9.65402, 17.5302, -1.21162, 9.65402, 17.5302, -1.48533, 9.65402, 12, -1.32874, 9.65402, 12, -1.79186, 3.41872, 18.965, -1.51815, 3.41872, 18.965, -1.79186, 3.41872, 24, -1.51815, 3.41872, 24, -1.79186, 3.41872, 17.5302, -1.51815, 3.41872, 17.5302, -1.79186, 3.41872, 18.965, -1.51815, 3.41872, 18.965, -1.79186, 3.41872, 6.46979, -1.51815, 3.41872, 6.46979, -1.79186, 3.41872, 12, -1.51815, 3.41872, 12, -1.79186, 3.41872, 5.035, -1.51815, 3.41872, 5.035, -1.79186, 3.41872, 0, -1.51815, 3.41872, 0, -1.79186, 3.41872, 12, -1.79186, 3.41872, 17.5302 )
@@ -482,171 +494,180 @@ transform_array = PoolVector3Array( -0.0720752, -0.45105, -0.0869837, -0.075146,
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 5 )
 
-[node name="Center" type="MeshInstance" parent="."]
+[node name="MainRoom" type="Spatial" parent="."]
+
+[node name="Center" type="MeshInstance" parent="MainRoom"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
 material_override = ExtResource( 14 )
 mesh = ExtResource( 8 )
+skeleton = NodePath("../..")
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="Center"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Center"]
 
-[node name="CollisionShape7" type="CollisionShape" parent="Center/StaticBody"]
+[node name="CollisionShape7" type="CollisionShape" parent="MainRoom/Center/StaticBody"]
 shape = SubResource( 41 )
 
-[node name="CollisionShape6" type="CollisionShape" parent="Center/StaticBody"]
+[node name="CollisionShape6" type="CollisionShape" parent="MainRoom/Center/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0.7 )
 shape = SubResource( 42 )
 
-[node name="CollisionShape5" type="CollisionShape" parent="Center/StaticBody"]
+[node name="CollisionShape5" type="CollisionShape" parent="MainRoom/Center/StaticBody"]
 shape = SubResource( 43 )
 
-[node name="CollisionShape4" type="CollisionShape" parent="Center/StaticBody"]
+[node name="CollisionShape4" type="CollisionShape" parent="MainRoom/Center/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
 shape = SubResource( 44 )
 
-[node name="CollisionShape3" type="CollisionShape" parent="Center/StaticBody"]
+[node name="CollisionShape3" type="CollisionShape" parent="MainRoom/Center/StaticBody"]
 shape = SubResource( 45 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="Center/StaticBody"]
+[node name="CollisionShape2" type="CollisionShape" parent="MainRoom/Center/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0 )
 shape = SubResource( 46 )
 
-[node name="CollisionShape8" type="CollisionShape" parent="Center/StaticBody"]
+[node name="CollisionShape8" type="CollisionShape" parent="MainRoom/Center/StaticBody"]
 shape = SubResource( 47 )
 
-[node name="Water" type="MeshInstance" parent="."]
+[node name="Water" type="MeshInstance" parent="MainRoom"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 1 )
+skeleton = NodePath("../..")
 material/0 = SubResource( 9 )
 
-[node name="Solids" type="Spatial" parent="."]
+[node name="Solids" type="Spatial" parent="MainRoom"]
 
-[node name="Ground" type="MeshInstance" parent="Solids"]
+[node name="Ground" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( -1, -8.74228e-08, 7.64274e-15, -8.74228e-08, 1, -8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0 )
 mesh = SubResource( 10 )
 material/0 = ExtResource( 2 )
 
-[node name="StaticBody" type="StaticBody" parent="Solids/Ground"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Ground"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Solids/Ground/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="MainRoom/Solids/Ground/StaticBody"]
 shape = SubResource( 11 )
 
-[node name="Roof" type="MeshInstance" parent="Solids"]
+[node name="Roof" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 14, 0 )
 mesh = SubResource( 10 )
 material/0 = SubResource( 26 )
 
-[node name="StaticBody" type="StaticBody" parent="Solids/Roof"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Roof"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Solids/Roof/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="MainRoom/Solids/Roof/StaticBody"]
 shape = SubResource( 11 )
 
-[node name="Ground Raised Corner" type="MeshInstance" parent="Solids"]
+[node name="Ground Raised Corner" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 0.965926, -0.258819, 0, 0.25, 0.933013, 0.258819, -0.0669873, -0.25, 0.965926, -10, 0, 25 )
 mesh = SubResource( 12 )
 material/0 = ExtResource( 4 )
 
-[node name="StaticBody" type="StaticBody" parent="Solids/Ground Raised Corner"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Ground Raised Corner"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Solids/Ground Raised Corner/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="MainRoom/Solids/Ground Raised Corner/StaticBody"]
 transform = Transform( 1, -7.45058e-09, 0, -7.45058e-09, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0 )
 shape = SubResource( 13 )
 
-[node name="Ground Raised Corner2" type="MeshInstance" parent="Solids"]
+[node name="Ground Raised Corner2" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 0.965926, 0.25, -0.0669873, -0.258819, 0.933013, -0.25, 0, 0.258819, 0.965926, -29, 2, -26 )
 mesh = SubResource( 12 )
 material/0 = ExtResource( 4 )
 
-[node name="StaticBody" type="StaticBody" parent="Solids/Ground Raised Corner2"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Ground Raised Corner2"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Solids/Ground Raised Corner2/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="MainRoom/Solids/Ground Raised Corner2/StaticBody"]
 transform = Transform( 1, -7.45058e-09, 0, -7.45058e-09, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0 )
 shape = SubResource( 13 )
 
-[node name="Ground Raised Corner3" type="MeshInstance" parent="Solids"]
+[node name="Ground Raised Corner3" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 0.965926, -0.258819, 0, 0.25, 0.933013, 0.258819, -0.0669873, -0.25, 0.965926, 27, 0, 25 )
 mesh = SubResource( 12 )
 material/0 = ExtResource( 4 )
 
-[node name="StaticBody" type="StaticBody" parent="Solids/Ground Raised Corner3"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Ground Raised Corner3"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Solids/Ground Raised Corner3/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="MainRoom/Solids/Ground Raised Corner3/StaticBody"]
 transform = Transform( 1, -7.45058e-09, 0, -7.45058e-09, 1, 0, 0, -1.49012e-08, 1, 0, 0, 0 )
 shape = SubResource( 13 )
 
-[node name="Pipe Straight" parent="Solids" instance=ExtResource( 1 )]
+[node name="Pipe Straight" parent="MainRoom/Solids" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -2.4, -32 )
 
-[node name="Pipe Straight 2" parent="Solids" instance=ExtResource( 1 )]
+[node name="Pipe Straight 2" parent="MainRoom/Solids" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33, -2.4, -22 )
 
-[node name="Pipe U Bend" parent="Solids" instance=ExtResource( 11 )]
+[node name="Pipe U Bend" parent="MainRoom/Solids" instance=ExtResource( 11 )]
 transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -33, -3, -27 )
 
-[node name="Pipe U Bend2" parent="Solids" instance=ExtResource( 11 )]
+[node name="Pipe U Bend2" parent="MainRoom/Solids" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, 1, 9, -3, -15 )
 
-[node name="Pipe U Bend3" parent="Solids" instance=ExtResource( 11 )]
+[node name="Pipe U Bend3" parent="MainRoom/Solids" instance=ExtResource( 11 )]
 transform = Transform( -0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 9, -3, -20 )
 
-[node name="Pipe 90" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27, -5, -10 )
 
-[node name="Pipe 90 1" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90 1" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27, -5, -6 )
 
-[node name="Pipe 90 2" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90 2" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27, -5, -2 )
 
-[node name="Pipe 90 3" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90 3" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27, -5, 2 )
 
-[node name="Pipe 90 4" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90 4" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, -30 )
 
-[node name="Pipe 90 5" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90 5" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, -26 )
 
-[node name="Pipe 90 6" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90 6" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, -22 )
 
-[node name="Pipe 90 7" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90 7" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, -18 )
 
-[node name="Pipe 90 8" parent="Solids" instance=ExtResource( 10 )]
+[node name="Pipe 90 8" parent="MainRoom/Solids" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, -14 )
 
-[node name="Pipe Cover" type="MeshInstance" parent="Solids"]
+[node name="Pipe Cover" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -17, 2, 17 )
 mesh = SubResource( 14 )
 material/0 = ExtResource( 12 )
 
-[node name="StaticBody" type="StaticBody" parent="Solids/Pipe Cover"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Pipe Cover"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Solids/Pipe Cover/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="MainRoom/Solids/Pipe Cover/StaticBody"]
 shape = SubResource( 15 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Solids/Pipe Cover"]
+[node name="MeshInstance" type="MeshInstance" parent="MainRoom/Solids/Pipe Cover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 16 )
 material/0 = SubResource( 18 )
 
-[node name="Pipe Cover2" type="MeshInstance" parent="Solids"]
+[node name="Pipe Cover2" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( -3, 2.62268e-07, 0, -2.62268e-07, -3, 0, 0, 0, 3, 25, 11, 17 )
 mesh = SubResource( 14 )
 material/0 = ExtResource( 12 )
 
-[node name="StaticBody" type="StaticBody" parent="Solids/Pipe Cover2"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Pipe Cover2"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Solids/Pipe Cover2/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="MainRoom/Solids/Pipe Cover2/StaticBody"]
 shape = SubResource( 15 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Solids/Pipe Cover2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+[node name="MeshInstance" type="MeshInstance" parent="MainRoom/Solids/Pipe Cover2"]
+transform = Transform( 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0, 1, 0, 2.55692, 0 )
 mesh = SubResource( 25 )
 material/0 = SubResource( 24 )
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Solids/Pipe Cover2"]
+[node name="MeshInstance2" type="MeshInstance" parent="MainRoom/Solids/Pipe Cover2"]
+transform = Transform( 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0, 1, 0, 2.55692, 0 )
+mesh = SubResource( 53 )
+material/0 = SubResource( 24 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="MainRoom/Solids/Pipe Cover2"]
 transform = Transform( 0.333333, -1.77636e-15, 0, 1.77636e-15, 0.333333, 0, 0, 0, 0.333333, 0, 2.56667, 0 )
 stream = ExtResource( 19 )
 unit_db = 8.0
@@ -656,188 +677,257 @@ emission_angle_enabled = true
 emission_angle_degrees = 0.1
 attenuation_filter_cutoff_hz = 2000.0
 
-[node name="Wall and Doors" type="Spatial" parent="."]
+[node name="Wall and Doors" type="Spatial" parent="MainRoom"]
 
-[node name="StaticBody" type="StaticBody" parent="Wall and Doors"]
+[node name="StaticBody" type="StaticBody" parent="MainRoom/Wall and Doors"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
 shape = SubResource( 27 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape2" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34 )
 shape = SubResource( 52 )
 
-[node name="CollisionShape3" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape3" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -1 )
 shape = SubResource( 29 )
 
-[node name="CollisionShape4" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape4" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 35 )
 shape = SubResource( 30 )
 
-[node name="CollisionShape5" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape5" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -25 )
 shape = SubResource( 31 )
 
-[node name="CollisionShape6" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape6" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -23 )
 shape = SubResource( 32 )
 
-[node name="CollisionShape7" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape7" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -1 )
 shape = SubResource( 33 )
 
-[node name="CollisionShape8" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape8" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 35 )
 shape = SubResource( 34 )
 
-[node name="CollisionShape9" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape9" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -35 )
 shape = SubResource( 35 )
 
-[node name="CollisionShape10" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape10" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -35 )
 shape = SubResource( 36 )
 
-[node name="CollisionShape11" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape11" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 25, 0, 35 )
 shape = SubResource( 48 )
 
-[node name="CollisionShape12" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape12" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 37, 0, -23 )
 shape = SubResource( 49 )
 
-[node name="CollisionShape13" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape13" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, -35 )
 shape = SubResource( 50 )
 
-[node name="CollisionShape14" type="CollisionShape" parent="Wall and Doors/StaticBody"]
+[node name="CollisionShape14" type="CollisionShape" parent="MainRoom/Wall and Doors/StaticBody"]
 transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -37, 0, 23 )
 shape = SubResource( 51 )
 
-[node name="Center Wall" type="MeshInstance" parent="Wall and Doors"]
+[node name="Center Wall" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 
-[node name="Center Door" type="MeshInstance" parent="Wall and Doors"]
+[node name="Center Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34 )
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 3 )
 
-[node name="Pipe Door" type="MeshInstance" parent="Wall and Doors"]
+[node name="Pipe Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -1 )
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 3 )
 
-[node name="Outside Door" type="MeshInstance" parent="Wall and Doors"]
+[node name="Outside Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 35 )
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -25 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall2" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall2" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -23 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall3" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall3" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -1 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall4" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall4" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 35 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall5" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall5" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -35 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall6" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall6" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -35 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall7" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall7" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, -35 )
 mesh = ExtResource( 9 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall8" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall8" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 37, 0, -23 )
 mesh = ExtResource( 9 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall9" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall9" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 25, 0, 35 )
 mesh = ExtResource( 9 )
 material/0 = ExtResource( 3 )
 
-[node name="Wall10" type="MeshInstance" parent="Wall and Doors"]
+[node name="Wall10" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -37, 0, 23 )
 mesh = ExtResource( 9 )
 material/0 = ExtResource( 3 )
 
-[node name="Decals" type="Spatial" parent="."]
+[node name="Decals" type="Spatial" parent="MainRoom"]
 
-[node name="Rocks" type="MultiMeshInstance" parent="Decals"]
+[node name="Rocks" type="MultiMeshInstance" parent="MainRoom/Decals"]
 material_override = ExtResource( 3 )
 multimesh = SubResource( 20 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Decals/Rocks"]
+[node name="MeshInstance" type="MeshInstance" parent="MainRoom/Decals/Rocks"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 0 )
 visible = false
 material_override = ExtResource( 3 )
 mesh = SubResource( 19 )
 material/0 = null
 
-[node name="Rocks2" type="MultiMeshInstance" parent="Decals"]
+[node name="Rocks2" type="MultiMeshInstance" parent="MainRoom/Decals"]
 material_override = ExtResource( 3 )
 multimesh = SubResource( 21 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Decals/Rocks2"]
+[node name="MeshInstance" type="MeshInstance" parent="MainRoom/Decals/Rocks2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 0 )
 visible = false
 material_override = ExtResource( 3 )
 mesh = SubResource( 19 )
 material/0 = null
 
-[node name="Rocks3" type="MultiMeshInstance" parent="Decals"]
+[node name="Rocks3" type="MultiMeshInstance" parent="MainRoom/Decals"]
 material_override = ExtResource( 3 )
 multimesh = SubResource( 22 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Decals/Rocks3"]
+[node name="MeshInstance" type="MeshInstance" parent="MainRoom/Decals/Rocks3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 0 )
 visible = false
 material_override = ExtResource( 3 )
 mesh = SubResource( 19 )
 material/0 = null
 
-[node name="Mushroom Group" parent="Decals" instance=ExtResource( 13 )]
+[node name="Mushroom Group" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.5, 10.5 )
 
-[node name="Mushroom Group2" parent="Decals" instance=ExtResource( 13 )]
+[node name="Mushroom Group2" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -32, 0.5, 29.5 )
 
-[node name="Mushroom Group3" parent="Decals" instance=ExtResource( 13 )]
+[node name="Mushroom Group3" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -32, 0.5, -3.5 )
 
-[node name="Mushroom Group4" parent="Decals" instance=ExtResource( 13 )]
+[node name="Mushroom Group4" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -23.3, 0.6, -26.5 )
 
-[node name="Mushroom Group5" parent="Decals" instance=ExtResource( 13 )]
+[node name="Mushroom Group5" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0.5, -26.5 )
 
-[node name="Mushroom Group6" parent="Decals" instance=ExtResource( 13 )]
+[node name="Mushroom Group6" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0.5, -12.5 )
 
-[node name="Mushroom Group7" parent="Decals" instance=ExtResource( 13 )]
+[node name="Mushroom Group7" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( -4.37114e-08, 0, 1, -0.258819, 0.965926, -1.13133e-08, -0.965926, -0.258819, -4.2222e-08, 32, 2.5, 30.5 )
+
+[node name="Hallway" type="Spatial" parent="."]
+
+[node name="Walls and Doors" type="Spatial" parent="Hallway"]
+
+[node name="Center Wall" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9717, 0, -8 )
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall4" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -50.9717, 0, -32 )
+mesh = ExtResource( 21 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall8" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -56.6717, 0, -54 )
+mesh = ExtResource( 20 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall5" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -74.9717, 0, 6 )
+mesh = ExtResource( 20 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall2" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38.9717, 0, 18 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall9" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -63.9717, 0, -64 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall13" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -83.9717, 0, -12 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall12" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.301, -99.9717, 0, -52 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall10" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -87.9717, 0, -64 )
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall11" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.9717, 0, -24 )
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall6" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -50.9717, 0, -8 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall7" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -36.9717, 0, -23 )
+mesh = ExtResource( 22 )
+material/0 = ExtResource( 3 )
+
+[node name="Center Wall3" type="MeshInstance" parent="Hallway/Walls and Doors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9717, 0, 6 )
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 3 )

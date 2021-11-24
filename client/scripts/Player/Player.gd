@@ -40,6 +40,8 @@ func _input(event):
 func damage(amount: int):
 	HEALTH -= 1
 	
+	$Combat.hitpunch()
+	
 	if HEALTH <= 0:
 		enabled = false
 		$CanvasLayer/Panel.visible = true

@@ -76,18 +76,18 @@ func hitpunch():
 	$"../Mouse/Camera".rotation_degrees.y = new_y.y
 
 func recoil_spread():
-	if not recoilnum>3:	return #add recoil only after 3 shots
+	if not recoilnum > 3: return #add recoil only after 3 shots
 	var max_y = $"../Mouse".MOUSE_Y_LIMIT.y
 	var new_y = $"../Mouse/Camera".rotation_degrees
-	
+
 	new_y.y += rand_range(-0.2*recoilnum*spread,0.2*recoilnum*spread)
-	
+
 	var rand = rand_range(1*recoilnum*spread,2*recoilnum*spread)
-	
+
 	if ((new_y.x + rand) > max_y): 
 		new_y.x = new_y.x
 	else:
 		new_y.x += rand
-	
+
 	$"../Mouse/Camera".rotation_degrees.x = new_y.x
 	$"../Mouse/Camera".rotation_degrees.y = new_y.y
