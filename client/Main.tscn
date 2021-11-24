@@ -51,7 +51,6 @@ margin_left = 8.0
 margin_top = -23.64
 margin_right = 149.0
 margin_bottom = -9.64001
-text = "x:     y:"
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -219,3 +218,4 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 19.794, 5, 0 )
 [node name="Map Organized" parent="Map" instance=ExtResource( 2 )]
 
 [connection signal="draw" from="CanvasLayer/Crosshair" to="CanvasLayer" method="_on_Crosshair_draw"]
+[connection signal="pressed" from="CanvasLayer/Inventory/Button" to="Player" method="_on_Button_pressed"]

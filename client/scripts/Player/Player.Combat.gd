@@ -18,7 +18,7 @@ func _ready():
 	$AnimationPlayer.connect("animation_finished", self, "attack")
 
 func _process(_delta):
-	if not get_parent().enabled: return
+	if not get_parent().enabled or get_parent().inventory_open: return
 	if Input.is_action_just_pressed("shoot"):
 		attack('')
 		animate('')
