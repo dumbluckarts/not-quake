@@ -6,11 +6,14 @@ export(int) var HEALTH
 
 onready var orig = $Mouse/Camera/Gun.rotation_degrees.y
 onready var enabled = true
+var spawn_point = Vector3(19.794,5,0) # randomize spawns?
+
 
 func _process(_delta):
 	if Input.is_action_just_pressed("restart") and $CanvasLayer/Label.visible:
 		enabled = true
 		HEALTH = 10
+		global_transform.origin = spawn_point
 		$CanvasLayer/Panel.visible = false
 		$CanvasLayer/Label.visible = false
 	if not enabled: return
@@ -36,7 +39,7 @@ func _input(event):
 	if not enabled: return
 	if event is InputEventMouseMotion:
 		$Mouse.process($Mouse/Camera, event.relative)
-	
+
 func damage(amount: int):
 	HEALTH -= amount
 	$Movement.HITPUNCH_SCALAR = 0.6
