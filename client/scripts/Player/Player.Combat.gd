@@ -11,8 +11,8 @@ export(NodePath) var SOUND
 
 
 export(float) var spread = 0.05
+export(float) var hitpunch = 2
 var recoilnum = 0
-
 func _ready():
 	$AnimationPlayer.connect("animation_finished", self, "animate")
 	$AnimationPlayer.connect("animation_finished", self, "attack")
@@ -64,9 +64,9 @@ func hitpunch():
 	var max_y = $"../Mouse".MOUSE_Y_LIMIT.y
 	var new_y = $"../Mouse/Camera".rotation_degrees
 	
-	new_y.y += rand_range(-0.2*recoilnum*exp(spread)/log(2.7),0.2*recoilnum*exp(spread)/log(2.7))
+	new_y.y += rand_range(-hitpunch*exp(spread)/log(2.7),hitpunch*exp(spread)/log(2.7))
 	
-	var rand = rand_range(1*recoilnum*spread,2*recoilnum*spread)
+	var rand = rand_range(hitpunch,2*hitpunch)
 	
 	if ((new_y.x + rand) > max_y): 
 		new_y.x = new_y.x

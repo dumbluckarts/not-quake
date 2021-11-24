@@ -74,6 +74,7 @@ __meta__ = {
 }
 
 [node name="Inventory" type="Panel" parent="CanvasLayer"]
+visible = false
 anchor_right = 0.467
 anchor_bottom = 1.0
 margin_left = 64.0
