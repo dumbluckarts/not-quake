@@ -469,6 +469,9 @@ transform_array = PoolVector3Array( -0.0720752, -0.45105, -0.0869837, -0.075146,
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 5 )
 
+[node name="BakedLightmap" type="BakedLightmap" parent="."]
+extents = Vector3( 36, 22, 44 )
+
 [node name="MainRoom" type="Spatial" parent="."]
 
 [node name="Center" type="MeshInstance" parent="MainRoom"]
@@ -713,71 +716,85 @@ shape = SubResource( 51 )
 
 [node name="Center Wall" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+cast_shadow = 2
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Center Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34 )
+cast_shadow = 2
 mesh = ExtResource( 7 )
 material/0 = null
 
 [node name="Pipe Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -1 )
+cast_shadow = 2
 mesh = ExtResource( 7 )
 material/0 = null
 
 [node name="Outside Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 35 )
+cast_shadow = 2
 mesh = ExtResource( 7 )
 material/0 = null
 
 [node name="Wall" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -25 )
+cast_shadow = 2
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Wall2" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -23 )
+cast_shadow = 2
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Wall3" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -1 )
+cast_shadow = 2
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Wall4" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 35 )
+cast_shadow = 2
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Wall5" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -35 )
+cast_shadow = 2
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Wall6" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -35 )
+cast_shadow = 2
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Wall7" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, -35 )
+cast_shadow = 2
 mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Wall8" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 37, 0, -23 )
+cast_shadow = 2
 mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Wall9" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 25, 0, 35 )
+cast_shadow = 2
 mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="Wall10" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -37, 0, 23 )
+cast_shadow = 2
 mesh = ExtResource( 9 )
 material/0 = null
 
@@ -811,7 +828,7 @@ mesh = SubResource( 19 )
 material/0 = null
 
 [node name="Mushroom Group" parent="MainRoom/Decals" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.5, 10.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 23.8582 )
 
 [node name="Mushroom Group2" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -32, 0.5, 29.5 )
@@ -830,6 +847,9 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0.5,
 
 [node name="Mushroom Group7" parent="MainRoom/Decals" instance=ExtResource( 13 )]
 transform = Transform( -4.37114e-08, 0, 1, -0.258819, 0.965926, -1.13133e-08, -0.965926, -0.258819, -4.2222e-08, 32, 2.5, 30.5 )
+
+[node name="Mushroom Group8" parent="MainRoom/Decals" instance=ExtResource( 13 )]
+transform = Transform( 0.690811, 0.185102, 0.69894, -0.258819, 0.965926, -1.13133e-08, -0.675124, -0.180899, 0.715181, -0.342564, 0.5, -2.64919 )
 
 [node name="Hallway" type="Spatial" parent="."]
 

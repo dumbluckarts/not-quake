@@ -38,9 +38,7 @@ func _input(event):
 		$Mouse.process($Mouse/Camera, event.relative)
 	
 func damage(amount: int):
-	HEALTH -= 1
-	
-	$Combat.hitpunch()
+	HEALTH -= amount
 	
 	if HEALTH <= 0:
 		enabled = false

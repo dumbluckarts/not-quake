@@ -37,12 +37,21 @@ func _input(event: InputEvent) -> void:
 			"VISIBLE":
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				mouse_mode = "CAPTURED"
-
+				
 func _on_update_client(data: Dictionary):
 	for key in data.keys():
-#		Create player if they dont exist
+		var dict = data[key]
+		if data[key].empty(): return
 		if not $Enemies.has_node(key): 
 			var enemy = load("res://godot/scenes/enemies/Enemy.tscn").instance()
+			var mesh = enemy.get_node('MeshInstance') as MeshInstance
+			var material = mesh.get_active_material(0) as SpatialMaterial
+			var color_data = data[key]['color'].split(',')
+			var color = Color(color_data[0], color_data[1], color_data[2], color_data[3])
+			var player_name = data[key]['name']
+			
+			material.albedo_color = color
+			
 			enemy.name = str(key)
 			$Enemies.add_child(enemy)
 		else:

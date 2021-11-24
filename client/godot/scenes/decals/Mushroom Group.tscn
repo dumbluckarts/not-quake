@@ -29,8 +29,10 @@ material/0 = null
 material/1 = null
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06454, 0 )
 light_color = Color( 0.870588, 0.835294, 0.282353, 1 )
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 31.0
-omni_attenuation = 0.535887
+shadow_bias = 0.5
+omni_range = 20.0
+omni_attenuation = 0.143587
