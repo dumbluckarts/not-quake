@@ -1,9 +1,6 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://godot/scenes/decals/Pipe Straight.tscn" type="PackedScene" id=1]
-[ext_resource path="res://godot/materials/Stone.tres" type="Material" id=2]
-[ext_resource path="res://godot/materials/GreenBrick.tres" type="Material" id=3]
-[ext_resource path="res://godot/materials/RedRock.tres" type="Material" id=4]
 [ext_resource path="res://ENVIRONMENT.tres" type="Environment" id=5]
 [ext_resource path="res://assets/meshes/walls/Wall1.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://assets/meshes/walls/Doorway_Wall1.obj" type="ArrayMesh" id=7]
@@ -11,13 +8,7 @@
 [ext_resource path="res://assets/meshes/walls/L_Wall1.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://godot/scenes/decals/Pipe 90.tscn" type="PackedScene" id=10]
 [ext_resource path="res://godot/scenes/decals/Pipe U Bend.tscn" type="PackedScene" id=11]
-[ext_resource path="res://godot/materials/PaintedMetal.tres" type="Material" id=12]
 [ext_resource path="res://godot/scenes/decals/Mushroom Group.tscn" type="PackedScene" id=13]
-[ext_resource path="res://godot/materials/Copper.tres" type="Material" id=14]
-[ext_resource path="res://assets/textures/Metal024_1K-JPG/Metal024_1K_Metalness.jpg" type="Texture" id=15]
-[ext_resource path="res://assets/textures/Metal024_1K-JPG/Metal024_1K_Roughness.jpg" type="Texture" id=16]
-[ext_resource path="res://assets/textures/Metal024_1K-JPG/Metal024_1K_NormalGL.jpg" type="Texture" id=17]
-[ext_resource path="res://assets/textures/Metal024_1K-JPG/Metal024_1K_Color.jpg" type="Texture" id=18]
 [ext_resource path="res://audio/fx/waterflow.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/meshes/walls/Bend60_Wall1.obj" type="ArrayMesh" id=20]
 [ext_resource path="res://assets/meshes/walls/Bend30_Wall1.obj" type="ArrayMesh" id=21]
@@ -176,22 +167,6 @@ size = Vector2( 80, 80 )
 
 [sub_resource type="ConcavePolygonShape" id=11]
 data = PoolVector3Array( 40, 0, 40, -40, 0, 40, 40, 0, -40, -40, 0, 40, -40, 0, -40, 40, 0, -40 )
-
-[sub_resource type="SpatialMaterial" id=26]
-albedo_texture = ExtResource( 18 )
-metallic = 1.0
-metallic_specular = 0.72
-metallic_texture = ExtResource( 15 )
-roughness = 0.47
-roughness_texture = ExtResource( 16 )
-normal_enabled = true
-normal_scale = 10.17
-normal_texture = ExtResource( 17 )
-clearcoat_enabled = true
-clearcoat = 0.87
-clearcoat_gloss = 0.69
-uv1_scale = Vector3( 0.03, 0.03, 0.03 )
-uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id=12]
 size = Vector2( 20, 20 )
@@ -498,7 +473,6 @@ environment = ExtResource( 5 )
 
 [node name="Center" type="MeshInstance" parent="MainRoom"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
-material_override = ExtResource( 14 )
 mesh = ExtResource( 8 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -540,7 +514,7 @@ material/0 = SubResource( 9 )
 [node name="Ground" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( -1, -8.74228e-08, 7.64274e-15, -8.74228e-08, 1, -8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0 )
 mesh = SubResource( 10 )
-material/0 = ExtResource( 2 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Ground"]
 
@@ -550,7 +524,7 @@ shape = SubResource( 11 )
 [node name="Roof" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 14, 0 )
 mesh = SubResource( 10 )
-material/0 = SubResource( 26 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Roof"]
 
@@ -560,7 +534,7 @@ shape = SubResource( 11 )
 [node name="Ground Raised Corner" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 0.965926, -0.258819, 0, 0.25, 0.933013, 0.258819, -0.0669873, -0.25, 0.965926, -10, 0, 25 )
 mesh = SubResource( 12 )
-material/0 = ExtResource( 4 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Ground Raised Corner"]
 
@@ -571,7 +545,7 @@ shape = SubResource( 13 )
 [node name="Ground Raised Corner2" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 0.965926, 0.25, -0.0669873, -0.258819, 0.933013, -0.25, 0, 0.258819, 0.965926, -29, 2, -26 )
 mesh = SubResource( 12 )
-material/0 = ExtResource( 4 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Ground Raised Corner2"]
 
@@ -582,7 +556,7 @@ shape = SubResource( 13 )
 [node name="Ground Raised Corner3" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 0.965926, -0.258819, 0, 0.25, 0.933013, 0.258819, -0.0669873, -0.25, 0.965926, 27, 0, 25 )
 mesh = SubResource( 12 )
-material/0 = ExtResource( 4 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Ground Raised Corner3"]
 
@@ -635,7 +609,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, -14 )
 [node name="Pipe Cover" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -17, 2, 17 )
 mesh = SubResource( 14 )
-material/0 = ExtResource( 12 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Pipe Cover"]
 
@@ -650,7 +624,7 @@ material/0 = SubResource( 18 )
 [node name="Pipe Cover2" type="MeshInstance" parent="MainRoom/Solids"]
 transform = Transform( -3, 2.62268e-07, 0, -2.62268e-07, -3, 0, 0, 0, 3, 25, 11, 17 )
 mesh = SubResource( 14 )
-material/0 = ExtResource( 12 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MainRoom/Solids/Pipe Cover2"]
 
@@ -740,105 +714,99 @@ shape = SubResource( 51 )
 [node name="Center Wall" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34 )
 mesh = ExtResource( 7 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Pipe Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -1 )
 mesh = ExtResource( 7 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Outside Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 35 )
 mesh = ExtResource( 7 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -25 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall2" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -23 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall3" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -1 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall4" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 35 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall5" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -35 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall6" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -35 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall7" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, -35 )
 mesh = ExtResource( 9 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall8" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 37, 0, -23 )
 mesh = ExtResource( 9 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall9" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 25, 0, 35 )
 mesh = ExtResource( 9 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Wall10" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -37, 0, 23 )
 mesh = ExtResource( 9 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Decals" type="Spatial" parent="MainRoom"]
 
 [node name="Rocks" type="MultiMeshInstance" parent="MainRoom/Decals"]
-material_override = ExtResource( 3 )
 multimesh = SubResource( 20 )
 
 [node name="MeshInstance" type="MeshInstance" parent="MainRoom/Decals/Rocks"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 0 )
 visible = false
-material_override = ExtResource( 3 )
 mesh = SubResource( 19 )
 material/0 = null
 
 [node name="Rocks2" type="MultiMeshInstance" parent="MainRoom/Decals"]
-material_override = ExtResource( 3 )
 multimesh = SubResource( 21 )
 
 [node name="MeshInstance" type="MeshInstance" parent="MainRoom/Decals/Rocks2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 0 )
 visible = false
-material_override = ExtResource( 3 )
 mesh = SubResource( 19 )
 material/0 = null
 
 [node name="Rocks3" type="MultiMeshInstance" parent="MainRoom/Decals"]
-material_override = ExtResource( 3 )
 multimesh = SubResource( 22 )
 
 [node name="MeshInstance" type="MeshInstance" parent="MainRoom/Decals/Rocks3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 0 )
 visible = false
-material_override = ExtResource( 3 )
 mesh = SubResource( 19 )
 material/0 = null
 
@@ -870,64 +838,64 @@ transform = Transform( -4.37114e-08, 0, 1, -0.258819, 0.965926, -1.13133e-08, -0
 [node name="Center Wall" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9717, 0, -8 )
 mesh = ExtResource( 9 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall4" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -50.9717, 0, -32 )
 mesh = ExtResource( 21 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall8" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -56.6717, 0, -54 )
 mesh = ExtResource( 20 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall5" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -74.9717, 0, 6 )
 mesh = ExtResource( 20 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall2" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38.9717, 0, 18 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall9" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -63.9717, 0, -64 )
 mesh = ExtResource( 7 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall13" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -83.9717, 0, -12 )
 mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall12" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.301, -99.9717, 0, -52 )
 mesh = ExtResource( 7 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall10" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -87.9717, 0, -64 )
 mesh = ExtResource( 9 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall11" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.9717, 0, -24 )
 mesh = ExtResource( 9 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall6" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -50.9717, 0, -8 )
 mesh = ExtResource( 7 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall7" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -36.9717, 0, -23 )
 mesh = ExtResource( 22 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
 [node name="Center Wall3" type="MeshInstance" parent="Hallway/Walls and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9717, 0, 6 )
 mesh = ExtResource( 9 )
-material/0 = ExtResource( 3 )
+material/0 = null

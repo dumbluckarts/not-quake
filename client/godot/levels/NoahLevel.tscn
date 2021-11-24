@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://godot/materials/Test.tres" type="Material" id=1]
+[ext_resource path="res://assets/textures/testfloor.png" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_triplanar = true
 
 [node name="CSGCombiner" type="CSGCombiner"]
-material_override = ExtResource( 1 )
+material_override = SubResource( 1 )
 use_collision = true
 
 [node name="Floor" type="CSGBox" parent="."]
