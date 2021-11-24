@@ -39,6 +39,7 @@ func _input(event):
 	
 func damage(amount: int):
 	HEALTH -= amount
+	$Movement.HITPUNCH_SCALAR = 0.6
 	$Combat.hitpunch()
 	if HEALTH <= 0:
 		enabled = false

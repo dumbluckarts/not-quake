@@ -7,6 +7,7 @@ export var JUMP_SPEED = 3500 #100
 export var AIR_FRICTION = 0.75
 export var GROUND_FRICTION = 0.1
 export var MAX_INCLINE = 60
+export var HITPUNCH_SCALAR = 1.0
 
 var velocity = Vector3.ZERO
 var moving = false
@@ -43,8 +44,8 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	
 	moving = input != Vector2.ZERO
 	
-	speed.x = relative.x * move_speed
-	speed.z = relative.z * move_speed
+	speed.x = relative.x * move_speed * HITPUNCH_SCALAR
+	speed.z = relative.z * move_speed * HITPUNCH_SCALAR
 	speed.y = -GRAV_SPEED
 	
 	velocity.x = speed.x # vertical
@@ -52,6 +53,8 @@ func process(body: KinematicBody, delta: float, basis: Basis):
 	velocity.y += speed.y * delta
 	#velocity.y = 0 if body.is_on_floor() or $RayCast.is_colliding() else velocity.y + speed.y
 	#velocity.y = 0 if $RayCast_Celing.is_colliding() and velocity.y > 0 else velocity.y
+	
+	HITPUNCH_SCALAR=lerp(HITPUNCH_SCALAR, 1, 0.025)
 	
 	if is_impulse():
 		velocity = impulse
