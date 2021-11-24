@@ -43,6 +43,7 @@ func attack(_anim):
 	$"../Audio/AudioStreamPlayer_Hit".play()
 	$"../Audio/AudioStreamPlayer_Hit2".play()
 
+
 func animate(_anim):
 	var raycast = get_node(RAYCAST)
 	var position = get_node(POSITION)

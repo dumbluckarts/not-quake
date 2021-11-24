@@ -74,13 +74,12 @@ __meta__ = {
 }
 
 [node name="Inventory" type="Panel" parent="CanvasLayer"]
-visible = false
 anchor_right = 0.467
 anchor_bottom = 1.0
 margin_left = 64.0
 margin_top = 64.0
-margin_right = -0.640015
-margin_bottom = -56.0
+margin_right = 53.12
+margin_bottom = -64.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -88,86 +87,123 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.776471 )
-position = Vector2( 120, 120 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 116, 116 )
+scale = Vector2( 0.171875, 0.179688 )
 texture = ExtResource( 14 )
-
-[node name="Panel3" type="Panel" parent="CanvasLayer/Inventory"]
-modulate = Color( 1, 1, 1, 0.705882 )
-margin_left = -264.0
-margin_right = -72.0
-margin_bottom = 512.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel4" type="Panel" parent="CanvasLayer/Inventory"]
-modulate = Color( 1, 1, 1, 0.705882 )
-margin_left = 64.0
-margin_top = 709.0
-margin_right = 256.0
-margin_bottom = 837.0
-rect_pivot_offset = Vector2( 96, 56 )
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel5" type="Panel" parent="CanvasLayer/Inventory"]
-modulate = Color( 1, 1, 1, 0.705882 )
-margin_left = 576.0
-margin_top = 320.0
-margin_right = 768.0
-margin_bottom = 448.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel6" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 160.0
-margin_top = 40.0
+margin_top = 32.0
 margin_right = 224.0
-margin_bottom = 72.0
+margin_bottom = 88.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel12" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 216.0
+margin_top = 32.0
+margin_right = 280.0
+margin_bottom = 88.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel13" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 216.0
+margin_top = 88.0
+margin_right = 280.0
+margin_bottom = 143.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel14" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 216.0
+margin_top = 144.0
+margin_right = 280.0
+margin_bottom = 199.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel7" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 160.0
+margin_top = 88.0
+margin_right = 224.0
+margin_bottom = 143.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Panel8" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
-margin_left = 576.0
-margin_top = 512.0
-margin_right = 768.0
-margin_bottom = 640.0
+margin_left = 160.0
+margin_top = 144.0
+margin_right = 224.0
+margin_bottom = 199.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Panel9" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
-margin_left = 576.0
-margin_top = 704.0
-margin_right = 768.0
-margin_bottom = 832.0
+margin_left = 8.0
+margin_top = 32.0
+margin_right = 72.0
+margin_bottom = 88.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel10" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 8.0
+margin_top = 88.0
+margin_right = 72.0
+margin_bottom = 144.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel11" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 8.0
+margin_top = 144.0
+margin_right = 72.0
+margin_bottom = 200.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="Button" type="Button" parent="CanvasLayer/Inventory"]
-margin_left = 184.0
+margin_left = 256.0
 margin_top = 8.0
-margin_right = 224.0
+margin_right = 272.0
 margin_bottom = 22.0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-text = "CLOSE"
+text = "x"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -301,7 +301,7 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Position3D_Tip" type="Position3D" parent="Mouse/Camera/Gun"]
-transform = Transform( 0.997521, 5.58794e-09, 5.96046e-08, -1.86265e-09, 1, 3.25963e-09, 1.49012e-08, -1.16415e-09, 1.00708, 27.092, 4.158, -0.101 )
+transform = Transform( 0.997522, -3.72529e-09, -2.98023e-08, -4.65661e-09, 1, 4.65661e-09, 5.96046e-08, 9.31323e-10, 1.00708, 27.1249, 4.87938, -0.0922713 )
 
 [node name="Arms" type="MeshInstance" parent="Mouse/Camera/Gun"]
 transform = Transform( -3.39157e-07, 0, 10.302, 0, 7.96, 0, -7.759, 0, -4.50315e-07, -20.507, -9.229, 0 )

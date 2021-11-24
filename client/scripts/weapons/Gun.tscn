@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/meshes/Gun1_noScope.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://scripts/weapons/Gun.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "fall"
+
+[sub_resource type="Animation" id=1]
+resource_name = "jump"
+
+[sub_resource type="Animation" id=5]
+resource_name = "land"
+
+[sub_resource type="Animation" id=6]
+resource_name = "shoot"
+length = 0.3
+loop = true
+step = 0.01
+
+[sub_resource type="Animation" id=2]
+resource_name = "walk"
+
+[node name="Spatial" type="MeshInstance"]
+mesh = ExtResource( 1 )
+material/0 = null
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/fall = SubResource( 4 )
+anims/jump = SubResource( 1 )
+anims/land = SubResource( 5 )
+anims/shoot = SubResource( 6 )
+anims/walk = SubResource( 2 )
+
+[node name="Position3D_Barrel" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124398, 0.0504657, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

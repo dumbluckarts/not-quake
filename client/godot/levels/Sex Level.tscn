@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://godot/materials/Test.tres" type="Material" id=3]
+[gd_scene load_steps=2 format=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.188235, 0.505882, 1, 1 )
@@ -8,11 +6,9 @@ albedo_color = Color( 0.188235, 0.505882, 1, 1 )
 [node name="Sex Level" type="Spatial"]
 
 [node name="PipeRoom_Fix" type="Spatial" parent="."]
-visible = false
 
 [node name="CSGCombiner" type="CSGCombiner" parent="PipeRoom_Fix"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0 )
-material_override = ExtResource( 3 )
 use_collision = true
 
 [node name="Walls" type="CSGBox" parent="PipeRoom_Fix/CSGCombiner"]
@@ -80,7 +76,6 @@ sides = 9
 
 [node name="CSGCombiner_Cover" type="CSGCombiner" parent="PipeRoom_Fix"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0 )
-material_override = ExtResource( 3 )
 use_collision = true
 
 [node name="CSGBox" type="CSGBox" parent="PipeRoom_Fix/CSGCombiner_Cover"]
@@ -333,11 +328,9 @@ radius = 3.0
 height = 8.0
 
 [node name="MainArea" type="Spatial" parent="."]
-visible = false
 
 [node name="CSGCombiner" type="CSGCombiner" parent="MainArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 18, 0 )
-material_override = ExtResource( 3 )
 use_collision = true
 
 [node name="CSGCylinder" type="CSGCylinder" parent="MainArea/CSGCombiner"]
