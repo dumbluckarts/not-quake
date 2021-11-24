@@ -21,10 +21,7 @@ func _process(_delta):
 		$CanvasLayer/Panel.visible = false
 		$CanvasLayer/Label.visible = false
 	if Input.is_action_just_pressed("tab"):
-		if not inventory_open:
-			open_inv()
-			return
-		close_inv()
+		toggle_inv()
 	if not enabled: return
 	if $Movement.is_jumping():
 		$Audio/AnimationPlayer.play("jump")
@@ -66,22 +63,14 @@ func _spawn(location):
 	var lookat = Vector3.ZERO + Vector3(0,cam_y,0) # offset so you are always looking "ahead" towards the map origin
 	$Mouse/Camera.look_at(lookat, Vector3.UP)
 
-func open_inv():
+func toggle_inv():
 	var a = InputEventAction.new()
 	a.action = "mouse_input"
 	a.pressed = true
 	Input.parse_input_event(a)
-	$"../CanvasLayer/Inventory".visible = true
-	inventory_open = true
-	a.pressed = false
-
-func close_inv():
-	var a = InputEventAction.new()
-	a.action = "mouse_input"
-	a.pressed = true
-	Input.parse_input_event(a)
-	$"../CanvasLayer/Inventory".visible = false
-	inventory_open = false
+	var visible = not $"../CanvasLayer/Inventory".visible
+	$"../CanvasLayer/Inventory".visible = visible
+	inventory_open = visible
 	a.pressed = false
 
 func damage(amount: int):
@@ -99,4 +88,4 @@ func damage(amount: int):
 
 # if the inventory "x" button is pressed
 func _on_Button_pressed():
-	close_inv()
+	toggle_inv()

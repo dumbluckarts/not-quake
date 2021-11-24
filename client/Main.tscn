@@ -91,7 +91,7 @@ position = Vector2( 116, 116 )
 scale = Vector2( 0.171875, 0.179688 )
 texture = ExtResource( 14 )
 
-[node name="Panel6" type="Panel" parent="CanvasLayer/Inventory"]
+[node name="Panel_1" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 160.0
 margin_top = 32.0
@@ -102,7 +102,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel12" type="Panel" parent="CanvasLayer/Inventory"]
+[node name="Panel_2" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 216.0
 margin_top = 32.0
@@ -113,29 +113,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel13" type="Panel" parent="CanvasLayer/Inventory"]
-modulate = Color( 1, 1, 1, 0.705882 )
-margin_left = 216.0
-margin_top = 88.0
-margin_right = 280.0
-margin_bottom = 143.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel14" type="Panel" parent="CanvasLayer/Inventory"]
-modulate = Color( 1, 1, 1, 0.705882 )
-margin_left = 216.0
-margin_top = 144.0
-margin_right = 280.0
-margin_bottom = 199.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel7" type="Panel" parent="CanvasLayer/Inventory"]
+[node name="Panel_3" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 160.0
 margin_top = 88.0
@@ -147,7 +125,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel8" type="Panel" parent="CanvasLayer/Inventory"]
+[node name="Panel_4" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 216.0
+margin_top = 88.0
+margin_right = 280.0
+margin_bottom = 143.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_5" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 160.0
 margin_top = 144.0
@@ -159,7 +148,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel9" type="Panel" parent="CanvasLayer/Inventory"]
+[node name="Panel_6" type="Panel" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 216.0
+margin_top = 144.0
+margin_right = 280.0
+margin_bottom = 199.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel_Active_Gun" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 8.0
 margin_top = 32.0
@@ -170,7 +170,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel10" type="Panel" parent="CanvasLayer/Inventory"]
+[node name="Panel_Active_Armor" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 8.0
 margin_top = 88.0
@@ -182,7 +182,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel11" type="Panel" parent="CanvasLayer/Inventory"]
+[node name="Panel_Active_Pistol" type="Panel" parent="CanvasLayer/Inventory"]
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 8.0
 margin_top = 144.0
