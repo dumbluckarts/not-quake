@@ -23,10 +23,9 @@ func _ready():
 	
 	print("LISTEN %s:%s %s" % ["0.0.0.0", port, _status])
 
-func _process(_delta):
-	_server.poll()
-
 func _physics_process(delta):
+	_server.poll()
+	
 	for key in _clients.keys():
 		var copy = _clients.duplicate(true)
 		copy.erase(key)
