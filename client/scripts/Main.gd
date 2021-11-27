@@ -51,6 +51,7 @@ func _on_update_client(data: Dictionary):
 			var player_name = data[key]['name']
 			
 			material.albedo_color = color
+			enemy.player_name = player_name
 			
 			enemy.name = str(key)
 			$Enemies.add_child(enemy)

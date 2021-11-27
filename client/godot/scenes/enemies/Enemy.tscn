@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemies/Nameplate.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleMesh" id=3]
 mid_height = 2.0
@@ -53,3 +54,24 @@ transform = Transform( -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0, 0.2, 0
 mesh = SubResource( 7 )
 skeleton = NodePath("../../MeshInstance2")
 material/0 = SubResource( 8 )
+
+[node name="NameplateAnchor" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[node name="Nameplate" type="Control" parent="NameplateAnchor"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NameplateAnchor/Nameplate"]
+margin_left = -96.0
+margin_top = -24.0
+margin_right = 96.0
+margin_bottom = -8.0
+text = "Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
