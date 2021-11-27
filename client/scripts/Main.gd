@@ -8,6 +8,7 @@ func _ready():
 	
 	Client.connect("update_client", self, "_on_update_client")
 	Client.connect("push_client", self, "_on_push_client")
+	Client.connect("connection_closed", self, "_on_connection_closed")
 	Client.send('ready_client')
 
 func _physics_process(_delta):
@@ -70,3 +71,12 @@ func _on_update_client(data: Dictionary):
 
 func _on_push_client(data: Dictionary):
 	if 'damage' in data: Game.get_player().damage(int(data['damage']))
+
+func _on_connection_closed(data: Dictionary):
+	print("connection closed")
+	print(data)
+	for key in data.keys():
+		var dict = data[key]
+		if data[key].empty(): return
+		
+		print('disconnected' + str(data[key]['name']))
