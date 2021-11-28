@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://godot/scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://godot/levels/Pipe Organized.tscn" type="PackedScene" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://scripts/FFA.gd" type="Script" id=4]
 [ext_resource path="res://godot/scenes/player/Player.Hitmarker.tscn" type="PackedScene" id=5]
 [ext_resource path="res://godot/scenes/interface/FPSCounter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://godot/scenes/weapons/AR.tscn" type="PackedScene" id=7]
+[ext_resource path="res://godot/scenes/weapons/030 NHHC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://godot/scenes/weapons/FSL 3192.tscn" type="PackedScene" id=9]
+[ext_resource path="res://godot/scenes/weapons/PUMP 4.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/interface/select.png" type="Texture" id=11]
 [ext_resource path="res://scripts/interface/Velocity.gd" type="Script" id=13]
 [ext_resource path="res://scripts/interface/CanvasLayer.gd" type="Script" id=16]
 
@@ -34,21 +39,26 @@ margin_top = 8.0
 margin_right = 110.0
 
 [node name="Crosshair" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 320.0
-margin_top = 180.0
-margin_right = -320.0
-margin_bottom = -180.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Select" type="Sprite" parent="CanvasLayer/Crosshair"]
+rotation = 0.785398
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+
 [node name="Score" type="Label" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -32.0
-margin_bottom = 14.0
+margin_left = -40.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 22.0
 text = "0000"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -62,6 +72,22 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 5, 0 )
 [node name="Map" type="Spatial" parent="."]
 
 [node name="Map Organized" parent="Map" instance=ExtResource( 2 )]
+
+[node name="AR" parent="Map/Map Organized" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5134, 1.07716, -1 )
+ITEM = true
+
+[node name="030 NHHC" parent="Map/Map Organized" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8463, 1, 0 )
+ITEM = true
+
+[node name="FSL 3192" parent="Map/Map Organized" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3167, 1.19044, -3 )
+ITEM = true
+
+[node name="PUMP 4" parent="Map/Map Organized" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 0 )
+ITEM = true
 
 [node name="GameMode" type="Spatial" parent="."]
 

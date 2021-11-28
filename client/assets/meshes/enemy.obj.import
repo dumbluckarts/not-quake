@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/enemy.obj-95c7261e328e6df4f97de681caa62b53.mesh"
+
+[deps]
+
+files=[ "res://.import/enemy.obj-95c7261e328e6df4f97de681caa62b53.mesh" ]
+
+source_file="res://assets/meshes/enemy.obj"
+dest_files=[ "res://.import/enemy.obj-95c7261e328e6df4f97de681caa62b53.mesh", "res://.import/enemy.obj-95c7261e328e6df4f97de681caa62b53.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.7, 0.7, 0.7 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

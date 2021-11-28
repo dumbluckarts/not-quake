@@ -4,8 +4,10 @@ class_name Interface
 export var HITMARKER: PackedScene
 
 func _ready():
-	$Crosshair.update()
 	Game.get_player_node("Combat").connect("hit_damagable", self, "_on_Combat_hit_damagable")
+
+func _process(delta):
+	$Crosshair.update()
 
 func _on_Combat_hit_damagable():
 	var hitmarker = HITMARKER.instance()

@@ -1,42 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/meshes/Gun1_noScope.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://godot/scenes/weapons/AR.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/weapons/Gun.gd" type="Script" id=2]
+[ext_resource path="res://godot/scenes/weapons/Sub Laser.tscn" type="PackedScene" id=3]
+[ext_resource path="res://godot/scenes/weapons/UMP.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=3]
-
-[sub_resource type="Animation" id=4]
-resource_name = "fall"
-
-[sub_resource type="Animation" id=1]
-resource_name = "jump"
-
-[sub_resource type="Animation" id=5]
-resource_name = "land"
-
-[sub_resource type="Animation" id=6]
-resource_name = "shoot"
-length = 0.3
-loop = true
-step = 0.01
-
-[sub_resource type="Animation" id=2]
-resource_name = "walk"
-
-[node name="Spatial" type="MeshInstance"]
-mesh = ExtResource( 1 )
-material/0 = null
+[node name="Spatial" type="Spatial"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 script = ExtResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 3 )
-anims/fall = SubResource( 4 )
-anims/jump = SubResource( 1 )
-anims/land = SubResource( 5 )
-anims/shoot = SubResource( 6 )
-anims/walk = SubResource( 2 )
+[node name="AR" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.567656, -0.0774309, -0.819616, 0.135153, 0.990825, 4.02788e-09, 0.812096, -0.110774, 0.572913, 0, 0.184852, 0 )
+ITEM = true
 
-[node name="Position3D_Barrel" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124398, 0.0504657, 0 )
+[node name="UMP" parent="." instance=ExtResource( 4 )]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Sub Laser" parent="." instance=ExtResource( 3 )]

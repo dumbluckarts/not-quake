@@ -13,6 +13,7 @@ func _ready():
 
 func get_player(): return get_node(PLAYER) as Player
 func get_player_node(nodePath: NodePath): return get_player().get_node(nodePath)
+func get_camera(): return get_player_node("Mouse/Camera") as Camera
 func get_interface(): return get_node(CANVAS) as Interface
 func get_interface_node(nodePath: NodePath): return get_player().get_node(nodePath)
 func get_map(): return get_node(MAP) as Map

@@ -4,8 +4,6 @@ class_name PlayerCombat
 signal hit_damagable
 
 export(PackedScene) var BULLET
-export(PackedScene) var PARTICLES
-export(NodePath) var POSITION
 export(NodePath) var RAYCAST
 export(NodePath) var SOUND
 
@@ -14,8 +12,9 @@ export(float) var spread = 0.05
 export(float) var hitpunch = 2
 var recoilnum = 0
 func _ready():
-	$AnimationPlayer.connect("animation_finished", self, "animate")
-	$AnimationPlayer.connect("animation_finished", self, "attack")
+	pass
+#	$AnimationPlayer.connect("animation_finished", self, "animate")
+#	$AnimationPlayer.connect("animation_finished", self, "attack")
 
 func _process(_delta):
 	if not get_parent().enabled or get_parent().inventory_open: return
@@ -24,10 +23,10 @@ func _process(_delta):
 		animate('')
 		
 	if Input.is_action_pressed("shoot"):
-		$AnimationPlayer.play("shoot")
-		
+#		$AnimationPlayer.play("shoot")
+		pass
 	else:
-		$AnimationPlayer.play("default")
+#		$AnimationPlayer.play("default")
 		recoilnum = 0
 
 func attack(_anim):
@@ -45,17 +44,17 @@ func attack(_anim):
 
 
 func animate(_anim):
-	var raycast = get_node(RAYCAST)
-	var position = get_node(POSITION)
-	var sound = get_node(SOUND)
-	var bullet = BULLET.instance() as Spatial
-	$"/root/Spatial".add_child(bullet)
-	bullet.global_transform.origin = position.global_transform.origin
-	bullet.direction = bullet.global_transform.origin.direction_to(raycast.get_collision_point())
-	bullet.look_at(raycast.get_collision_point(), Vector3.UP)
-	bullet.speed = 300 + rand_range(-50, 50)
-	sound.pitch_scale = rand_range(0.9, 1.1)
-	sound.play()
+#	var raycast = get_node(RAYCAST)
+#	var position = get_node(POSITION)
+#	var sound = get_node(SOUND)
+#	var bullet = BULLET.instance() as Spatial
+#	$"/root/Spatial".add_child(bullet)
+#	bullet.global_transform.origin = position.global_transform.origin
+#	bullet.direction = bullet.global_transform.origin.direction_to(raycast.get_collision_point())
+#	bullet.look_at(raycast.get_collision_point(), Vector3.UP)
+#	bullet.speed = 300 + rand_range(-50, 50)
+#	sound.pitch_scale = rand_range(0.9, 1.1)
+#	sound.play()
 	
 	recoilnum += 1
 	recoil_spread()
