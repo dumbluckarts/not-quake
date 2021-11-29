@@ -138,7 +138,7 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 5, 0 )
 [node name="Map Organized" parent="Map" instance=ExtResource( 2 )]
 
 [node name="Splode" type="KinematicBody" parent="Map/Map Organized" groups=["damagable"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 3, 0 )
 script = ExtResource( 14 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/Map Organized/Splode"]
