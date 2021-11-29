@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/SUS_Chamber.obj-b84b2c69e784a85fcb6712c2d04f7dfe.mesh"
+
+[deps]
+
+files=[ "res://.import/SUS_Chamber.obj-b84b2c69e784a85fcb6712c2d04f7dfe.mesh" ]
+
+source_file="res://assets/meshes/weapons/sus/SUS_Chamber.obj"
+dest_files=[ "res://.import/SUS_Chamber.obj-b84b2c69e784a85fcb6712c2d04f7dfe.mesh", "res://.import/SUS_Chamber.obj-b84b2c69e784a85fcb6712c2d04f7dfe.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.1, 0.1, 0.1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

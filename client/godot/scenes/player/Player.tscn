@@ -295,9 +295,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341, -0.598, -0.935 )
 [node name="RayCast" type="RayCast" parent="Mouse/Camera"]
 enabled = true
 cast_to = Vector3( 0, 0, -100 )
+collide_with_areas = true
+
+[node name="RayCast_Inventory" type="RayCast" parent="Mouse/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -10 )
+collide_with_areas = true
 
 [node name="Inventory" type="Spatial" parent="."]
 script = ExtResource( 11 )
+RAYCAST = NodePath("../Mouse/Camera/RayCast_Inventory")
 
 [node name="Combat" type="Spatial" parent="."]
 script = ExtResource( 4 )

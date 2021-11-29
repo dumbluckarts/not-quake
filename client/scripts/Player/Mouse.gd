@@ -5,6 +5,7 @@ export var MOUSE_SENSITIVITY = 0.0
 export var MOUSE_Y_LIMIT = Vector2.ZERO
 
 var relative = Vector2()
+var hovering = null
 
 func process(spatial: Spatial, delta: Vector2):
 	relative = delta
