@@ -36,6 +36,12 @@ func _process(delta):
 		hovering = null
 
 	if Input.is_action_just_pressed("interact") and hovering != null:
+		if hovering.WEAPON:
+			var pickup = hovering.WEAPON.instance()
+			var guns = Game.get_camera().get_node("Guns")
+			for child in guns.get_children():
+				child.visible = false
+			guns.add_child(pickup)
 		hovering.queue_free()
 
 func toggle_inv():

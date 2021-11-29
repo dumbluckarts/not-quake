@@ -8,7 +8,7 @@ export var CANVAS: NodePath
 func _ready():
 	GAME = "/root/Spatial"
 	PLAYER = "%s/Player" % GAME
-	MAP = "%s/Game Organized" % GAME
+	MAP = "%s/Map/Map Organized" % GAME
 	CANVAS = "%s/CanvasLayer" % GAME
 
 func get_player(): return get_node(PLAYER) as Player

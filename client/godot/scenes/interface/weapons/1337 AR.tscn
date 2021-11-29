@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/meshes/Gun1_noScope.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://scripts/weapons/Gun.gd" type="Script" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://scripts/interface/AR Label.gd" type="Script" id=4]
 [ext_resource path="res://assets/meshes/Gun1.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://assets/Blazma-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://godot/scenes/weapons/1337 AR.tscn" type="PackedScene" id=7]
+
+[sub_resource type="PhysicsMaterial" id=27]
+rough = true
+bounce = 0.2
 
 [sub_resource type="DynamicFont" id=21]
 font_data = ExtResource( 6 )
@@ -74,9 +79,17 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
 }
 
-[node name="1337 AR" type="Spatial"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+[sub_resource type="BoxShape" id=26]
+extents = Vector3( 0.468373, 0.191926, 0.14942 )
+
+[node name="1337 AR" type="RigidBody"]
+physics_material_override = SubResource( 27 )
+gravity_scale = 2.0
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource( 2 )
+WEAPON = ExtResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -115,6 +128,7 @@ margin_bottom = 29.0
 custom_styles/panel = SubResource( 24 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 3 )
 
@@ -137,3 +151,7 @@ anims/item = SubResource( 10 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.107575, 0 )
+shape = SubResource( 26 )

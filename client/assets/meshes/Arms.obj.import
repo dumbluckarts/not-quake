@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Arms.obj-08d842fb0c25f91f7d2a9e3aefc5c45e.mesh", "re
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 0.01, 0.01, 0.01 )
+scale_mesh=Vector3( 0.005, 0.005, 0.005 )
 offset_mesh=Vector3( 0, 0, 0 )
 octahedral_compression=true
 optimize_mesh_flags=4286

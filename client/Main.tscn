@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://godot/scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://godot/levels/Pipe Organized.tscn" type="PackedScene" id=2]
@@ -6,13 +6,9 @@
 [ext_resource path="res://scripts/FFA.gd" type="Script" id=4]
 [ext_resource path="res://godot/scenes/player/Player.Hitmarker.tscn" type="PackedScene" id=5]
 [ext_resource path="res://godot/scenes/interface/FPSCounter.tscn" type="PackedScene" id=6]
-[ext_resource path="res://godot/scenes/interface/weapons/1337 AR.tscn" type="PackedScene" id=7]
-[ext_resource path="res://godot/scenes/interface/weapons/030 NHHC.tscn" type="PackedScene" id=8]
-[ext_resource path="res://godot/scenes/interface/weapons/FSL 3192.tscn" type="PackedScene" id=9]
-[ext_resource path="res://godot/scenes/interface/weapons/PUMP 4.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/interface/select.png" type="Texture" id=11]
-[ext_resource path="res://godot/scenes/interface/weapons/SUS.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/interface/Velocity.gd" type="Script" id=13]
+[ext_resource path="res://scripts/Splode.gd" type="Script" id=14]
 [ext_resource path="res://scripts/interface/CanvasLayer.gd" type="Script" id=16]
 
 [sub_resource type="Animation" id=1]
@@ -66,6 +62,14 @@ tracks/2/keys = {
 "points": PoolRealArray( 0.5, -1, 0, 1, 0, 0.6, -0.5, 0, 0.5, 0, 0.5, -1, 0, 1, 0 ),
 "times": PoolRealArray( 0, 1, 2 )
 }
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_unshaded = true
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=6]
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
@@ -133,20 +137,17 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 5, 0 )
 
 [node name="Map Organized" parent="Map" instance=ExtResource( 2 )]
 
-[node name="030 NHHC" parent="Map/Map Organized" instance=ExtResource( 8 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 1, -8.60743 )
+[node name="Splode" type="KinematicBody" parent="Map/Map Organized" groups=["damagable"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 0 )
+script = ExtResource( 14 )
 
-[node name="1337 AR" parent="Map/Map Organized" instance=ExtResource( 7 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 14.7337, 1, -3.11494 )
+[node name="CollisionShape" type="CollisionShape" parent="Map/Map Organized/Splode"]
+shape = SubResource( 4 )
 
-[node name="FSL 3192" parent="Map/Map Organized" instance=ExtResource( 9 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 15, 2, 6 )
-
-[node name="PUMP 4" parent="Map/Map Organized" instance=ExtResource( 10 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 1, 7 )
-
-[node name="SUS" parent="Map/Map Organized" instance=ExtResource( 12 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 23, 1, 0 )
+[node name="MeshInstance" type="MeshInstance" parent="Map/Map Organized/Splode"]
+material_override = SubResource( 5 )
+mesh = SubResource( 6 )
+material/0 = null
 
 [node name="GameMode" type="Spatial" parent="."]
 

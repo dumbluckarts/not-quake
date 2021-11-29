@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/meshes/M24_R_Low_Poly_Version_obj.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://godot/materials/Gun.tres" type="Material" id=2]
+[ext_resource path="res://assets/meshes/Arms.obj" type="ArrayMesh" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=6]
+
+[sub_resource type="NoiseTexture" id=7]
+width = 256
+height = 256
+seamless = true
+noise = SubResource( 6 )
+
+[sub_resource type="OpenSimplexNoise" id=13]
+
+[sub_resource type="NoiseTexture" id=14]
+width = 256
+height = 256
+seamless = true
+as_normalmap = true
+noise = SubResource( 13 )
+
+[sub_resource type="OpenSimplexNoise" id=9]
+period = 17.7
+
+[sub_resource type="NoiseTexture" id=10]
+width = 256
+height = 256
+seamless = true
+as_normalmap = true
+noise = SubResource( 9 )
+
+[sub_resource type="OpenSimplexNoise" id=11]
+
+[sub_resource type="NoiseTexture" id=12]
+noise = SubResource( 11 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+albedo_texture = SubResource( 7 )
+metallic = 0.41
+metallic_specular = 0.32
+metallic_texture = SubResource( 14 )
+roughness = 0.84
+roughness_texture = SubResource( 12 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 10 )
+uv1_triplanar = true
+
+[node name="FSL 23837" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -0.709236, 0, -7.79674e-08, 0, 1, 0, 7.05605e-08, 0, -1, 0.00880587, 0.396558, 0.611075 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -1.15206, 0, -0.0685474, 0, 1, 0, 0.0823851, 0, -0.958552, 0.105741, -0.506924, 1.46692 )
+material_override = SubResource( 8 )
+mesh = ExtResource( 3 )
+material/0 = null
