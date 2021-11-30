@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://godot/scenes/decals/Pipe Straight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/SpawnPoints.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/meshes/walls/L_Wall1.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://godot/scenes/decals/Pipe 90.tscn" type="PackedScene" id=10]
 [ext_resource path="res://godot/scenes/decals/Pipe U Bend.tscn" type="PackedScene" id=11]
+[ext_resource path="res://godot/materials/brick.tres" type="Material" id=12]
 [ext_resource path="res://godot/scenes/decals/Mushroom Group.tscn" type="PackedScene" id=13]
 [ext_resource path="res://audio/fx/waterflow.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/meshes/walls/Bend60_Wall1.obj" type="ArrayMesh" id=20]
@@ -629,85 +630,85 @@ shape = SubResource( 51 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
 cast_shadow = 2
 mesh = ExtResource( 6 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Center Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34 )
 cast_shadow = 2
 mesh = ExtResource( 7 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Pipe Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -1 )
 cast_shadow = 2
 mesh = ExtResource( 7 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Outside Door" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 35 )
 cast_shadow = 2
 mesh = ExtResource( 7 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -25 )
 cast_shadow = 2
 mesh = ExtResource( 6 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall2" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -23 )
 cast_shadow = 2
 mesh = ExtResource( 6 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall3" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -1 )
 cast_shadow = 2
 mesh = ExtResource( 6 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall4" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 35 )
 cast_shadow = 2
 mesh = ExtResource( 6 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall5" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -35 )
 cast_shadow = 2
 mesh = ExtResource( 6 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall6" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -35 )
 cast_shadow = 2
 mesh = ExtResource( 6 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall7" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, -35 )
 cast_shadow = 2
 mesh = ExtResource( 9 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall8" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 37, 0, -23 )
 cast_shadow = 2
 mesh = ExtResource( 9 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall9" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 25, 0, 35 )
 cast_shadow = 2
 mesh = ExtResource( 9 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Wall10" type="MeshInstance" parent="MainRoom/Wall and Doors"]
 transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -37, 0, 23 )
 cast_shadow = 2
 mesh = ExtResource( 9 )
-material/0 = null
+material/0 = ExtResource( 12 )
 
 [node name="Decals" type="Spatial" parent="MainRoom"]
 
@@ -763,6 +764,7 @@ transform = Transform( -4.37114e-08, 0, 1, -0.258819, 0.965926, -1.13133e-08, -0
 transform = Transform( 0.690811, 0.185102, 0.69894, -0.258819, 0.965926, -1.13133e-08, -0.675124, -0.180899, 0.715181, -0.342564, 0.5, -2.64919 )
 
 [node name="Hallway" type="Spatial" parent="."]
+visible = false
 
 [node name="Walls and Doors" type="Spatial" parent="Hallway"]
 
