@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://godot/scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://godot/materials/Test.tres" type="Material" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/FFA.gd" type="Script" id=4]
 [ext_resource path="res://godot/scenes/player/Player.Hitmarker.tscn" type="PackedScene" id=5]
 [ext_resource path="res://godot/scenes/interface/FPSCounter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/Splode.gd" type="Script" id=7]
 [ext_resource path="res://assets/interface/select.png" type="Texture" id=11]
 [ext_resource path="res://scripts/interface/Velocity.gd" type="Script" id=13]
 [ext_resource path="res://scripts/interface/CanvasLayer.gd" type="Script" id=16]
@@ -61,6 +62,14 @@ tracks/2/keys = {
 "points": PoolRealArray( 0.5, -1, 0, 1, 0, 0.6, -0.5, 0, 0.5, 0, 0.5, -1, 0, 1, 0 ),
 "times": PoolRealArray( 0, 1, 2 )
 }
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="BoxShape" id=5]
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
@@ -122,7 +131,7 @@ __meta__ = {
 [node name="Enemies" type="Spatial" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -22, 5, 0 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -22, 5, 11 )
 
 [node name="Map" type="Spatial" parent="."]
 
@@ -258,7 +267,6 @@ radius = 6.0
 height = 50.0
 
 [node name="CSGCylinder4" type="CSGCylinder" parent="Map/Basement Design/Floor/CSGCylinder4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 operation = 2
 radius = 5.41297
 height = 53.8516
@@ -502,6 +510,18 @@ height = 38.0
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -74, 27, 76 )
 radius = 9.0
 height = 30.0
+
+[node name="KinematicBody" type="KinematicBody" parent="Map/Basement Design" groups=["damagable"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 3, 0 )
+script = ExtResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/Basement Design/KinematicBody"]
+mesh = SubResource( 3 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Basement Design/KinematicBody"]
+shape = SubResource( 5 )
 
 [node name="GameMode" type="Spatial" parent="."]
 

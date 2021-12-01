@@ -24,12 +24,17 @@ func _process(_delta):
 		
 	if Input.is_action_pressed("shoot"):
 #		$AnimationPlayer.play("shoot")
-		pass
+		attack('')
 	else:
 #		$AnimationPlayer.play("default")
 		recoilnum = 0
 
 func attack(_anim):
+	if $"../Mouse/Camera/Guns".get_children().size() != 0:
+		var gun = $"../Mouse/Camera/Guns".get_child(0)
+		gun.shoot()
+		print('yes')
+	
 	var raycast = get_node(RAYCAST) as RayCast
 	if not raycast.is_colliding(): return
 	var collider = raycast.get_collider()
@@ -41,7 +46,6 @@ func attack(_anim):
 	$"../Audio/AudioStreamPlayer_Hit".pitch_scale = rand_range(0.9, 1.1)
 	$"../Audio/AudioStreamPlayer_Hit".play()
 	$"../Audio/AudioStreamPlayer_Hit2".play()
-
 
 func animate(_anim):
 #	var raycast = get_node(RAYCAST)

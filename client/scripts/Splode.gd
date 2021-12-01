@@ -1,4 +1,4 @@
-extends KinematicBody
+extends Spatial
 
 var NHHC = preload("res://godot/scenes/interface/weapons/030 NHHC.tscn")
 var AR = preload("res://godot/scenes/interface/weapons/1337 AR.tscn")
