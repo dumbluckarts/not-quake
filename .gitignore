@@ -7,6 +7,7 @@ server/.import/
 dist/
 .out
 export.cfg
+logs/
 
 # Mono-specific ignores
 .mono/

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/largeCrate (1).obj-aea99d587c30b251fc1f84ad40235ba5.mesh"
+
+[deps]
+
+files=[ "res://.import/largeCrate (1).obj-aea99d587c30b251fc1f84ad40235ba5.mesh" ]
+
+source_file="res://assets/meshes/props/largeCrate (1).obj"
+dest_files=[ "res://.import/largeCrate (1).obj-aea99d587c30b251fc1f84ad40235ba5.mesh", "res://.import/largeCrate (1).obj-aea99d587c30b251fc1f84ad40235ba5.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

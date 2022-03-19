@@ -1,0 +1,11 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/textures/nelsoncopper/color.png" type="Texture" id=1]
+
+[resource]
+params_diffuse_mode = 4
+params_specular_mode = 3
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.04
+roughness = 0.02
+uv1_triplanar = true
