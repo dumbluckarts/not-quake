@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+export(PackedScene) var BULLET
 
 func _process(delta):
 	$Gun.look_at(get_global_mouse_position())
