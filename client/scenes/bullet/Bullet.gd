@@ -1,15 +1,16 @@
 extends Area2D
 
-var hit = false
+export var speed: float = 20
 
 func _ready():
 	$CollisionShape2D.set_deferred("disabled", 0)
 
-func shoot(velocity: Vector2, delta):
-	while not hit:
-		# this is an autist implementation
-		position = lerp(velocity, position+velocity, 1)
+func _physics_process(delta):
+	position += transform.x * speed * delta
 
-func _on_Bullet_area_entered(area):
+func _on_Bullet_body_entered(body):
 	# check area's group to see if its damageable, emit damage signal and destroy self
-	pass 
+	if body.is_in_group('damageable'):
+		# emit signal
+		pass
+	queue_free()

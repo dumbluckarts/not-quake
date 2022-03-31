@@ -7,7 +7,7 @@ var zoom_weight = 0.1
 
 onready var zoom_original = zoom
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not enabled: return
 	shake_strength = lerp(shake_strength, 0, 0.05)
 	global_position.x = lerp(global_position.x + rand_range(-shake_strength, shake_strength), $"../Player".global_position.x, 0.35)

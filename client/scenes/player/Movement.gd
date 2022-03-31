@@ -14,7 +14,7 @@ func is_impulse(): return impulse
 
 func set_impulse(amount: Vector3): impulse = amount
 
-func process(body: KinematicBody2D, delta: float):
+func process(body: KinematicBody2D, _delta: float):
 	var input = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
