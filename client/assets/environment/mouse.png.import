@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/circle.png-56c8a136dc4ef80f0ed3434a9d801ecd.stex"
+path="res://.import/mouse.png-bf782e3cc0af5d16ade59e678d38b577.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/circle.png"
-dest_files=[ "res://.import/circle.png-56c8a136dc4ef80f0ed3434a9d801ecd.stex" ]
+source_file="res://assets/environment/mouse.png"
+dest_files=[ "res://.import/mouse.png-bf782e3cc0af5d16ade59e678d38b577.stex" ]
 
 [params]
 

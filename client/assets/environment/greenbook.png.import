@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hearts.png-452f7a5b4e5560c2f12b95b51a0108c6.stex"
+path="res://.import/greenbook.png-39248c7c57a6fff574f158879c999899.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/hearts.png"
-dest_files=[ "res://.import/hearts.png-452f7a5b4e5560c2f12b95b51a0108c6.stex" ]
+source_file="res://assets/environment/greenbook.png"
+dest_files=[ "res://.import/greenbook.png-39248c7c57a6fff574f158879c999899.stex" ]
 
 [params]
 

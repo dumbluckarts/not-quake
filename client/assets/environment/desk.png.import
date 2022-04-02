@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shoom.png-8c383d78f269427a2d707b690e9267cf.stex"
+path="res://.import/desk.png-4c5d0200deee9a016e36862beada620b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/shoom.png"
-dest_files=[ "res://.import/shoom.png-8c383d78f269427a2d707b690e9267cf.stex" ]
+source_file="res://assets/environment/desk.png"
+dest_files=[ "res://.import/desk.png-4c5d0200deee9a016e36862beada620b.stex" ]
 
 [params]
 
